@@ -4,23 +4,23 @@ import { Client, Resource } from 'rr-apilib';
 export default function App() {
 
     const [client, setClient] = useState(new Client());
-    const [ressources, setRessources] = useState<Resource[]>([]);
+    const [resources, setResources] = useState<Resource[]>([]);
 
-    async function getRessources() {
+    async function getResources() {
         return (await client.resources.fetchAll()).map(r => r);
     }
 
     useEffect(() => {
         // console.log("client change")
 
-        getRessources()
-            .then(res => setRessources(res))
+        getResources()
+            .then(res => setResources(res))
 
     }, [client])
     
     return (
         <div className="App">
-            {ressources.map((r, i) => {
+            {resources.map((r, i) => {
                 return (
                     <div key={i}>
                         <h5>{r.title}</h5>
