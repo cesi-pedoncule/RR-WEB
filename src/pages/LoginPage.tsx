@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import CommonStyles from "../Styles/CommonStyles.module.css";
-import LoginStyles from "../Styles/Page/LoginPageStyles.module.css";
+import CommonStyles from "../styles/CommonStyles.module.css";
+import LoginStyles from "../styles/Page/LoginPageStyles.module.css";
 
 export default function LoginPage () {
 
