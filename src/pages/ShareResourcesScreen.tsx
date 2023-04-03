@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Client, Resource } from "rr-apilib";
 
+import CommonStyles from "../Styles/CommonStyles.module.css";
+
 interface Props {
     client: Client;
 }
