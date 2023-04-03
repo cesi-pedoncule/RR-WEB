@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './styles/Component/Navbar';
+import Navbar from './components/Navbar';
 import HomePage from "./pages/HomePage";
 import { Client } from 'rr-apilib';
 import CategoriesPage from './pages/CategoriesPage';
