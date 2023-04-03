@@ -1,0 +1,90 @@
+.container {
+    flex: 1;
+    background-color: grey;
+    align-items: center;
+    justify-content: center;
+}
+.content {
+    background-color: white;
+    width: 100%;
+    position: absolute;
+    top : 95;
+    bottom: 0;
+    border-radius: 30;
+}
+.btnHomeBackground {
+    position : absolute;
+    left : 20;
+    padding : 10;
+    background-color: whitesmoke;
+    border-radius: 7;
+    transition: 0.2;
+}
+.header {
+    font-size: 32;
+    font-size: 800;
+    color: black;
+    text-align: center;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.title {
+    font-size: 32;
+    font-weight: 800;
+    color: black;
+    text-align: center;
+}
+.loader {
+    top: 45%;
+    align-items: center;
+}
+.itemsContainer {
+    margin-top: 20;
+    margin-bottom: 20;
+} 
+.textEmptyResult {
+    color: black;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+}
+.listHeaderComponent {
+    margin-bottom: 20;
+}
+.loadMoreContent {
+    align-items: center;
+}
+.returnBtn {
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    width: 40;
+    height: 40;
+    padding: 5;
+    border-radius: 7;
+    transition: 0.2;
+    margin-bottom: 20;
+    margin-top: 20;
+}
+.returnBtnInFlatList {
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    width: 40;
+    height: 40;
+    padding: 5;
+    border-radius: 7;
+    transition: 0.2;
+}
+.buttonsEditionResource {
+    align-items: center;
+    justify-content: center;
+    width: 40;
+    height: 40;
+    padding: 5;
+    border-radius: 7;
+    transition: 0.2;
+    margin-top: 15;
+    margin-bottom: 15;
+}
