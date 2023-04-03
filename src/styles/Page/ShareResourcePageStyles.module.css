@@ -1,0 +1,29 @@
+.resourcesContainer {
+    margin-top: 20;
+    margin-bottom: 20;
+    justify-content: center;
+    padding-bottom: 130;
+}
+.textSaves {
+    color: black;
+    position: relative;
+    text-align: center;
+    font-size: 16;
+    top: 15;
+    margin-bottom: 15;
+    text-decoration: underline;
+}
+.addResourceBtn {
+    text-align: center;
+    color: white;
+    margin-top: 5;
+    height: 50;
+    width: 150;
+}
+.buttonsContainer {
+    position : absolute;
+    justify-content: center;
+    align-items: center;
+    bottom: 100;
+    width: 100%;
+}
