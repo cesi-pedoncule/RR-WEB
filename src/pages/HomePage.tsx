@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Client, Resource } from "rr-apilib";
-import '../styles/Page/HomePageStyles.css';
+
+import HomeStyles from "../Styles/Page/HomePageStyles.module.css";
+
 
 interface Props {
     client: Client;

@@ -1,3 +1,5 @@
+import CommonStyles from "../Styles/CommonStyles.module.css";
+
 export default function ResourcesPage () {
     return (
         <div>
