@@ -1,0 +1,22 @@
+.registerContainer {
+    margin-top: 10%;
+    align-items: center;
+    justify-content: center;
+}
+.loginContainer {
+    margin-top: 20%;
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+}
+.loginButton {
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+.text {
+    color: black;
+}
+.container {
+    height: 100%;
+}
