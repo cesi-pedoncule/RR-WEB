@@ -1,0 +1,61 @@
+.container {
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-left: 10;
+    padding-right: 10;
+    margin-top: 5;
+}
+.addNameResource {
+    color: black;
+    background-color: whitesmoke;
+    text-align: center;
+    height: 40;
+    width: 90%;
+    border-radius : 10;
+    padding-top: 10;
+    padding-bottom: 10;
+}
+.sendButton {
+    width: 140;
+    height: 45;
+    justify-content: center;
+    background-color: grey;
+    margin-top: 20;
+    border-radius: 15;
+    transition: 0.2;
+}
+.categorieList {
+    margin-right: 10;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+}
+.categorieContainer {
+    margin-top: 20;
+    align-items: center;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+}
+.addCategorieContainer {
+    margin-right: 5;
+}
+.addCategorieText {
+    background-color: grey;
+    color: black;
+    padding-left: 20;
+    padding-right: 20;
+    padding-bottom: 4;
+    padding-top: 2;    
+    border-radius: 15;
+    text-align: center;
+}
+.switchContainer {
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20;
+}

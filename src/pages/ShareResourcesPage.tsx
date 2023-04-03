@@ -7,7 +7,7 @@ interface Props {
     client: Client;
 }
 
-export default function ShareResourceScreen ({ client }: Props) {
+export default function ShareResourcePage ({ client }: Props) {
 
     const [resources, setResources] = useState<Resource[]>([]);
 
