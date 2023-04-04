@@ -1,0 +1,38 @@
+.root {
+    background-color: #03989E;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+.root .linkContainer {
+    width: 50%;
+    padding: 10px;
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-radius: 15px;
+    background-color: white;
+}
+
+.root .linkContainer .link {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width : 80px;
+}
+
+.root .linkContainer .link .logo {
+    height: 60px;
+    width : 60px;
+}
+
+.root .linkContainer .link p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
