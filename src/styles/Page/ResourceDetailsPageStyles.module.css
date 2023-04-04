@@ -1,81 +1,81 @@
 .centerContent {
     justify-content: center;
     align-items: center;
-    margin: 10;
+    margin: 10px;
 }
 .resourceAttachmentContainer {
     width: 276px;
     height: 55px;
     background-color: whitesmoke;
-    border-bottom: 2;
+    border-bottom: 2px;
     border-color: grey;
-    border-radius: 15;
+    border-radius: 15px;
 }
 .resourceContainer {
-    margin-top: 20;
-    margin-bottom: 20;
+    margin-top: 20px;
+    margin-bottom: 20px;
     justify-content: center;
 }
 .cardBackground {
     width: 100%;
     height: auto;
     background-color: whitesmoke;
-    border-radius: 20;
-    margin-bottom: 20;
+    border-radius: 20px;
+    margin-bottom: 20px;
 }
 .cardUser {
     font-weight: bold;
-    font-size: 20;
-    margin-left: 20;
+    font-size: 20px;
+    margin-left: 20px;
 }
 .cardTitle {
     text-decoration: solid;
     text-decoration-line: underline;
-    font-size: 16;
-    margin-left: 20;
+    font-size: 16px;
+    margin-left: 20px;
 }
 .cardText {
     color: white;
-    font-Size: 13;
+    font-Size: 13px;
     text-align: justify;
-    margin-top: 5;
-    margin-bottom: 20;
-    margin-left: 20;
-    margin-right: 20;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .lineLikeAndUser {
-    margin-top: 10;
+    margin-top: 10px;
     align-items: center;
     justify-content: space-between;
     display:flex;
     flex-direction: row;
 }
 .likeBtn {
-    margin-right: 20;
+    margin-right: 20px;
 }
 .commentContainer {
     justify-content: center;
-    margin-top: 10;
-    margin-bottom: 10;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .commentTitle {
     font-weight: bold;
-    font-size: 20;
+    font-size: 20px;
     text-decoration-line: underline;
 }
 .noComment {
     position: absolute;
-    left: 20;
+    left: 20px;
 }
 .categoriesContainer {
     display: flex;
     flex-direction: row;
     overflow: scroll;
-    margin-top: 20;
-    margin-bottom: 20;  
+    margin-top: 20px;
+    margin-bottom: 20px;  
 }
 .btnFile {
-    margin-bottom: 30;
+    margin-bottom: 30px;
     justify-content: center;
     align-items: center;
     width: 100%;

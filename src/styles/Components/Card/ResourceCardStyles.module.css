@@ -1,0 +1,73 @@
+.container {
+    width: 100%;
+    height: 190px;
+    background-color: whitesmoke;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+.cardUser {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 20px;
+}
+.cardTitle {
+    color: black;
+    text-decoration-style: solid;
+    text-decoration-line: underline;
+    font-size: 16px;
+    margin-left: 20px;
+    margin-right: 20px;  
+    margin-bottom: 10px;
+}
+.cardText {
+    color: white;
+    font-size: 13px;
+    text-align: justify;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.lineButtonsAndUser {
+    margin-top: 10px;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    flex-direction : row;
+}
+.userAndButtonsContainer {
+    align-items: flex-end;
+    margin-right: 20px;
+}
+.buttonsContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 130px;
+    bottom: 30px;
+    left: 20px;
+}
+.buttonsEditContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 165px;
+    bottom: 23px;
+    right: 0px;
+}
+.withoutUserContainer {
+    height: 100%;
+    margin-top: 20px;
+}
+.categoriesContainer {
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+    margin-top: 20px;
+    margin-bottom: 20px;  
+}

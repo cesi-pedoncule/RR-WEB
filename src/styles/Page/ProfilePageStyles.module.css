@@ -1,25 +1,25 @@
 .profileContainer {
     align-items: center;
-    padding: 10;
+    padding: 10px;
 }
 .profileTitle {
-    font-size: 32;
-    font-weight: 800;
+    font-size: 32px;
+    font-weight: 800px;
     text-align: center;
-    margin-top: 10;
-    margin-bottom: 10;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .profileSubTitle {
-    font-size: 16;
-    font-weight: 300;
+    font-size: 16px;
+    font-weight: 300px;
     text-align: center;
-    margin-top: 10;
-    margin-bottom: 10;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .profileDescription {
     color: black;
-    font-size: 12;
+    font-size: 12px;
     width: 100%;
-    margin: 10;
+    margin: 10px;
     justify-content: center;
 }
