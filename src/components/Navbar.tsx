@@ -19,7 +19,7 @@ export default function Navbar() {
                     <img className={navBar.logo} src="../Partage.png" alt="Partage"/>
                     <p>Partager</p>
                 </Link>
-                <Link className={navBar.link} to={"/"}>
+                <Link className={navBar.link} to={"/profile"}>
                     <img className={navBar.logo} src="../Profile.png" alt="Profil"/>
                     <p>Profil</p>
                 </Link>
