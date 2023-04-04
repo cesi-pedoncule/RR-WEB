@@ -17,14 +17,20 @@
     background-color: white;
 }
 
-.root .link {
+.root .linkContainer .link {
     color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
-.root .link .logo {
+.root .linkContainer .link .logo {
     height: 60px;
     width : 60px;
+}
+
+.root .linkContainer .link p {
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
