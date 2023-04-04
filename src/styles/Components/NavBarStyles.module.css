@@ -23,6 +23,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 80px;
+    width : 80px;
 }
 
 .root .linkContainer .link .logo {
