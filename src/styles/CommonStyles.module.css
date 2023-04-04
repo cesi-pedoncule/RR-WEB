@@ -8,21 +8,21 @@
     background-color: white;
     width: 100%;
     position: absolute;
-    top : 95;
-    bottom: 0;
-    border-radius: 30;
+    top : 135px;
+    bottom: 0px;
+    border-radius: 30px;
 }
 .btnHomeBackground {
     position : absolute;
-    left : 20;
-    padding : 10;
+    left : 20px;
+    padding : 10px;
     background-color: whitesmoke;
-    border-radius: 7;
+    border-radius: 7px;
     transition: 0.2;
 }
 .header {
-    font-size: 32;
-    font-size: 800;
+    font-size: 32px;
+    font-weight: 800px;
     color: black;
     text-align: center;
     flex-direction: row;
@@ -30,8 +30,8 @@
     align-items: center;
 }
 .title {
-    font-size: 32;
-    font-weight: 800;
+    font-size: 32px;
+    font-weight: 800px;
     color: black;
     text-align: center;
 }
@@ -40,8 +40,8 @@
     align-items: center;
 }
 .itemsContainer {
-    margin-top: 20;
-    margin-bottom: 20;
+    margin-top: 20px;
+    margin-bottom: 20px;
 } 
 .textEmptyResult {
     color: black;
@@ -50,7 +50,7 @@
     width: 100%;
 }
 .listHeaderComponent {
-    margin-bottom: 20;
+    margin-bottom: 20px;
 }
 .loadMoreContent {
     align-items: center;
@@ -59,32 +59,32 @@
     align-items: center;
     justify-content: center;
     background-color: white;
-    width: 40;
-    height: 40;
-    padding: 5;
-    border-radius: 7;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 7px;
     transition: 0.2;
-    margin-bottom: 20;
-    margin-top: 20;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 .returnBtnInFlatList {
     align-items: center;
     justify-content: center;
     background-color: white;
-    width: 40;
-    height: 40;
-    padding: 5;
-    border-radius: 7;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 7px;
     transition: 0.2;
 }
 .buttonsEditionResource {
     align-items: center;
     justify-content: center;
-    width: 40;
-    height: 40;
-    padding: 5;
-    border-radius: 7;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 7px;
     transition: 0.2;
-    margin-top: 15;
-    margin-bottom: 15;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
