@@ -11,7 +11,7 @@ export default function ResourcesPage ({ client }: Props) {
     const [resources, setResources] = useState<Resource[]>([]);
 
     const fetchResources = async () => {
-        setResources(await client.resources.fetchAll());
+        setResources(Array.from((await client.resources.fetchAll()).values()));
     }
 
     useEffect(() => {
