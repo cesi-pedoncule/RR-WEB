@@ -20,10 +20,10 @@ export default function App() {
             <Navbar />
             <Routes>
                 <Route path="/categories" element={<CategoriesPage client={client} />} />
-                <Route path="categorie-detail" element={<CategoryDetailPage />} />
+                <Route path="/category-detail" element={<CategoryDetailPage />} />
                 <Route path="/share" element={<ShareResourcesPage client={client}/>} />
                 <Route path="/resources" element={<ResourcesPage client={client} />} />
-                <Route path="resource-detail" element={<ResourceDetailPage />} />
+                <Route path="/resource-detail" element={<ResourceDetailPage />} />
                 <Route path="/" element={<LoginPage client={client} />} />
                 <Route path="/create" element={<CreateResourcePage />} />
                 <Route path="/edit" element={<EditResourcePage/>} />

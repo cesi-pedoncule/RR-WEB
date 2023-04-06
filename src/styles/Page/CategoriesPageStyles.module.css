@@ -1,5 +1,8 @@
 .resourcesContainer {
     margin-top: 20px;
     margin-bottom: 20px;
-    justify-content: center;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
