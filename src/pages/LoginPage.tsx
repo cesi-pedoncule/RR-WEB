@@ -1,65 +1,133 @@
+import { Client } from "rr-apilib";
 import CommonStyles from "../styles/CommonStyles.module.css";
 import LoginStyles from "../styles/Page/LoginPageStyles.module.css";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Spinner } from "react-activity";
 
-export default function LoginPage () {
+interface Props {
+    client: Client;
+}
+
+export default function LoginPage ({ client }: Props) {
+
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const navigate = useNavigate();
+
+    const onclickLoginButton = async () => {
+        setIsLoading(true);
+
+        try {
+            await client.login('user0@example.com', 'password');
+            localStorage.setItem('token', client.auth.token + '');
+            localStorage.setItem('refresh_token', client.auth.refresh_token + '');
+
+            navigate("/resources");
+
+        } catch (error) {
+            alert('Mauvais identifiants');
+        }
+        setIsLoading(false);
+    }
+
+    const onClickRegisterButton = async () => {
+        alert('Register');
+    }
+
+    const checkIsAuth = async () => {
+        
+        if (client.auth.me != null) {
+            navigate("/resources");
+        } else {
+            // Check if token is in storage
+            const token = localStorage.getItem('token');
+            const refresh_token = localStorage.getItem('refresh_token');
+
+            if (token != null && refresh_token != null) {
+
+                // Set token and refresh token
+                client.auth.token = token;
+                client.auth.refresh_token = refresh_token;
+
+                // Try to refresh token
+                try {
+                    await client.auth.refresh();
+                    // navigation.navigate('');
+                } catch (error) {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('refresh_token');
+
+                    client.refresh();
+                }
+            } 
+
+            setIsLoading(false);
+        }
+    }
+
+    useEffect(() => {
+        checkIsAuth();
+    }, []);
 
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
                 <div className={LoginStyles.container}>
                     
-                    <div className={LoginStyles.root}>
+                    {
+                        isLoading ? <Spinner color="#03989E"/> : 
+                        <div className={LoginStyles.root}>
 
-                        <div className={LoginStyles.itemsContainer}>
-                            <header className={LoginStyles.loginHeader}>Connexion</header>
-                            <form className={LoginStyles.loginContainer}>
-                                <div className={LoginStyles.loginControl}>
-                                    <label className={LoginStyles.loginLabel} htmlFor="email">Email</label>
-                                    <input className={LoginStyles.loginInput} type="email" id="email" name="email" required/>
-                                </div>
-                                <div className={LoginStyles.loginControl}>
-                                    <label className={LoginStyles.loginLabel}htmlFor="mdp">Mot de passe</label>
-                                    <input className={LoginStyles.loginInput} type="password" id="mdp" name="mdp" required/>
-                                </div>
-                                <div className={LoginStyles.loginControl}>
-                                    <input className={LoginStyles.loginButton} type="submit" id="login" name="login" required/>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div className={LoginStyles.itemsContainer}>
-                            <header className={LoginStyles.loginHeader}>Inscription</header>
-                            <div>
-                                <form className={LoginStyles.loginContainer}>
+                            <div className={LoginStyles.itemsContainer}>
+                                <header className={LoginStyles.loginHeader}>Connexion</header>
+                                <form className={LoginStyles.loginContainer} onSubmit={onclickLoginButton}>
                                     <div className={LoginStyles.loginControl}>
-                                        <label className={LoginStyles.loginLabel} htmlFor="lastName-register">Nom</label>
-                                        <input className={LoginStyles.loginInput} type="text" id="lastName-register" name="lastName-register" required/>
+                                        <label className={LoginStyles.loginLabel} htmlFor="email">Email</label>
+                                        <input className={LoginStyles.loginInput} type="email" id="email" name="email" />
                                     </div>
                                     <div className={LoginStyles.loginControl}>
-                                        <label className={LoginStyles.loginLabel} htmlFor="firstName-register">Prénom</label>
-                                        <input className={LoginStyles.loginInput} type="text" id="firstName-register" name="firstName-register" required/>
+                                        <label className={LoginStyles.loginLabel}htmlFor="mdp">Mot de passe</label>
+                                        <input className={LoginStyles.loginInput} type="password" id="mdp" name="mdp" />
                                     </div>
                                     <div className={LoginStyles.loginControl}>
-                                        <label className={LoginStyles.loginLabel} htmlFor="email-register">Email</label>
-                                        <input className={LoginStyles.loginInput} type="email" id="email-register" name="email-register" required/>
-                                    </div>
-                                    <div className={LoginStyles.loginControl}>
-                                        <label className={LoginStyles.loginLabel} htmlFor="mdp-register">Mot de passe</label>
-                                        <input className={LoginStyles.loginInput} type="password" id="mdp-register" name="mdp-register" required/>
-                                    </div>
-                                    <div className={LoginStyles.loginControl}>
-                                        <label className={LoginStyles.loginLabel} htmlFor="mdp-confirm-register">Confirmer mot de passe</label>
-                                        <input className={LoginStyles.loginInput} type="password" id="mdp-confirm-register" name="mdp-confirm-register" required/>
-                                    </div>
-                                    <div className={LoginStyles.loginControl}>
-                                        <input className={LoginStyles.loginButton} type="submit" id="login-register" name="login-register" required/>
+                                        <input className={LoginStyles.loginButton} type="submit" id="login" name="login" />
                                     </div>
                                 </form>
                             </div>
-                        </div>
 
-                    </div>
-                    
+                            <div className={LoginStyles.itemsContainer}>
+                                <header className={LoginStyles.loginHeader}>Inscription</header>
+                                <div>
+                                    <form className={LoginStyles.loginContainer} onSubmit={onClickRegisterButton}>
+                                        <div className={LoginStyles.loginControl}>
+                                            <label className={LoginStyles.loginLabel} htmlFor="lastName-register">Nom</label>
+                                            <input className={LoginStyles.loginInput} type="text" id="lastName-register" name="lastName-register" required/>
+                                        </div>
+                                        <div className={LoginStyles.loginControl}>
+                                            <label className={LoginStyles.loginLabel} htmlFor="firstName-register">Prénom</label>
+                                            <input className={LoginStyles.loginInput} type="text" id="firstName-register" name="firstName-register" required/>
+                                        </div>
+                                        <div className={LoginStyles.loginControl}>
+                                            <label className={LoginStyles.loginLabel} htmlFor="email-register">Email</label>
+                                            <input className={LoginStyles.loginInput} type="email" id="email-register" name="email-register" required/>
+                                        </div>
+                                        <div className={LoginStyles.loginControl}>
+                                            <label className={LoginStyles.loginLabel} htmlFor="mdp-register">Mot de passe</label>
+                                            <input className={LoginStyles.loginInput} type="password" id="mdp-register" name="mdp-register" required/>
+                                        </div>
+                                        <div className={LoginStyles.loginControl}>
+                                            <label className={LoginStyles.loginLabel} htmlFor="mdp-confirm-register">Confirmer mot de passe</label>
+                                            <input className={LoginStyles.loginInput} type="password" id="mdp-confirm-register" name="mdp-confirm-register" required/>
+                                        </div>
+                                        <div className={LoginStyles.loginControl}>
+                                            <input className={LoginStyles.loginButton} type="submit" id="login-register" name="login-register" required/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
                 </div>
             </div>
         </div>
