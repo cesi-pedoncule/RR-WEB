@@ -12,7 +12,7 @@ export default function CategoriesPage ({ client }: Props) {
     const [categories, setCategories] = useState<Category[]>([]);
 
     const fetchResources = async () => {
-        setCategories(await client.categories.fetchAll());
+        setCategories(Array.from((await client.categories.fetchAll()).values()));
     }
 
     useEffect(() => {
