@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { Category, Client } from "rr-apilib";
 
-import CommonStyles from "../Styles/CommonStyles.module.css";
+import CommonStyles from "../styles/CommonStyles.module.css";
+import CategoriesStyles from "../styles/Page/CategoriesPageStyles.module.css";
+
+
+import CategoryCard from "../components/Card/CategoryCard";
 
 interface Props {
     client: Client;
@@ -21,15 +25,18 @@ export default function CategoriesPage ({ client }: Props) {
 
     return (
         <div>
-            <h1>Categories</h1>
-            {categories.map((q, i) => {
-                return (
-                    <div key={i}>
-                        <h5>{q.name}</h5>
+            <div className={CommonStyles.container}>
+                <div className={CommonStyles.content}>
+                    <h1>Categories</h1>
+                    <div className={CategoriesStyles.resourcesContainer}>
+                        {categories.map((q, i) => {
+                            return (
+                                <CategoryCard category={q} resources={Array.from(q.resources.cache.values())} />
+                            )
+                        })}
                     </div>
-                )
-            }
-            )}
+                </div>
+            </div>
         </div>
     )
 }
