@@ -1,0 +1,29 @@
+.cardBackground {
+    aspect-ratio: 1;
+    background-color: #eaf0f0;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    align-self: flex-end;
+    padding-right: 20px;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.cardTitle {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-top: 15px;
+    line-clamp: 1;
+}
+.cardText {
+    width:100%;
+    color: #9ca6a9;
+    font-size: 13px;
+    text-align: justify;
+    margin-left: 20px;
+    margin-right: 20px;
+}
