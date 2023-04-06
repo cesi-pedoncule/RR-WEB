@@ -24,17 +24,15 @@ export default function CategoriesPage ({ client }: Props) {
     }, [client])
 
     return (
-        <div>
-            <div className={CommonStyles.container}>
-                <div className={CommonStyles.content}>
-                    <h1>Categories</h1>
-                    <div className={CategoriesStyles.resourcesContainer}>
-                        {categories.map((q, i) => {
-                            return (
-                                <CategoryCard category={q} resources={Array.from(q.resources.cache.values())} />
-                            )
-                        })}
-                    </div>
+        <div className={CommonStyles.container}>
+            <div className={CommonStyles.content}>
+                <h1>Categories</h1>
+                <div className={CategoriesStyles.resourcesContainer}>
+                    {categories.map((q, i) => {
+                        return (
+                            <CategoryCard category={q} resources={Array.from(q.resources.cache.values())} />
+                        )
+                    })}
                 </div>
             </div>
         </div>
