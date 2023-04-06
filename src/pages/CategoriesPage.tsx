@@ -26,7 +26,7 @@ export default function CategoriesPage ({ client }: Props) {
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
-                <h1>Categories</h1>
+                <h1>CategoriesPage</h1>
                 <div className={CategoriesStyles.resourcesContainer}>
                     {categories.map((q, i) => {
                         return (

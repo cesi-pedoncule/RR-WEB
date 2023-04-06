@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Client, Resource } from "rr-apilib";
 
-import CommonStyles from "../Styles/CommonStyles.module.css";
+import CommonStyles from "../styles/CommonStyles.module.css";
 
 interface Props {
     client: Client;
@@ -20,8 +20,12 @@ export default function ShareResourcePage ({ client }: Props) {
     }, [])
 
     return (
-        <div>
-            <h1>Share Resource</h1>
+        <div className={CommonStyles.container}>
+            <div className={CommonStyles.content}>
+                <div className={CommonStyles.itemsContainer}>
+                    <h1>ShareResourcePage</h1>
+                </div>
+            </div>
         </div>
     )
 }

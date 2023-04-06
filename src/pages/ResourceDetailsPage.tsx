@@ -1,9 +1,13 @@
-import CommonStyles from "../Styles/CommonStyles.module.css";
+import CommonStyles from "../styles/CommonStyles.module.css";
 
 export default function ResourceDetailPage () {
     return (
-        <div>
-            <h1>ResourceDetailPage</h1>
+        <div className={CommonStyles.container}>
+            <div className={CommonStyles.content}>
+                <div className={CommonStyles.itemsContainer}>
+                    <h1>ResourceDetailPage</h1>
+                </div>
+            </div>
         </div>
     )
 }
