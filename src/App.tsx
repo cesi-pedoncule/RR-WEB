@@ -24,7 +24,7 @@ export default function App() {
                 <Route path="/share" element={<ShareResourcesPage client={client}/>} />
                 <Route path="/resources" element={<ResourcesPage client={client} />} />
                 <Route path="resource-detail" element={<ResourceDetailPage />} />
-                <Route path="/" element={<LoginPage />} />
+                <Route path="/" element={<LoginPage client={client} />} />
                 <Route path="/create" element={<CreateResourcePage />} />
                 <Route path="/edit" element={<EditResourcePage/>} />
                 <Route path="/profile" element={<ProfilePage/>}/>
