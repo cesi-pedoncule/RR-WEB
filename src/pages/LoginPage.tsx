@@ -1,4 +1,4 @@
-import { Client } from "rr-apilib";
+import { Client, UserBuilder } from "rr-apilib";
 import CommonStyles from "../styles/CommonStyles.module.css";
 import LoginStyles from "../styles/Page/LoginPageStyles.module.css";
 import { useEffect, useState } from "react";
@@ -13,6 +13,8 @@ export default function LoginPage ({ client }: Props) {
 
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const navigate = useNavigate();
+
+    const [ newUser ] = useState<UserBuilder>(new UserBuilder());
 
     const onclickLoginButton = async () => {
         setIsLoading(true);
@@ -31,7 +33,16 @@ export default function LoginPage ({ client }: Props) {
     }
 
     const onClickRegisterButton = async () => {
-        alert('Register');
+        try {
+            setIsLoading(true);
+            const user = await client.users.create(newUser);
+            await client.login(newUser.email, newUser.password);
+            setIsLoading(false);
+        } catch (error) {
+            alert("Problème lors de l'inscription");
+        }
+
+        navigate('/resources');
     }
 
     const checkIsAuth = async () => {
