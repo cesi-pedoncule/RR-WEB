@@ -82,64 +82,63 @@ export default function LoginPage ({ client }: Props) {
 
     return (
         <div className={CommonStyles.container}>
-            <div className={CommonStyles.content}>
-                <div className={LoginStyles.container}>
-                    
-                    {
-                        isLoading ? <Spinner color="#03989E"/> : 
-                        <div className={LoginStyles.root}>
+            <div className={CommonStyles.content}>  
+                
+                {
+                    isLoading ? <Spinner className={LoginStyles.spinner} color="#03989E"/> : 
+                    <div className={LoginStyles.formContainer}>
 
-                            <div className={LoginStyles.itemsContainer}>
-                                <header className={LoginStyles.loginHeader}>Connexion</header>
-                                <form className={LoginStyles.loginContainer} onSubmit={onclickLoginButton}>
-                                    <div className={LoginStyles.loginControl}>
-                                        <label className={LoginStyles.loginLabel} htmlFor="email">Email</label>
-                                        <input className={LoginStyles.loginInput} type="email" id="email" name="email" />
-                                    </div>
-                                    <div className={LoginStyles.loginControl}>
-                                        <label className={LoginStyles.loginLabel}htmlFor="mdp">Mot de passe</label>
-                                        <input className={LoginStyles.loginInput} type="password" id="mdp" name="mdp" />
-                                    </div>
-                                    <div className={LoginStyles.loginControl}>
-                                        <input className={LoginStyles.loginButton} type="submit" id="login" name="login" />
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div className={LoginStyles.itemsContainer}>
-                                <header className={LoginStyles.loginHeader}>Inscription</header>
-                                <div>
-                                    <form className={LoginStyles.loginContainer} onSubmit={onClickRegisterButton}>
-                                        <div className={LoginStyles.loginControl}>
-                                            <label className={LoginStyles.loginLabel} htmlFor="lastName-register">Nom</label>
-                                            <input className={LoginStyles.loginInput} type="text" id="lastName-register" name="lastName-register" required/>
-                                        </div>
-                                        <div className={LoginStyles.loginControl}>
-                                            <label className={LoginStyles.loginLabel} htmlFor="firstName-register">Prénom</label>
-                                            <input className={LoginStyles.loginInput} type="text" id="firstName-register" name="firstName-register" required/>
-                                        </div>
-                                        <div className={LoginStyles.loginControl}>
-                                            <label className={LoginStyles.loginLabel} htmlFor="email-register">Email</label>
-                                            <input className={LoginStyles.loginInput} type="email" id="email-register" name="email-register" required/>
-                                        </div>
-                                        <div className={LoginStyles.loginControl}>
-                                            <label className={LoginStyles.loginLabel} htmlFor="mdp-register">Mot de passe</label>
-                                            <input className={LoginStyles.loginInput} type="password" id="mdp-register" name="mdp-register" required/>
-                                        </div>
-                                        <div className={LoginStyles.loginControl}>
-                                            <label className={LoginStyles.loginLabel} htmlFor="mdp-confirm-register">Confirmer mot de passe</label>
-                                            <input className={LoginStyles.loginInput} type="password" id="mdp-confirm-register" name="mdp-confirm-register" required/>
-                                        </div>
-                                        <div className={LoginStyles.loginControl}>
-                                            <input className={LoginStyles.loginButton} type="submit" id="login-register" name="login-register" required/>
-                                        </div>
-                                    </form>
+                        <div className={LoginStyles.form}>
+                            <header className={LoginStyles.header}>Connexion</header>
+                            <form className={LoginStyles.container} onSubmit={onclickLoginButton}>
+                                <div className={LoginStyles.control}>
+                                    <label className={LoginStyles.label} htmlFor="email">Email</label>
+                                    <input className={LoginStyles.input} type="email" id="email" name="email" />
                                 </div>
-                            </div>
-
+                                <div className={LoginStyles.control}>
+                                    <label className={LoginStyles.label}htmlFor="mdp">Mot de passe</label>
+                                    <input className={LoginStyles.input} type="password" id="mdp" name="mdp" />
+                                </div>
+                                <div className={LoginStyles.control}>
+                                    <input className={LoginStyles.button} type="submit" id="login" name="login" />
+                                </div>
+                            </form>
                         </div>
-                    }
-                </div>
+
+                        <div className={LoginStyles.form}>
+                            <header className={LoginStyles.header}>Inscription</header>
+                            
+                            <form className={LoginStyles.container} onSubmit={onClickRegisterButton}>
+                                <div className={LoginStyles.control}>
+                                    <label className={LoginStyles.label} htmlFor="lastName-register">Nom</label>
+                                    <input className={LoginStyles.input} type="text" id="lastName-register" name="lastName-register" required/>
+                                </div>
+                                <div className={LoginStyles.control}>
+                                    <label className={LoginStyles.label} htmlFor="firstName-register">Prénom</label>
+                                    <input className={LoginStyles.input} type="text" id="firstName-register" name="firstName-register" required/>
+                                </div>
+                                <div className={LoginStyles.control}>
+                                    <label className={LoginStyles.label} htmlFor="email-register">Email</label>
+                                    <input className={LoginStyles.input} type="email" id="email-register" name="email-register" required/>
+                                </div>
+                                <div className={LoginStyles.control}>
+                                    <label className={LoginStyles.label} htmlFor="mdp-register">Mot de passe</label>
+                                    <input className={LoginStyles.input} type="password" id="mdp-register" name="mdp-register" required/>
+                                </div>
+                                <div className={LoginStyles.control}>
+                                    <label className={LoginStyles.label} htmlFor="mdp-confirm-register">Confirmer mot de passe</label>
+                                    <input className={LoginStyles.input} type="password" id="mdp-confirm-register" name="mdp-confirm-register" required/>
+                                </div>
+                                <div className={LoginStyles.control}>
+                                    <input className={LoginStyles.button} type="submit" id="login-register" name="login-register" required/>
+                                </div>
+                            </form>
+                            
+                        </div>
+
+                    </div>
+                }
+
             </div>
         </div>
     )
