@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
 import { Client } from 'rr-apilib';
 import CategoriesPage from './pages/CategoriesPage';
 import LoginPage from './pages/LoginPage';
@@ -10,6 +9,8 @@ import CreateResourcePage from './pages/CreateResourcePage';
 import EditResourcePage from './pages/EditResourcePage';
 import CategoryDetailPage from './pages/CategoryDetailsPage';
 import ProfilePage from './pages/ProfilePage';
+import WithoutNavbar from './components/WithoutNavbar';
+import WithNavbar from './components/WithNavbar';
 
 const client = new Client();
 
@@ -17,17 +18,34 @@ export default function App() {
 
     return (
         <div>
-            <Navbar />
             <Routes>
-                <Route path="/categories" element={<CategoriesPage client={client} />} />
-                <Route path="/category-detail" element={<CategoryDetailPage />} />
-                <Route path="/share" element={<ShareResourcesPage client={client}/>} />
-                <Route path="/resources" element={<ResourcesPage client={client} />} />
-                <Route path="/resource-detail" element={<ResourceDetailPage />} />
-                <Route path="/" element={<LoginPage client={client} />} />
-                <Route path="/create" element={<CreateResourcePage />} />
-                <Route path="/edit" element={<EditResourcePage/>} />
-                <Route path="/profile" element={<ProfilePage/>}/>
+                <Route element={<WithoutNavbar />}>
+                    <Route path="/" element={<LoginPage client={client} />} />
+                </Route>
+                <Route element={<WithNavbar />}>
+                    <Route path="/resources" element={<ResourcesPage client={client} />} />
+                </Route>
+                <Route element={<WithNavbar />}>
+                    <Route path="/resource-detail" element={<ResourceDetailPage />} />
+                </Route>
+                <Route element={<WithNavbar />}>
+                    <Route path="/share" element={<ShareResourcesPage client={client}/>} />
+                </Route>
+                <Route element={<WithNavbar />}>
+                    <Route path="/create" element={<CreateResourcePage />} />
+                </Route>
+                <Route element={<WithoutNavbar />}>
+                    <Route path="/edit" element={<EditResourcePage/>} />
+                </Route>
+                <Route element={<WithNavbar />}>
+                    <Route path="/categories" element={<CategoriesPage client={client} />} />
+                </Route>
+                <Route element={<WithNavbar />}>
+                    <Route path="/category-detail" element={<CategoryDetailPage />} />
+                </Route>
+                <Route element={<WithNavbar />}>
+                    <Route path="/profile" element={<ProfilePage/>}/>
+                </Route>
             </Routes>
         </div>
     );
