@@ -25,6 +25,12 @@
     justify-content: center;
     height: 80px;
     width : 80px;
+    transition: 0.2s;
+}
+.root .linkContainer .link:hover{
+    color: #03989E;
+    transform: translateY(-3px);
+    box-shadow : 0 15px 7px -7px #CCCCCC;
 }
 
 .root .linkContainer .link .logo {
