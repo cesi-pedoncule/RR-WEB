@@ -20,7 +20,7 @@ export default function App() {
             <Navbar />
             <Routes>
                 <Route path="/categories" element={<CategoriesPage client={client} />} />
-                <Route path="/category-detail" element={<CategoryDetailPage />} />
+                <Route path="/category-detail" element={<CategoryDetailPage client={client} />} />
                 <Route path="/share" element={<ShareResourcesPage client={client}/>} />
                 <Route path="/resources" element={<ResourcesPage client={client} />} />
                 <Route path="/resource-detail" element={<ResourceDetailPage />} />
