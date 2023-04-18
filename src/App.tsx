@@ -44,7 +44,7 @@ export default function App() {
                     <Route path="/category-detail" element={<CategoryDetailPage client={client} />} />
                 </Route>
                 <Route element={<WithNavbar />}>
-                    <Route path="/profile" element={<ProfilePage/>}/>
+                    <Route path="/profile" element={<ProfilePage client={client} />}/>
                 </Route>
             </Routes>
         </div>
