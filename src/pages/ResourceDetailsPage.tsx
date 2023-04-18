@@ -1,6 +1,11 @@
+import { Client } from "rr-apilib";
 import CommonStyles from "../styles/CommonStyles.module.css";
 
-export default function ResourceDetailPage () {
+interface Props {
+    client: Client;
+}
+
+export default function ResourceDetailPage ({ client }: Props) {
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>

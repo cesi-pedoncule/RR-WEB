@@ -26,16 +26,16 @@ export default function App() {
                     <Route path="/resources" element={<ResourcesPage client={client} />} />
                 </Route>
                 <Route element={<WithNavbar />}>
-                    <Route path="/resource-detail" element={<ResourceDetailPage />} />
+                    <Route path="/resource-detail" element={<ResourceDetailPage client={client} />} />
                 </Route>
                 <Route element={<WithNavbar />}>
-                    <Route path="/share" element={<ShareResourcesPage client={client}/>} />
+                    <Route path="/share" element={<ShareResourcesPage client={client} />} />
                 </Route>
                 <Route element={<WithNavbar />}>
-                    <Route path="/create" element={<CreateResourcePage />} />
+                    <Route path="/create" element={<CreateResourcePage client={client} />} />
                 </Route>
                 <Route element={<WithoutNavbar />}>
-                    <Route path="/edit" element={<EditResourcePage/>} />
+                    <Route path="/edit" element={<EditResourcePage client={client} />} />
                 </Route>
                 <Route element={<WithNavbar />}>
                     <Route path="/categories" element={<CategoriesPage client={client} />} />
