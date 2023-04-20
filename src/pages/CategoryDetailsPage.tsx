@@ -3,6 +3,7 @@ import CommonStyles from "../styles/CommonStyles.module.css";
 import { useCallback, useEffect, useState } from "react";
 import { CategoryResourceManager, Category, Client, Resource } from "rr-apilib";
 import { Collection } from "typescript";
+import SearchBar from "../components/Input/SearchBar";
 
 interface Props {
     client: Client;
@@ -17,6 +18,10 @@ export default function CategoryDetailsPage ({ client }: Props) {
     const [ resourcesFiltered, setResourcesFiltered ] = useState<Resource[]>([]);
     const [ refreshing, setRefreshing ] = useState(false);
 
+    const handleChangeSearch = (text: string) => {
+        
+    }
+
     const fetchResources = async () => {
         setCategory(await client.categories.fetch(location.state.id).then());  
     }
@@ -28,8 +33,9 @@ export default function CategoryDetailsPage ({ client }: Props) {
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
+                <h1>CategoryDetailPage</h1>
+                <SearchBar onChangeSearch={handleChangeSearch} />
                 <div className={CommonStyles.itemsContainer}>
-                    <h1>CategoryDetailPage</h1>
                     {
                         <h2>{category?.name}</h2>
                     }

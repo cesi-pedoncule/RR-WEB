@@ -6,6 +6,7 @@ import CategoriesStyles from "../styles/Page/CategoriesPageStyles.module.css";
 
 
 import CategoryCard from "../components/Card/CategoryCard";
+import SearchBar from "../components/Input/SearchBar";
 
 interface Props {
     client: Client;
@@ -14,6 +15,10 @@ interface Props {
 export default function CategoriesPage ({ client }: Props) {
 
     const [categories, setCategories] = useState<Category[]>([]);
+
+    const handleChangeSearch = (text: string) => {
+        
+    }
 
     const fetchCategories = async () => {
         setCategories(Array.from((await client.categories.fetchAll()).values()));
@@ -27,7 +32,8 @@ export default function CategoriesPage ({ client }: Props) {
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
                 <h1>CategoriesPage</h1>
-                <div className={CategoriesStyles.resourcesContainer}>
+                <SearchBar onChangeSearch={handleChangeSearch} />
+                <div className={CategoriesStyles.categoriesContainer}>
                     {categories.map((q, i) => {
                         return (
                             <CategoryCard category={q} resources={Array.from(q.resources.cache.values())} />
