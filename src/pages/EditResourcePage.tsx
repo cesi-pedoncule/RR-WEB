@@ -9,8 +9,9 @@ export default function EditResourcePage ({ client }: Props) {
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
+                <h1>EditResourcePage</h1>
                 <div className={CommonStyles.itemsContainer}>
-                    <h1>EditResourcePage</h1>
+                    
                 </div>
             </div>
         </div>
