@@ -1,0 +1,24 @@
+.inputBackground {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
+.inputComponent {
+    width: 60%;
+    box-sizing: border-box;
+    box-shadow: 0px 10px 50px -10px #CCCCCC;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    border-bottom: 2px solid #EEEEEE;
+    transition: 0.2s;
+    height: 30px;
+}
+.inputComponent:hover {
+    border-bottom: 2px solid #03989E;
+}
+.inputComponent:focus {
+    border-bottom: 2px solid #03989E;
+}
