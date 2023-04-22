@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import CommonStyles from "../styles/CommonStyles.module.css";
 import { Client, Resource } from "rr-apilib";
 import SearchBar from "../components/Input/SearchBar";
@@ -19,23 +19,28 @@ export default function ResourcesPage ({ client }: Props) {
         );
         setResourcesFiltered([...filteredResources.splice(0, 6)]);
     }
-    
-    const fetchResources = async () => {
-        setResources(Array.from((await client.resources.fetchAll()).values()));
-        const refreshResources:Resource[] = Array.from(client.resources.getValidateResources().filter(resource => resource.isPublic).values());
-        setResources([...refreshResources]);
-        setResourcesFiltered([...refreshResources.slice(0, 6)]);
-    }
+
+    const onRefresh = useCallback(async () => {
+        const refreshResources = Array.from(
+            client.resources.getValidateResources()
+                .filter(resource => resource.isPublic).values()
+        );
+        setResources([ ...refreshResources ]);
+        setResourcesFiltered([ ...refreshResources.slice(0, 6) ]);
+    }, []);
 
     useEffect(() => {
-        fetchResources();
-    }, [client])
+        onRefresh();
+    }, [client]);
     
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
+                
                 <h1 className={CommonStyles.title}>Les ressources</h1>
+                
                 <SearchBar onChangeSearch={handleChangeSearch} />
+                
                 <div className={CommonStyles.itemsContainer}>
                     {resourcesFiltered.map((r, i) =>
                         <ResourceCard key={i} resourceData={r}/>
