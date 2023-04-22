@@ -1,0 +1,13 @@
+.commentBtn {
+    background-color: none;
+}
+.container {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+}
+.numberComment {
+    color: black;
+    margin-right: 5px;
+}
