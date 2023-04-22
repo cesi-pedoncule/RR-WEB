@@ -6,12 +6,11 @@
 }
 .content {
     background-color: #f6fafb;
+    display: grid;
     width: 100%;
-    position: absolute;
-    top : 135px;
-    bottom: 0px;
-    border-radius: 30px;
-    overflow: scroll;
+    margin-top: 0px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
 }
 .btnHomeBackground {
     position : absolute;
