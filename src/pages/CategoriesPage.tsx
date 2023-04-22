@@ -14,9 +14,10 @@ export default function CategoriesPage ({ client }: Props) {
     const [ categoriesFiltered, setCategoriesFiltered ] = useState<Category[]>([]);
 
     const handleChangeSearch = (text: string) => {
-        const filteredCategories = categories.filter((category) => 
+        const filteredCategories = Array.from(client.categories.cache.values()).filter((category) => 
             category.name.toLowerCase().includes(text.toLowerCase())
         );
+        setCategories([...filteredCategories]);
         setCategoriesFiltered([...filteredCategories.slice(0, 8)]);
     }
 
@@ -27,11 +28,6 @@ export default function CategoriesPage ({ client }: Props) {
  	 }, []);
 
     useEffect(() => {
-        
-        if (categoriesFiltered.length === 0 && categories.length !== 0) {
-            setCategoriesFiltered([...categories.slice(0, 8)]);
-        }
-
         onRefresh();
     }, [client])
 

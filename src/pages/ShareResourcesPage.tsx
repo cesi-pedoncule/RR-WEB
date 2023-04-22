@@ -19,11 +19,13 @@ export default function ShareResourcePage ({ client }: Props) {
 	}
 
 	const handleChangeSearch = (text: string) => {
-		const filteredResources = resources.filter((resource) => 
-			resource.title.toLowerCase().includes(text.toLowerCase())
-		);
-		setResourcesFiltered([...filteredResources.splice(0, 6)]);
-        console.log(filteredResources)
+        if(client.auth.me != null){
+            const filteredResources = Array.from(client.auth.me.resources.cache.values()).filter((resource) => 
+                resource.title.toLowerCase().includes(text.toLowerCase())
+            );
+            setResources([...filteredResources])
+            setResourcesFiltered([...filteredResources.splice(0, 6)]);
+        }
 	}
 
 	useEffect(() => {
@@ -44,7 +46,7 @@ export default function ShareResourcePage ({ client }: Props) {
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
-                <h1>ShareResourcePage</h1>
+            <h1 className={CommonStyles.title}>Mes ressources</h1>
                 <SearchBar onChangeSearch={handleChangeSearch} />
                 <div className={CommonStyles.itemsContainer}>
                     {

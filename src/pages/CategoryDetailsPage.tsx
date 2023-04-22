@@ -25,7 +25,7 @@ export default function CategoryDetailsPage ({ client }: Props) {
         if(id) {
             setCategory(client.categories.cache.get(id));
         }
-    }, [id])
+    }, [id]);
 
     if(!category) {
         return (
@@ -41,6 +41,7 @@ export default function CategoryDetailsPage ({ client }: Props) {
                 
                 <SearchBar value={search} onChangeSearch={handleChangeSearch} />
                 
+                <h3>Resources</h3>
                 <div className={CommonStyles.itemsContainer}>
                     {
                         category.resources.cache.map((resource, id) => {

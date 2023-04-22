@@ -14,9 +14,10 @@ export default function ResourcesPage ({ client }: Props) {
     const [ resourcesFiltered, setResourcesFiltered ] = useState<Resource[]>([]);
 
     const handleChangeSearch = (text: string) => {
-        const filteredResources = resources.filter((resource) =>
-            resource.title.toLowerCase().includes(text.toLowerCase()) && resource.isPublic
+        const filteredResources = Array.from(client.resources.cache.values()).filter((resource) =>
+            resource.title.toLowerCase().includes(text.toLowerCase())
         );
+        setResources([...filteredResources]);
         setResourcesFiltered([...filteredResources.splice(0, 6)]);
     }
 
