@@ -1,4 +1,4 @@
-.likeBtn {
+.commentBtn {
     background-color: none;
 }
 .container {
@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: row;
 }
-.numberLike {
+.numberComment {
     color: black;
     margin-right: 5px;
 }
