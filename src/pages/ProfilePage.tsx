@@ -1,8 +1,8 @@
 import { Client } from "rr-apilib";
+import { useNavigate } from "react-router-dom";
+
 import CommonStyles from "../styles/CommonStyles.module.css";
 import ProfileStyles from "../styles/Page/ProfilePageStyles.module.css";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 interface Props {
     client: Client;
@@ -12,24 +12,21 @@ export default function ProfilePage ({ client }: Props) {
     
     const navigate = useNavigate();
 
-    const user = client.auth.me;
+    const me = client.auth.me;
 
-    useEffect(() => {
-        if (user == null) {
-            navigate('/');
-        }
-    })
-
-    const userProfileName = user?.name + ' ' + user?.firstname;
+    if(me === null) {
+        navigate('/login');
+        return <div></div>;
+    }
     
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
-                <h1>ProfilePage</h1>
+                <h1>Profil</h1>
                 <div className={CommonStyles.itemsContainer}>
-                    <header className={ProfileStyles.profileTitle}>{userProfileName}</header>
+                    <h3 className={ProfileStyles.profileTitle}>{`${me.firstname} ${me.name}`}</h3>
                     <div className={ProfileStyles.profileContainer}>
-                        <p className={ProfileStyles.profileSubTitle}>{user?.resources.cache.size} enregistrement(s)</p>
+                        <p className={ProfileStyles.profileSubTitle}>{me.resources.cache.size} enregistrement(s)</p>
                         <p className={ProfileStyles.profileTitle}>Statistiques</p>
                     </div>
                 </div>
