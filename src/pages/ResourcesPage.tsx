@@ -19,11 +19,11 @@ export default function ResourcesPage ({ client }: Props) {
                 
                 <h1 className={CommonStyles.title}>Les ressources</h1>
                 
-                <SearchBar value={search} onChangeSearch={(text) => setSearch(text.toLowerCase())} />
+                <SearchBar value={search} onChangeSearch={(text) => setSearch(text)} />
                 
                 <div className={CommonStyles.itemsContainer}>
                     {client.resources.cache.map((resource, id) => {
-                        if(resource.title.toLowerCase().includes(search)) {
+                        if(resource.title.toLowerCase().includes(search.toLowerCase())) {
                             return (
                                 <ResourceCard key={id} resource={resource} />
                             )
