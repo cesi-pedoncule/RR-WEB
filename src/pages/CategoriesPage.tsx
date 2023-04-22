@@ -13,17 +13,13 @@ export default function CategoriesPage ({ client }: Props) {
 
     const [ search, setSearch ] = useState('');
 
-    const handleChangeSearch = (text: string) => {
-        setSearch(text);
-    }
-
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
                 
                 <h1 className={CommonStyles.title}>Les catégories</h1>
                 
-                <SearchBar value={search} onChangeSearch={handleChangeSearch} />
+                <SearchBar value={search} onChangeSearch={(text) => setSearch(text.toLowerCase())} />
                 
                 <div className={CommonStyles.itemsContainer}>
                     {client.categories.cache.map((category, id) => {

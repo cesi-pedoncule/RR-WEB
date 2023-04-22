@@ -17,10 +17,6 @@ export default function CategoryDetailsPage ({ client }: Props) {
     const [ category, setCategory ] = useState<Category>();
     const [ search, setSearch ] = useState('');
 
-    const handleChangeSearch = (text: string) => {
-        setSearch(text.toLowerCase());
-    }
-
     useEffect(() => {
         if(id) {
             setCategory(client.categories.cache.get(id));
@@ -39,7 +35,7 @@ export default function CategoryDetailsPage ({ client }: Props) {
                 
                 <h1>{category.name}</h1>
                 
-                <SearchBar value={search} onChangeSearch={handleChangeSearch} />
+                <SearchBar value={search} onChangeSearch={(text) => setSearch(text.toLowerCase())} />
                 
                 <h3>Resources</h3>
                 <div className={CommonStyles.itemsContainer}>
