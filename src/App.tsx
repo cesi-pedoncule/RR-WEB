@@ -21,6 +21,7 @@ export default function App() {
             <Routes>
                 <Route element={<WithNavbar />}>
                     <Route path="/" element={<ResourcesPage client={client} />} />
+                    <Route path="/resources" element={<ResourcesPage client={client} />} />
                 </Route>
                 <Route element={<WithoutNavbar />}>
                     <Route path="/login" element={<LoginPage client={client} />} />
