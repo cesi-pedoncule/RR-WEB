@@ -19,11 +19,11 @@ export default function CategoriesPage ({ client }: Props) {
                 
                 <h1 className={CommonStyles.title}>Les catégories</h1>
                 
-                <SearchBar value={search} onChangeSearch={(text) => setSearch(text.toLowerCase())} />
+                <SearchBar value={search} onChangeSearch={(text) => setSearch(text)} />
                 
                 <div className={CommonStyles.itemsContainer}>
                     {client.categories.cache.map((category, id) => {
-                        if(category.name.toLowerCase().includes(search)) {
+                        if(category.name.toLowerCase().includes(search.toLowerCase())) {
                             return (
                                 <CategoryCard key={id} category={category} />
                             )

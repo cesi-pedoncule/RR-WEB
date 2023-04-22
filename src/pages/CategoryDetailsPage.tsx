@@ -35,13 +35,13 @@ export default function CategoryDetailsPage ({ client }: Props) {
                 
                 <h1>{category.name}</h1>
                 
-                <SearchBar value={search} onChangeSearch={(text) => setSearch(text.toLowerCase())} />
+                <SearchBar value={search} onChangeSearch={(text) => setSearch(text)} />
                 
                 <h3>Resources</h3>
                 <div className={CommonStyles.itemsContainer}>
                     {
                         category.resources.cache.map((resource, id) => {
-                            if(resource.title.toLowerCase().includes(search)) {
+                            if(resource.title.toLowerCase().includes(search.toLowerCase())) {
                                 return (
                                     <ResourceCard key={id} resource={resource} />
                                 )

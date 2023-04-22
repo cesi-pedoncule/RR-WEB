@@ -28,13 +28,17 @@ export default function ShareResourcePage ({ client }: Props) {
                 
                 <h1 className={CommonStyles.title}>Mes ressources</h1>
                 
-                <SearchBar value={search} onChangeSearch={(text) => setSearch(text.toLowerCase())} />
+                <SearchBar value={search} onChangeSearch={(text) => setSearch(text)} />
                 
                 <div className={CommonStyles.itemsContainer}>
                     {
-                        client.auth.me.resources.cache.map((resource, id) =>
-                            <ResourceCardWithoutUser key={id} resourceData={resource}/>
-                        )
+                        client.auth.me.resources.cache.map((resource, id) => {
+                            if(resource.title.toLowerCase().includes(search.toLowerCase())) {
+                                return (
+                                    <ResourceCardWithoutUser key={id} resource={resource} />
+                                )
+                            }
+                        })
                     }
                 </div>
             </div>
