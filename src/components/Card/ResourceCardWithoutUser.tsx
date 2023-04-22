@@ -10,16 +10,13 @@ import StateButton from "../Button/StateButton";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
-    resourceData: Resource;
+    resource: Resource;
     styleContainer?: any;
 }
 
-export default function ResourceCard ({ resourceData, styleContainer}: Props) {
+export default function ResourceCard ({ resource, styleContainer }: Props) {
     
     const navigate = useNavigate();
-    
-    const [resource, setResource] = useState<Resource>(resourceData);
-    const numberCommentResource = resource.comments.cache.size;
 
     const description = resource.description ?  resource.description : "Aucune description fournie" ;
 
@@ -48,11 +45,11 @@ export default function ResourceCard ({ resourceData, styleContainer}: Props) {
                 </div>
                 <p className={ResourceCardStyles.cardText}>{description}</p>
                 <div className={ResourceCardStyles.buttonsContainer}>
-                    <LikeButton resource={resource}/>
-                    <CommentButton commentNumber={numberCommentResource}/>
-                    <EditButton callBack={onClickEditResource}/>
+                    <LikeButton resource={resource} />
+                    <CommentButton commentNumber={resource.comments.cache.size} />
+                    <EditButton callBack={onClickEditResource} />
                     <DeleteButton callBack={onClickDeleteResource} />
-                    <StateButton resource={resource}/>
+                    <StateButton resource={resource} />
                 </div>
             </div>
         </div>
