@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import CommonStyles from "../styles/CommonStyles.module.css";
 import SearchBar from "../components/Input/SearchBar";
 import ResourceCard from "../components/Card/ResourceCard";
+import ResourceCardWithoutUser from "../components/Card/ResourceCardWithoutUser";
 
 interface Props {
     client: Client;
@@ -31,13 +32,9 @@ export default function ShareResourcePage ({ client }: Props) {
                 
                 <div className={CommonStyles.itemsContainer}>
                     {
-                        client.auth.me.resources.cache.map((resource, id) => {
-                            if(resource.title.toLowerCase().includes(search)) {
-                                return (
-                                    <ResourceCard key={id} resource={resource}/>
-                                )
-                            }
-                        })
+                        client.auth.me.resources.cache.map((resource, id) =>
+                            <ResourceCardWithoutUser key={id} resourceData={resource}/>
+                        )
                     }
                 </div>
             </div>
