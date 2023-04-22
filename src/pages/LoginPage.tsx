@@ -82,7 +82,7 @@ export default function LoginPage ({ client }: Props) {
 
     return (
         <div className={CommonStyles.container}>
-            <div className={CommonStyles.content}>  
+            <div className={CommonStyles.contentWithoutNavBar}>  
                 
                 {
                     isLoading ? <Spinner className={LoginStyles.spinner} color="#03989E"/> : 

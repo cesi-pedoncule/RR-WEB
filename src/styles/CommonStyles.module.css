@@ -1,5 +1,5 @@
 .container {
-    flex: 1;
+    display: flex;
     background-color: #03989E;
     align-items: center;
     justify-content: center;
@@ -9,6 +9,14 @@
     display: grid;
     width: 100%;
     margin-top: 0px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+}
+.contentWithoutNavBar {
+    background-color: #f6fafb;
+    display: grid;
+    width: 100%;
+    margin-top: 135px;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
 }

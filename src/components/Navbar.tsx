@@ -39,9 +39,12 @@ export default function Navbar({ client }: Props) {
                     <p>Profil</p>
                 </Link>
             </div>
-            <div className={navBar.disconnectContainer} onClick={onClickDisconnect}>
-                <BsBoxArrowInRight />
-            </div>
+            {
+                client.auth.me !== null &&
+                <div className={navBar.disconnectContainer} onClick={onClickDisconnect}>
+                    <BsBoxArrowInRight />
+                </div>
+            }
         </div>
     )
 }
