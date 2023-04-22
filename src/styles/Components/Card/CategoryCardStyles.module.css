@@ -11,14 +11,15 @@
     cursor: pointer;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0px 10px 50px -10px #CCCCCC;
+    box-shadow: 0px 5px 10px -5px #363e3e;
+    margin-right: 15px;
 }
 .cardBackground:hover {
     background-color: #cfd4d4;
     transition: 0.2s;
 }
 .cardTitle {
-    color: black;
+    color: #363e3e;
     font-weight: bold;
     font-size: 20px;
     margin-left: 20px;

@@ -1,14 +1,12 @@
-import { Category, Resource } from 'rr-apilib';
-
+import { Category } from 'rr-apilib';
 import CategoryCardStyles from "../../styles/Components/Card/CategoryCardStyles.module.css";
 import { useNavigate } from 'react-router-dom';
 
 interface Props {
     category: Category;
-    resources:  Resource[]
 }
 
-export default function CategoryCard({ category, resources }:Props) {
+export default function CategoryCard({ category }:Props) {
     
     const navigate = useNavigate();
 

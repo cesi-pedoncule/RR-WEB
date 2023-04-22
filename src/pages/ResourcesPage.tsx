@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import CommonStyles from "../styles/CommonStyles.module.css";
 import { Client, Resource } from "rr-apilib";
 import SearchBar from "../components/Input/SearchBar";
+import ResourceCard from "../components/Card/ResourceCard";
 
 interface Props {
     client: Client;
@@ -26,19 +27,12 @@ export default function ResourcesPage ({ client }: Props) {
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
-                <h1>ResourcesPage</h1>
+                <h1 className={CommonStyles.title}>Les ressources</h1>
                 <SearchBar onChangeSearch={handleChangeSearch} />
                 <div className={CommonStyles.itemsContainer}>
-                    {resources.map((r, i) => {
-                        return (
-                            <div key={i}>
-                                <h5>{r.title}</h5>
-                                {r.description && (
-                                    <p>{r.description}</p>
-                                )}
-                            </div>
-                        )
-                    })}
+                    {resources.map((r, i) =>
+                        <ResourceCard key={i} resourceData={r}/>
+                    )}
                 </div>
             </div>
         </div>
