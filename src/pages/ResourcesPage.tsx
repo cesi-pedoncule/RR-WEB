@@ -10,14 +10,21 @@ interface Props {
 
 export default function ResourcesPage ({ client }: Props) {
     
-    const [resources, setResources] = useState<Resource[]>([]);
+    const [ resources, setResources ] = useState<Resource[]>([]);
+    const [ resourcesFiltered, setResourcesFiltered ] = useState<Resource[]>([]);
 
     const handleChangeSearch = (text: string) => {
-        
+        const filteredResources = resources.filter((resource) =>
+            resource.title.toLowerCase().includes(text.toLowerCase()) && resource.isPublic == true
+        );
+        setResourcesFiltered([...filteredResources.splice(0, 6)]);
     }
     
     const fetchResources = async () => {
         setResources(Array.from((await client.resources.fetchAll()).values()));
+        const refreshResources:Resource[] = Array.from(client.resources.getValidateResources().filter(resource => resource.isPublic == true).values());
+        setResources([...refreshResources]);
+        setResourcesFiltered([...refreshResources.slice(0, 6)]);
     }
 
     useEffect(() => {
@@ -30,7 +37,7 @@ export default function ResourcesPage ({ client }: Props) {
                 <h1 className={CommonStyles.title}>Les ressources</h1>
                 <SearchBar onChangeSearch={handleChangeSearch} />
                 <div className={CommonStyles.itemsContainer}>
-                    {resources.map((r, i) =>
+                    {resourcesFiltered.map((r, i) =>
                         <ResourceCard key={i} resourceData={r}/>
                     )}
                 </div>
