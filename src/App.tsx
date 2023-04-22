@@ -11,10 +11,42 @@ import CategoryDetailPage from './pages/CategoryDetailsPage';
 import ProfilePage from './pages/ProfilePage';
 import WithoutNavbar from './components/WithoutNavbar';
 import WithNavbar from './components/WithNavbar';
+import { useState } from 'react';
+import { ColorRing } from 'react-loader-spinner';
 
 const client = new Client();
 
 export default function App() {
+    const [ isLoad, setIsLoad ] = useState<boolean>(false);
+
+    const loadClient = async () => {
+        await client.fetch();
+        setIsLoad(true);
+    }
+
+    loadClient();
+
+    if (!isLoad) {
+        return (
+            <div
+                style={{
+                    position: 'absolute',
+                    top: "50%",
+                    left: "50%"
+                }}
+            >
+                <ColorRing
+                    visible={true}
+                    height="80"
+                    width="80"
+                    ariaLabel="blocks-loading"
+                    wrapperStyle={{}}
+                    wrapperClass="blocks-wrapper"
+                    colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+                />
+            </div>
+        )
+    }
 
     return (
         <div>
