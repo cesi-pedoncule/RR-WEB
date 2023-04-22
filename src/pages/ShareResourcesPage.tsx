@@ -4,6 +4,7 @@ import { Client, Resource } from "rr-apilib";
 import CommonStyles from "../styles/CommonStyles.module.css";
 import SearchBar from "../components/Input/SearchBar";
 import ResourceCard from "../components/Card/ResourceCard";
+import ResourceCardWithoutUser from "../components/Card/ResourceCardWithoutUser";
 
 interface Props {
     client: Client;
@@ -49,7 +50,7 @@ export default function ShareResourcePage ({ client }: Props) {
                 <div className={CommonStyles.itemsContainer}>
                     {
                         resourcesFiltered.map((r, i) =>
-                            <ResourceCard key={i} resourceData={r}/>
+                            <ResourceCardWithoutUser key={i} resourceData={r}/>
                         )
                     }
                 </div>
