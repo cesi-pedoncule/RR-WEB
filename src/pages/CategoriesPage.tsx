@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Category, Client } from "rr-apilib";
 import CommonStyles from "../styles/CommonStyles.module.css";
 import CategoryCard from "../components/Card/CategoryCard";
@@ -11,9 +11,13 @@ interface Props {
 export default function CategoriesPage ({ client }: Props) {
 
     const [categories, setCategories] = useState<Category[]>([]);
+    const [ categoriesFiltered, setCategoriesFiltered ] = useState<Category[]>([]);
 
     const handleChangeSearch = (text: string) => {
-        
+        const filteredCategories = categories.filter((category) => 
+            category.name.toLowerCase().includes(text.toLowerCase())
+        );
+        setCategoriesFiltered([...filteredCategories.slice(0, 8)]);
     }
 
     const fetchCategories = async () => {
@@ -22,6 +26,9 @@ export default function CategoriesPage ({ client }: Props) {
 
     useEffect(() => {
         fetchCategories();
+        if (categoriesFiltered.length === 0 && categories.length !== 0) {
+            setCategoriesFiltered([...categories.slice(0, 8)]);
+        }
     }, [client])
 
     return (
@@ -30,7 +37,7 @@ export default function CategoriesPage ({ client }: Props) {
                 <h1 className={CommonStyles.title}>Les catégories</h1>
                 <SearchBar onChangeSearch={handleChangeSearch} />
                 <div className={CommonStyles.itemsContainer}>
-                    {categories.map((q, i) => {
+                    {categoriesFiltered.map((q, i) => {
                         return (
                             <CategoryCard key={i} category={q}/>
                         )

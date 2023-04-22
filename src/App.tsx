@@ -19,11 +19,12 @@ export default function App() {
     return (
         <div>
             <Routes>
-                <Route element={<WithoutNavbar />}>
-                    <Route path="/" element={<LoginPage client={client} />} />
-                </Route>
                 <Route element={<WithNavbar />}>
+                    <Route path="/" element={<ResourcesPage client={client} />} />
                     <Route path="/resources" element={<ResourcesPage client={client} />} />
+                </Route>
+                <Route element={<WithoutNavbar />}>
+                    <Route path="/login" element={<LoginPage client={client} />} />
                 </Route>
                 <Route element={<WithNavbar />}>
                     <Route path="/resource-detail" element={<ResourceDetailPage client={client} />} />
