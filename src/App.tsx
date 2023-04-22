@@ -11,7 +11,7 @@ import CategoryDetailPage from './pages/CategoryDetailsPage';
 import ProfilePage from './pages/ProfilePage';
 import WithNavbar from './components/WithNavbar';
 import { useState } from 'react';
-import { ColorRing } from 'react-loader-spinner';
+import { TailSpin } from 'react-loader-spinner';
 
 const client = new Client();
 
@@ -34,14 +34,15 @@ export default function App() {
                     left: "50%"
                 }}
             >
-                <ColorRing
-                    visible={true}
+                <TailSpin
                     height="80"
                     width="80"
-                    ariaLabel="blocks-loading"
+                    color="#4fa94d"
+                    ariaLabel="tail-spin-loading"
+                    radius="1"
                     wrapperStyle={{}}
-                    wrapperClass="blocks-wrapper"
-                    colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+                    wrapperClass=""
+                    visible={true}
                 />
             </div>
         )
