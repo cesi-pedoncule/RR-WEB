@@ -20,28 +20,32 @@ export default function CategoriesPage ({ client }: Props) {
         setCategoriesFiltered([...filteredCategories.slice(0, 8)]);
     }
 
-    const fetchCategories = async () => {
-        setCategories(Array.from((await client.categories.fetchAll()).values()));
-    }
+    const onRefresh = useCallback(async () => {
+        const refreshCategories = Array.from(client.categories.cache.values());
+		setCategories([ ...refreshCategories ]);
+		setCategoriesFiltered([ ...refreshCategories.slice(0, 8) ]);
+ 	 }, []);
 
     useEffect(() => {
-        fetchCategories();
+        
         if (categoriesFiltered.length === 0 && categories.length !== 0) {
             setCategoriesFiltered([...categories.slice(0, 8)]);
         }
+
+        onRefresh();
     }, [client])
 
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
                 <h1 className={CommonStyles.title}>Les catégories</h1>
+                
                 <SearchBar onChangeSearch={handleChangeSearch} />
+                
                 <div className={CommonStyles.itemsContainer}>
-                    {categoriesFiltered.map((q, i) => {
-                        return (
-                            <CategoryCard key={i} category={q}/>
-                        )
-                    })}
+                    {categoriesFiltered.map((q, i) => 
+                        <CategoryCard key={i} category={q}/>
+                    )}
                 </div>
             </div>
         </div>
