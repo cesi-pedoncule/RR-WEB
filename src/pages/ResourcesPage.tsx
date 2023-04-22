@@ -15,7 +15,7 @@ export default function ResourcesPage ({ client }: Props) {
 
     const handleChangeSearch = (text: string) => {
         const filteredResources = resources.filter((resource) =>
-            resource.title.toLowerCase().includes(text.toLowerCase()) && resource.isPublic == true
+            resource.title.toLowerCase().includes(text.toLowerCase()) && resource.isPublic
         );
         setResourcesFiltered([...filteredResources.splice(0, 6)]);
     }
