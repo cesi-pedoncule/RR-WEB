@@ -1,25 +1,26 @@
 import { useState } from "react";
 import { Resource } from "rr-apilib";
+import { useNavigate } from "react-router";
+
 import ResourceCardStyles from "../../styles/Components/Card/ResourceCardStyles.module.css";
 import CategoryButton from "../Button/CategoryButton";
 import CommentButton from "../Button/CommentButton";
 import LikeButton from "../Button/LikeButton";
 
 interface Props {
-    resourceData: Resource;
+    resource: Resource;
     styleContainer?: any;
 }
 
-export default function ResourceCard ({ resourceData, styleContainer}: Props) {
-    const [resource, setResource] = useState<Resource>(resourceData);
-    const numberCommentResource = resource.comments.cache.size;
-    const categories = Array.from(resource.categories.cache.values());
+export default function ResourceCard({ resource }: Props) {
+
+    const navigate = useNavigate();
 
     const username = resource.creator ? `${resource.creator.name} ${resource.creator.firstname}` : "Utilisateur inconnu";
     const description = resource.description ?  resource.description : "Aucune description fournie" ;
 
     const onClickDetailResource = () => {
-        
+        navigate(`/resources/${resource.id}`);
     }
 
     return (
@@ -28,7 +29,7 @@ export default function ResourceCard ({ resourceData, styleContainer}: Props) {
                 <p className={ResourceCardStyles.cardUser}>{username}</p>
                 <div className={ResourceCardStyles.userAndButtonsContainer}>
                     <LikeButton resource={resource}/>
-                    <CommentButton commentNumber={numberCommentResource}/>
+                    <CommentButton commentNumber={resource.comments.cache.size}/>
                 </div>
             </div>
             <p className={ResourceCardStyles.cardTitle}>{resource.title}</p>
