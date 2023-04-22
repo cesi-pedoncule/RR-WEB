@@ -1,0 +1,17 @@
+.btnBackground {
+    margin-right : 5px;
+}
+.btnText {
+    background-color: #cad5d5;
+    color: #363e3e;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 4px;
+    padding-top: 2px; 
+    border-radius : 15px;
+    text-align : 'center';
+}
+.btnText:hover {
+    background-color: #aab3b3;
+    transition: 0.2s;
+}
