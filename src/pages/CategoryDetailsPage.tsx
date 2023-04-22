@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Category, Client } from "rr-apilib";
+
 import CommonStyles from "../styles/CommonStyles.module.css";
-import { useCallback, useEffect, useState } from "react";
-import { CategoryResourceManager, Category, Client, Resource } from "rr-apilib";
-import { Collection } from "typescript";
 import SearchBar from "../components/Input/SearchBar";
+import ResourceCard from "../components/Card/ResourceCard";
 
 interface Props {
     client: Client;
@@ -14,13 +15,11 @@ export default function CategoryDetailsPage ({ client }: Props) {
     const { id } = useParams();
 
     const [ category, setCategory ] = useState<Category>();
-    const [ resources, setResources ] = useState<Resource[]>([]);
-    const [ resourcesFiltered, setResourcesFiltered ] = useState<Resource[]>([]);
-    const [ refreshing, setRefreshing ] = useState(false);
+    const [ search, setSearch ] = useState('');
 
-    // const handleChangeSearch = (text: string) => {
-        
-    // }
+    const handleChangeSearch = (text: string) => {
+        setSearch(text.toLowerCase());
+    }
 
     useEffect(() => {
         if(id) {
@@ -28,14 +27,29 @@ export default function CategoryDetailsPage ({ client }: Props) {
         }
     }, [id])
 
+    if(!category) {
+        return (
+            <div>{"Cette categorie n'existe pas"}</div>
+        )
+    }
+
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
-                <h1>CategoryDetailPage</h1>
-                {/* <SearchBar onChangeSearch={handleChangeSearch} /> */}
+                
+                <h1>{category.name}</h1>
+                
+                <SearchBar value={search} onChangeSearch={handleChangeSearch} />
+                
                 <div className={CommonStyles.itemsContainer}>
                     {
-                        <h2>{category?.name}</h2>
+                        category.resources.cache.map((resource, id) => {
+                            if(resource.title.toLowerCase().includes(search)) {
+                                return (
+                                    <ResourceCard key={id} resource={resource} />
+                                )
+                            }
+                        })
                     }
                 </div>
             </div>

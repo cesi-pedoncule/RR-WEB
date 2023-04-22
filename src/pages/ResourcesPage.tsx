@@ -43,7 +43,7 @@ export default function ResourcesPage ({ client }: Props) {
                 
                 <div className={CommonStyles.itemsContainer}>
                     {resourcesFiltered.map((r, i) =>
-                        <ResourceCard key={i} resourceData={r}/>
+                        <ResourceCard key={i} resource={r}/>
                     )}
                 </div>
             </div>
