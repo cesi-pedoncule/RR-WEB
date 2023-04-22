@@ -22,6 +22,7 @@ export default function ResourceCard ({ resourceData}: Props) {
         <div className={ResourceCardStyles.container} onClick={onClickDetailResource}>
             <div className={ResourceCardStyles.lineButtonsAndUser}>
                 <p>{username}</p>
+                <p>{resource.title}</p>
             </div>
         </div>
     )
