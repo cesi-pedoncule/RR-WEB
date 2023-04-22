@@ -19,7 +19,7 @@ export default function ResourcesPage ({ client }: Props) {
                 
                 <h1 className={CommonStyles.title}>Les ressources</h1>
                 
-                <SearchBar value={search} onChangeSearch={(text) => setSearch(text)} />
+                <SearchBar value={search} onChangeSearch={(text) => setSearch(text.toLowerCase())} />
                 
                 <div className={CommonStyles.itemsContainer}>
                     {client.resources.cache.map((resource, id) => {
