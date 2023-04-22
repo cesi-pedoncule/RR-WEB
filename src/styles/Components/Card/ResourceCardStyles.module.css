@@ -52,12 +52,11 @@
     margin-right: 20px;
 }
 .buttonsContainer {
-    position: absolute;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    width: 130px;
+    justify-content: space-around;
+    width: 100%;
     bottom: 30px;
     left: 20px;
 }
