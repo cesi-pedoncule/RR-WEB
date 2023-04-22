@@ -1,12 +1,16 @@
 import  React  from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
+import { Client } from "rr-apilib";
 
-export default function WithNavbar() {
+interface Props {
+    client: Client;
+}
+export default function WithNavbar({ client }: Props) {
     
     return (
         <div>
-            <Navbar />
+            <Navbar client={client} />
             <Outlet />
         </div>
     )

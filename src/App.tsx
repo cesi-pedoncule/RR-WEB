@@ -19,32 +19,32 @@ export default function App() {
     return (
         <div>
             <Routes>
-                <Route element={<WithNavbar />}>
+                <Route element={<WithNavbar client={client} />}>
                     <Route path="/" element={<ResourcesPage client={client} />} />
                     <Route path="/resources" element={<ResourcesPage client={client} />} />
                 </Route>
                 <Route element={<WithoutNavbar />}>
                     <Route path="/login" element={<LoginPage client={client} />} />
                 </Route>
-                <Route element={<WithNavbar />}>
+                <Route element={<WithNavbar client={client} />}>
                     <Route path="/resource-detail" element={<ResourceDetailPage client={client} />} />
                 </Route>
-                <Route element={<WithNavbar />}>
+                <Route element={<WithNavbar client={client} />}>
                     <Route path="/share" element={<ShareResourcesPage client={client} />} />
                 </Route>
-                <Route element={<WithNavbar />}>
+                <Route element={<WithNavbar client={client} />}>
                     <Route path="/create" element={<CreateResourcePage client={client} />} />
                 </Route>
                 <Route element={<WithoutNavbar />}>
                     <Route path="/edit" element={<EditResourcePage client={client} />} />
                 </Route>
-                <Route element={<WithNavbar />}>
+                <Route element={<WithNavbar client={client} />}>
                     <Route path="/categories" element={<CategoriesPage client={client} />} />
                 </Route>
-                <Route element={<WithNavbar />}>
+                <Route element={<WithNavbar client={client} />}>
                     <Route path="/category-detail" element={<CategoryDetailPage client={client} />} />
                 </Route>
-                <Route element={<WithNavbar />}>
+                <Route element={<WithNavbar client={client} />}>
                     <Route path="/profile" element={<ProfilePage client={client} />}/>
                 </Route>
             </Routes>
