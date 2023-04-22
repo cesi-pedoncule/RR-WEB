@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
-import { Client, Resource } from "rr-apilib";
+import { useState } from "react";
+import { Client } from "rr-apilib";
+import { useNavigate } from "react-router";
 
 import CommonStyles from "../styles/CommonStyles.module.css";
 import SearchBar from "../components/Input/SearchBar";
@@ -10,49 +11,33 @@ interface Props {
 }
 
 export default function ShareResourcePage ({ client }: Props) {
-    
-    const [ resources, setResources ] = useState<Resource[]>([]);
-	const [ resourcesFiltered, setResourcesFiltered ] = useState<Resource[]>([]);
 
-	const onClickShareNewItem = () => {
-		// navigation.navigate("CreateResourceScreen", { client });
-	}
+    const navigate = useNavigate();
 
-	const handleChangeSearch = (text: string) => {
-        if(client.auth.me != null){
-            const filteredResources = Array.from(client.auth.me.resources.cache.values()).filter((resource) => 
-                resource.title.toLowerCase().includes(text.toLowerCase())
-            );
-            setResources([...filteredResources])
-            setResourcesFiltered([...filteredResources.splice(0, 6)]);
-        }
-	}
+    const [ search, setSearch ] = useState('');
 
-	useEffect(() => {
-        if(client.auth.me == null){
-			// navigation.navigate("Login", { client });
-		}
-        onRefresh();
-    }, []);
-
-	const onRefresh = useCallback(async () => {
-		if(client.auth.me != null){
-			const refreshResources:Resource[] = Array.from(client.auth.me.resources.cache.values());
-			setResources([...refreshResources]);
-			setResourcesFiltered([...refreshResources.slice(0, 6)]);
-		}
- 	 }, []);
+    if(client.auth.me === null) {
+        navigate('/login');
+        return <div></div>
+    }
 
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
-            <h1 className={CommonStyles.title}>Mes ressources</h1>
-                <SearchBar onChangeSearch={handleChangeSearch} />
+                
+                <h1 className={CommonStyles.title}>Mes ressources</h1>
+                
+                <SearchBar value={search} onChangeSearch={(text) => setSearch(text.toLowerCase())} />
+                
                 <div className={CommonStyles.itemsContainer}>
                     {
-                        resourcesFiltered.map((r, i) =>
-                            <ResourceCard key={i} resource={r}/>
-                        )
+                        client.auth.me.resources.cache.map((resource, id) => {
+                            if(resource.title.toLowerCase().includes(search)) {
+                                return (
+                                    <ResourceCard key={id} resource={resource}/>
+                                )
+                            }
+                        })
                     }
                 </div>
             </div>
