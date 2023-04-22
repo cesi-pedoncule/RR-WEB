@@ -22,7 +22,7 @@ export default function ResourcesPage ({ client }: Props) {
     
     const fetchResources = async () => {
         setResources(Array.from((await client.resources.fetchAll()).values()));
-        const refreshResources:Resource[] = Array.from(client.resources.getValidateResources().filter(resource => resource.isPublic == true).values());
+        const refreshResources:Resource[] = Array.from(client.resources.getValidateResources().filter(resource => resource.isPublic).values());
         setResources([...refreshResources]);
         setResourcesFiltered([...refreshResources.slice(0, 6)]);
     }
