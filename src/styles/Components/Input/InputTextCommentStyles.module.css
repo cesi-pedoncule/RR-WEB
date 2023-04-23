@@ -1,0 +1,40 @@
+.txtFieldBackground {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    padding: 10px;
+    background-color: #eaf0f0;
+    border: solid 1px #eaf0f0;
+    border-radius: 15px;
+}
+.txtFieldBackground:hover {
+    border: solid 1px #9ca6a9;
+}
+.txtFieldInput {
+    text-align: left;
+    color: #363e3e;
+    font-size: 13px;
+    line-height: 23px;
+    outline-style: none;
+    width: 80%;
+    height: 100%;
+    border: none;
+    background-color: #eaf0f0;
+}
+.sendButtonInput {
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+.buttonContainer {
+    padding: 10px;
+    justify-content: center;
+    text-align: center;
+    background-color: none;
+    border-radius: 7px;
+}
+.buttonContainer:hover {
+    background-color: #9ca6a9;
+}
