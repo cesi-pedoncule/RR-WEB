@@ -1,0 +1,13 @@
+.container {
+    color: #363e3e;
+    background-color: #eaf0f0;
+    overflow: scroll;
+    height: 200px;
+    width: 90%;
+    text-align: top;   
+    border-radius: 15px;
+    margin-top: 20px;
+    padding: 15px;
+    resize: none;
+    overflow: auto;
+}
