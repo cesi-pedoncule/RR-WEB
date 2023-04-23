@@ -32,12 +32,8 @@ export default function CategoryDetailsPage ({ client }: Props) {
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
-                
-                <h1>{category.name}</h1>
-                
+                <h1 className={CommonStyles.title}>{category.name}</h1>
                 <SearchBar value={search} onChangeSearch={(text) => setSearch(text)} />
-                
-                <h3>Resources</h3>
                 <div className={CommonStyles.itemsContainer}>
                     {
                         category.resources.cache.map((resource, id) => {

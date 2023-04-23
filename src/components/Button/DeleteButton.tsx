@@ -8,7 +8,7 @@ interface Props {
 export default function DeleteButton({ callBack }: Props) {
     return (
         <div className={DeleteButtonStyles.buttonContainer} onClick={callBack}>
-            <BsTrash />
+            <BsTrash color='#363e3e' />
         </div>
     )
 }

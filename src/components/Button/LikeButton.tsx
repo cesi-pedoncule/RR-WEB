@@ -16,7 +16,7 @@ export default function LikeButton ({ resource }: Props) {
         <div className={LikeButtonStyles.container}>
 			<p className={LikeButtonStyles.numberLike}>{resource.likes.cache.size.toString()}</p>
 			<div className={LikeButtonStyles.likeBtn} onClick={onPress} >
-				{ resource.isLiked ? <BsHandThumbsUpFill /> : <BsHandThumbsUp /> } 
+				{ resource.isLiked ? <BsHandThumbsUpFill color='#363e3e'/> : <BsHandThumbsUp color='#363e3e'/> } 
 			</div>
 		</div>
     )

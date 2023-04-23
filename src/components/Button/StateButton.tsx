@@ -10,15 +10,15 @@ export default function DeleteButton({ resource }: Props) {
         <div>
             {
                 resource.validations.getLastValidationState()?.state.toString() == "validated" &&
-                    <BsCheckCircle />
+                    <BsCheckCircle color='#03989E' />
             }
             {
                 resource.validations.getLastValidationState()?.state.toString() == "pending" &&
-                    <BsClock />
+                    <BsClock color='#cc973b' />
             }
             {
                 resource.validations.getLastValidationState()?.state.toString() == "rejected" &&
-                    <BsXCircle />
+                    <BsXCircle color='#cc3b3b' />
             }
         </div>
     )
