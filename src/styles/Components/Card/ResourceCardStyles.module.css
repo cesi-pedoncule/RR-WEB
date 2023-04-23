@@ -15,15 +15,13 @@
     transition: 0.2s;
 }
 .cardUser {
-    height: 15px;
     color: #363e3e;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
     margin-left: 20px;
     margin-top: 0px;
 }
 .cardTitle {
-    height: 30px;
     color: #363e3e;
     text-decoration-style: solid;
     text-decoration-line: underline;
@@ -35,8 +33,19 @@
 }
 .cardText {
     color: #9ca6a9;
-    font-size: 13px;
-    height: 25px;
+    font-size: 15px;
+    height: 60px;
+    text-align: justify;
+    margin-top: 3px;
+    padding-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    overflow: hidden;
+}
+.cardTextAuto {
+    color: #9ca6a9;
+    font-size: 15px;
+    height: auto;
     text-align: justify;
     margin-top: 3px;
     padding-bottom: 10px;

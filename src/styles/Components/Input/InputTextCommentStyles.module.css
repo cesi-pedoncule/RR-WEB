@@ -1,0 +1,29 @@
+.txtFieldBackground {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+    padding: 10px;
+    background-color: #eaf0f0;
+    border-radius: 15px;
+    box-shadow: 0px 5px 10px -5px #363e3e;
+}
+.txtFieldInput {
+    width: 100%;
+    background-color: #eaf0f0;
+    box-sizing: border-box;
+    border: none;
+    height: 150px;
+    resize: vertical;
+    border-radius: 10px;
+    outline: none;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.sendButtonInput {
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}

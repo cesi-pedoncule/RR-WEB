@@ -25,13 +25,13 @@ export default function ResourceCardWithUser({ resource, styleContainer }: Props
     return (
         <div className={styleContainer ? styleContainer : ResourceCardStyles.container} onClick={onClickDetailResource}>
             <div className={ResourceCardStyles.lineButtonsAndUser}>
-                <p className={ResourceCardStyles.cardUser}>{username}</p>
+                <div className={ResourceCardStyles.cardUser}>{username}</div>
                 <div className={ResourceCardStyles.userAndButtonsContainer}>
                     <LikeButton resource={resource}/>
                     <CommentButton commentNumber={resource.comments.cache.size}/>
                 </div>
             </div>
-            <p className={ResourceCardStyles.cardTitle}>{resource.title}</p>
+            <div className={ResourceCardStyles.cardTitle}>{resource.title}</div>
             <div className={ResourceCardStyles.categoriesContainer}>
                 {
                     resource.categories.cache.map((category) => 
@@ -39,7 +39,13 @@ export default function ResourceCardWithUser({ resource, styleContainer }: Props
                     )
                 }
             </div>
-            <p className={ResourceCardStyles.cardText}>{description}</p>
+            {
+                styleContainer ? 
+                <div className={ResourceCardStyles.cardTextAuto}>{description}</div>
+                :
+                <div className={ResourceCardStyles.cardText}>{description}</div>
+            }
+            
         </div>
     )
 }

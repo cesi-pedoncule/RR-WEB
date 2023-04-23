@@ -8,7 +8,7 @@ interface Props {
 export default function EditButton({ callBack }: Props) {
     return (
         <div className={EditButtonStyles.buttonContainer} onClick={callBack}>
-            <BsPencilSquare />
+            <BsPencilSquare color='#363e3e' />
         </div>
     )
 }
