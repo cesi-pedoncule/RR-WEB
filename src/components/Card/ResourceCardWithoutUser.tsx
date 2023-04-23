@@ -38,9 +38,9 @@ export default function ResourceCardWithoutUser ({ resource, setIsOpenModal }: P
     }
 
     return (
-        <div className={ResourceCardStyles.container} onClick={onClickDetailResource}>
+        <div className={ResourceCardStyles.container}>
             <div className={ResourceCardStyles.withoutUserContainer}>
-                <p className={ResourceCardStyles.cardTitle}>{resource.title}</p>
+                <p className={ResourceCardStyles.cardTitle} onClick={onClickDetailResource}>{resource.title}</p>
                 <div className={ResourceCardStyles.categoriesContainer}>
                     {
                         resource.categories.cache.map((category) => 
