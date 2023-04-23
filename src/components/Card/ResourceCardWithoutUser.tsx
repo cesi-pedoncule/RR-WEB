@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Resource } from "rr-apilib";
 import ResourceCardStyles from "../../styles/Components/Card/ResourceCardStyles.module.css";
 import CategoryButton from "../Button/CategoryButton";
@@ -11,10 +10,9 @@ import { useNavigate } from "react-router-dom";
 
 interface Props {
     resource: Resource;
-    styleContainer?: any;
 }
 
-export default function ResourceCard ({ resource, styleContainer }: Props) {
+export default function ResourceCard ({ resource }: Props) {
     
     const navigate = useNavigate();
 

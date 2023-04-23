@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Resource } from "rr-apilib";
 import { useNavigate } from "react-router";
 
@@ -9,7 +8,6 @@ import LikeButton from "../Button/LikeButton";
 
 interface Props {
     resource: Resource;
-    styleContainer?: any;
 }
 
 export default function ResourceCard({ resource }: Props) {
