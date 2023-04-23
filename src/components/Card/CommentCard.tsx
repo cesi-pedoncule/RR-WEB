@@ -50,8 +50,9 @@ export default function CommentCard({comment, setComments, resource}:Props) {
                 <div className={CommentCardStyles.cardDate}>{getDateCreation()}</div>
             </div>
             <div className={CommentCardStyles.lineDeleteComment}>
-                <div className={CommentCardStyles.cardComment}>{comment.comment}</div>
+                <textarea readOnly className={CommentCardStyles.cardComment} value={comment.comment}/>
                 {   
+                    isDeleted &&
                     <div className={CommentCardStyles.deleteCommentButton}>
                         <DeleteButton callBack={onClickDeleteComment}/>
                     </div>
