@@ -42,7 +42,7 @@ export default function Navbar({ client }: Props) {
             {
                 client.auth.me !== null &&
                 <div className={navBar.disconnectContainer} onClick={onClickDisconnect}>
-                    <BsBoxArrowInRight />
+                    <BsBoxArrowInRight size={20} />
                 </div>
             }
         </div>

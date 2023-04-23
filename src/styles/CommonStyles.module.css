@@ -36,8 +36,10 @@
     text-align: center;
 }
 .loader {
-    top: 45%;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    margin-top: 20%;
 }
 .itemsContainer {
     margin-top: 20px;

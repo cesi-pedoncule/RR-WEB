@@ -3,7 +3,7 @@ import CommonStyles from "../styles/CommonStyles.module.css";
 import LoginStyles from "../styles/Page/LoginPageStyles.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Spinner } from "react-activity";
+import { TailSpin } from "react-loader-spinner";
 
 interface Props {
     client: Client;
@@ -35,7 +35,7 @@ export default function LoginPage ({ client }: Props) {
     const onClickRegisterButton = async () => {
         try {
             setIsLoading(true);
-            const user = await client.users.create(newUser);
+            await client.users.create(newUser);
             await client.login(newUser.email, newUser.password);
             setIsLoading(false);
         } catch (error) {
@@ -85,9 +85,11 @@ export default function LoginPage ({ client }: Props) {
             <div className={CommonStyles.content}>  
                 
                 {
-                    isLoading ? <Spinner className={LoginStyles.spinner} color="#03989E"/> : 
+                    isLoading ? 
+                    <div className={CommonStyles.loader}>
+                        <TailSpin height="80" width="80" color="#03989E" ariaLabel="tail-spin-loading" radius="1" wrapperStyle={{}} wrapperClass="" visible={true}/>
+                    </div> : 
                     <div className={LoginStyles.formContainer}>
-
                         <div className={LoginStyles.form}>
                             <header className={LoginStyles.header}>Connexion</header>
                             <form className={LoginStyles.container} onSubmit={onclickLoginButton}>
