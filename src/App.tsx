@@ -8,11 +8,13 @@ import ResourceDetailPage from './pages/ResourceDetailsPage';
 import CreateResourcePage from './pages/CreateResourcePage';
 import EditResourcePage from './pages/EditResourcePage';
 import CategoryDetailPage from './pages/CategoryDetailsPage';
+import AdminUsersPage from './pages/Admin/AdminUsersPage';
 import ProfilePage from './pages/ProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 import WithNavbar from './components/WithNavbar';
 import { useState } from 'react';
 import { TailSpin } from 'react-loader-spinner';
+import AdminUserPage from './pages/Admin/AdminUserPage';
 
 const client = new Client();
 
@@ -71,6 +73,11 @@ export default function App() {
                 {/* Categorie */}
                 <Route path="/categories" element={<CategoriesPage client={client} />} />
                 <Route path="/categories/:id" element={<CategoryDetailPage client={client} />} />
+
+                {/* Admin */}
+                <Route path="/admin/users" element={<AdminUsersPage client={client} />} />
+                <Route path="/admin/users/:id" element={<AdminUserPage client={client} />} />
+                
                 <Route path="/*" element={<NotFoundPage />} />
             </Routes>
         </div>
