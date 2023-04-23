@@ -1,8 +1,9 @@
 import { Client, Resource } from "rr-apilib";
 import CommonStyles from "../styles/CommonStyles.module.css";
+import ResourceDetailsPageStyles from "../styles/Page/ResourceDetailsPageStyles.module.css";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-import CategoryCard from "../components/Card/CategoryCard";
+import ResourceCardWithUser from "../components/Card/ResourceCardWithUser";
 
 interface Props {
     client: Client;
@@ -30,17 +31,10 @@ export default function ResourceDetailPage ({ client }: Props) {
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
-                <h1>{resource.title}</h1>
-                <p>{resource.description}</p>
-
-                <h4>Catégories</h4>
-                
-                <div className={CommonStyles.itemsContainer}>
-                    {
-                        resource.categories.cache.map((cat, id) => (
-                            <CategoryCard key={id} category={cat} />
-                        ))
-                    }
+                <div className={ResourceDetailsPageStyles.centerContent}>
+                    <div className={ResourceDetailsPageStyles.resourceContainer}>
+                        <ResourceCardWithUser resource={resource} styleContainer={ResourceDetailsPageStyles.cardContainer}/>
+                    </div>
                 </div>
             </div>
         </div>

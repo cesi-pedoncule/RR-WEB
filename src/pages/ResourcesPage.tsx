@@ -3,7 +3,7 @@ import { Client } from "rr-apilib";
 
 import CommonStyles from "../styles/CommonStyles.module.css";
 import SearchBar from "../components/Input/SearchBar";
-import ResourceCard from "../components/Card/ResourceCard";
+import ResourceCardWithUser from "../components/Card/ResourceCardWithUser";
 
 interface Props {
     client: Client;
@@ -25,7 +25,7 @@ export default function ResourcesPage ({ client }: Props) {
                     {client.resources.cache.map((resource, id) => {
                         if(resource.title.toLowerCase().includes(search.toLowerCase())) {
                             return (
-                                <ResourceCard key={id} resource={resource} />
+                                <ResourceCardWithUser key={id} resource={resource} />
                             )
                         }
                     })}

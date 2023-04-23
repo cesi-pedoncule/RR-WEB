@@ -8,9 +8,10 @@ import LikeButton from "../Button/LikeButton";
 
 interface Props {
     resource: Resource;
+    styleContainer?: any;
 }
 
-export default function ResourceCard({ resource }: Props) {
+export default function ResourceCardWithUser({ resource, styleContainer }: Props) {
 
     const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ export default function ResourceCard({ resource }: Props) {
     }
 
     return (
-        <div className={ResourceCardStyles.container} onClick={onClickDetailResource}>
+        <div className={styleContainer ? styleContainer : ResourceCardStyles.container} onClick={onClickDetailResource}>
             <div className={ResourceCardStyles.lineButtonsAndUser}>
                 <p className={ResourceCardStyles.cardUser}>{username}</p>
                 <div className={ResourceCardStyles.userAndButtonsContainer}>

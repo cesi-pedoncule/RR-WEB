@@ -12,7 +12,7 @@ interface Props {
     resource: Resource;
 }
 
-export default function ResourceCard ({ resource }: Props) {
+export default function ResourceCardWithoutUser ({ resource }: Props) {
     
     const navigate = useNavigate();
 
