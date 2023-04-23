@@ -9,6 +9,7 @@ import CreateResourcePage from './pages/CreateResourcePage';
 import EditResourcePage from './pages/EditResourcePage';
 import CategoryDetailPage from './pages/CategoryDetailsPage';
 import ProfilePage from './pages/ProfilePage';
+import NotFoundPage from './pages/NotFoundPage';
 import WithNavbar from './components/WithNavbar';
 import { useState } from 'react';
 import { TailSpin } from 'react-loader-spinner';
@@ -70,6 +71,7 @@ export default function App() {
                 {/* Categorie */}
                 <Route path="/categories" element={<CategoriesPage client={client} />} />
                 <Route path="/categories/:id" element={<CategoryDetailPage client={client} />} />
+                <Route path="/*" element={<NotFoundPage />} />
             </Routes>
         </div>
     );
