@@ -1,7 +1,7 @@
 import { Comment, Client, Resource } from "rr-apilib";
 import CommonStyles from "../styles/CommonStyles.module.css";
 import ResourceDetailsPageStyles from "../styles/Page/ResourceDetailsPageStyles.module.css";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import ResourceCardWithUser from "../components/Card/ResourceCardWithUser";
 import CommentCard from "../components/Card/CommentCard";
@@ -13,6 +13,7 @@ interface Props {
 
 export default function ResourceDetailPage ({ client }: Props) {
 
+    const navigate = useNavigate();
     const { id } = useParams();
 
     const [ resource, setResource ] = useState<Resource>();
@@ -26,11 +27,11 @@ export default function ResourceDetailPage ({ client }: Props) {
     })
 
     if(!resource) {
+        navigate('/404');
         return (
             <div>{"Cette resource n'existe pas"}</div>
         )
     }
-    
     
     return (
         <div className={CommonStyles.container}>
