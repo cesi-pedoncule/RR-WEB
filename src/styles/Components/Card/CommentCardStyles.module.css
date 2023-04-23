@@ -1,0 +1,71 @@
+.container {
+    height: auto;
+    background-color: #eaf0f0;
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.infoContainer {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+}
+.cardDateAndDelete {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.cardDate {
+    text-align: center;
+    width: 100px;
+    height: 100px;
+}
+.cardUser {
+    width: 55%;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.textCardUser {
+    color: #363e3e;
+    font-weight: bold;
+    font-size: 20px;
+}
+.cardComment {
+    height: auto;
+    color: #9ca6a9;
+    font-size: 13px;
+    text-align: justify;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 400px;
+    height: 75px;
+    overflow: scroll;
+}
+.deleteCommentButton {
+    bottom: 2px;
+    right: 0px;
+}
+.buttonsDeleteResource {
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 7px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.buttonContainer {
+    padding: 10px;
+    justify-content: center;
+    text-align: center;
+    background-color: none;
+    border-radius: 7px;
+}
+.buttonContainer:hover {
+    background-color: #eaf0f0;
+}
