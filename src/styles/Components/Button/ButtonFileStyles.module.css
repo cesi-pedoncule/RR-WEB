@@ -1,0 +1,31 @@
+.container {
+    background-color: #eaf0f0;
+    width: 90%;
+    display : flex;
+    flex-direction : row;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 15px;
+    padding: 15px;
+}
+.buttonFileContainer {
+    background-color: #eaf0f0;
+    width: 70%;
+    display: flex;
+    flex-direction : row;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 15px;
+    padding: 15px;
+}
+.buttonDeleteFile {
+    padding: 0px;
+    justify-content: center;
+    text-align: center;
+    background-color: none;
+}
+.text {
+    width: 85%;
+}
