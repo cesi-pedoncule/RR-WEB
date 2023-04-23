@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import CommonStyles from "../styles/CommonStyles.module.css";
 import SearchBar from "../components/Input/SearchBar";
 import ResourceCardWithoutUser from "../components/Card/ResourceCardWithoutUser";
+import ErrorModal from "../components/Modal/ErrorModal";
 
 interface Props {
     client: Client;
@@ -14,6 +15,7 @@ export default function ShareResourcePage ({ client }: Props) {
     const navigate = useNavigate();
 
     const [ search, setSearch ] = useState('');
+    const [isOpenModal, setIsOpenModal] = useState(false);
 
     useEffect(() => {
         if(client.auth.me === null) {
@@ -36,12 +38,13 @@ export default function ShareResourcePage ({ client }: Props) {
                             client.auth.me.resources.cache.map((resource, id) => {
                                 if(resource.title.toLowerCase().includes(search.toLowerCase())) {
                                     return (
-                                        <ResourceCardWithoutUser key={id} resource={resource} />
+                                        <ResourceCardWithoutUser key={id} resource={resource} setIsOpenModal={setIsOpenModal} />
                                     )
                                 }
                             })
                         }
                     </div>
+                    {isOpenModal && <ErrorModal setIsOpenModal={setIsOpenModal} message="Erreur lors de la suppression" />}
                 </div>
             }
         </div>
