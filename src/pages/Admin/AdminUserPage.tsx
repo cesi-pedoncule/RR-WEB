@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { Client, User } from "rr-apilib";
 
@@ -12,6 +12,7 @@ interface Props {
 
 export default function AdminUserPage ({ client }: Props) {
 
+    const navigate = useNavigate();
     const { id } = useParams();
 
     const [ user, setUser ] = useState<User>();
@@ -21,9 +22,10 @@ export default function AdminUserPage ({ client }: Props) {
         if(id) {
             setUser(client.users.cache.get(id));
         }
-    }, [id]);
+    });
 
     if(!user) {
+        navigate('/404');
         return (
             <div>{"Cet utilisateur n'existe pas"}</div>
         )
