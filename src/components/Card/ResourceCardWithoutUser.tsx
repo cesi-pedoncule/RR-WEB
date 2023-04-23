@@ -10,24 +10,31 @@ import { useNavigate } from "react-router-dom";
 
 interface Props {
     resource: Resource;
+    setIsOpenModal: any;
 }
 
-export default function ResourceCardWithoutUser ({ resource }: Props) {
+export default function ResourceCardWithoutUser ({ resource, setIsOpenModal }: Props) {
     
     const navigate = useNavigate();
 
     const description = resource.description ?  resource.description : "Aucune description fournie" ;
 
     const onClickDetailResource = () => {
-        
+        navigate(`/resources/${resource.id}`);
     }
 
     const onClickEditResource = () => {
-        
+        navigate(`/resources/${resource.id}/edit`);
     }
 
-    const onClickDeleteResource = () => {
-        
+    const onClickDeleteResource = async () => {
+        try {
+            if(resource.client.auth.me != null){
+                await resource.client.auth.me.resources.delete(resource); 
+            }
+        } catch(error) {
+            setIsOpenModal(true);
+        } 
     }
 
     return (
