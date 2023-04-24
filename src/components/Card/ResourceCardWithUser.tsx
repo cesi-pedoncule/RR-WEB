@@ -1,5 +1,6 @@
 import { Resource } from "rr-apilib";
 import { useNavigate } from "react-router";
+import { useEffect, useState } from "react";
 
 import ResourceCardStyles from "../../styles/Components/Card/ResourceCardStyles.module.css";
 import CategoryButton from "../Button/CategoryButton";
@@ -15,6 +16,7 @@ export default function ResourceCardWithUser({ resource, styleContainer }: Props
 
     const navigate = useNavigate();
 
+    const [r, setResource] = useState(resource);
     const username = resource.creator ? `${resource.creator.name} ${resource.creator.firstname}` : "Utilisateur inconnu";
     const description = resource.description ?  resource.description : "Aucune description fournie" ;
 
@@ -27,7 +29,7 @@ export default function ResourceCardWithUser({ resource, styleContainer }: Props
             <div className={ResourceCardStyles.lineButtonsAndUser}>
                 <div className={ResourceCardStyles.cardUser}>{username}</div>
                 <div className={ResourceCardStyles.userAndButtonsContainer}>
-                    <LikeButton resource={resource}/>
+                    <LikeButton resource={r} setResource={setResource} />
                     <CommentButton commentNumber={resource.comments.cache.size}/>
                 </div>
             </div>

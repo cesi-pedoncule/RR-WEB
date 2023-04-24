@@ -1,16 +1,27 @@
 import { Resource } from 'rr-apilib';
 import LikeButtonStyles from '../../styles/Components/Button/LikeButtonStyles.module.css';
 import { BsHandThumbsUpFill, BsHandThumbsUp } from "react-icons/bs"
+import { useEffect } from 'react';
 
 interface Props {
     resource: Resource;
+	setResource: (resource: Resource) => void;
 }
 
-export default function LikeButton ({ resource }: Props) {
+export default function LikeButton ({ resource, setResource }: Props) {
     
-    const onPress = () => {
-
+    const onPress = async () => {
+        if (resource.client.auth.me) { 
+            const newResource = resource.isLiked ? await resource.unlike() : await resource.like();
+            newResource && setResource(newResource);
+        } else {
+            alert("Vous devez être connecté pour aimer une ressource");
+        }
 	}
+
+	useEffect(() => {
+
+	}, [resource])
     
     return (
         <div className={LikeButtonStyles.container}>
