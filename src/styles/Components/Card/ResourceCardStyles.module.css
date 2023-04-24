@@ -5,7 +5,6 @@
     background-color: #eaf0f0;
     border-radius: 20px;
     margin-bottom: 30px;
-    cursor: pointer;
     justify-content: space-between;
     box-shadow: 0px 5px 10px -5px #363e3e;
     overflow: hidden;
@@ -24,12 +23,15 @@
 .cardTitle {
     color: #363e3e;
     text-decoration-style: solid;
-    text-decoration-line: underline;
     font-size: 16px;
     margin-left: 20px;
     margin-right: 20px;  
     margin-bottom: 0px;
     margin-top: 0px;
+    cursor: pointer;
+}
+.cardTitle:hover {
+    text-decoration-line: underline;
 }
 .cardText {
     color: #9ca6a9;
