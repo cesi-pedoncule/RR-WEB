@@ -26,6 +26,18 @@ export default function App() {
 
     const loadClient = async () => {
         await client.fetch();
+
+        const refresh_token = localStorage.getItem('refresh_token');
+
+        if (refresh_token !== null) {
+            client.auth.refresh_token = refresh_token;
+
+            console.log(client.auth.refresh_token)
+            const res = await client.auth.refresh();
+
+            console.log(res)
+        }
+
         setIsLoad(true);
     }
 
