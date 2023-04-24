@@ -20,13 +20,6 @@
     height: 50px;
     width: 150px;
 }
-.buttonContainer {
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-}
 .button {
     text-align: center;
     justify-content: center;
