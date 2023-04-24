@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import ResourceCardWithUser from "../components/Card/ResourceCardWithUser";
 import CommentCard from "../components/Card/CommentCard";
 import InputTextComment from "../components/Input/InputTextComment";
+import MediaButton from "../components/Button/MediaButton";
 
 interface Props {
     client: Client;
@@ -24,7 +25,7 @@ export default function ResourceDetailPage ({ client }: Props) {
             setResource(client.resources.cache.get(id));
             setComments(Array.from(resource ? resource.comments.sort().values() : []))
         }
-    })
+    }, [id, client.resources.cache, resource])
 
     if(!resource) {
         navigate('/404');
@@ -39,6 +40,13 @@ export default function ResourceDetailPage ({ client }: Props) {
                 <div className={ResourceDetailsPageStyles.centerContent}>
                     <div className={ResourceDetailsPageStyles.resourceContainer}>
                         <ResourceCardWithUser resource={resource} styleContainer={ResourceDetailsPageStyles.cardContainer}/>
+                    </div>
+                    <div className={ResourceDetailsPageStyles.btnFile}>
+                    {
+                        Array.from(resource.attachments.cache.values()).map((attachment, index) => (
+                            <MediaButton isDeleted={false} attachment={attachment} key={index} idAttachement={index}/>
+                        ))
+                    }
                     </div>
                     <div className={ResourceDetailsPageStyles.commentsContainer}>
                         <div className={ResourceDetailsPageStyles.commentTitle}>Commentaires</div>

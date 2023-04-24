@@ -1,4 +1,3 @@
-import React from 'react'
 import ButtonFileStyles from '../../styles/Components/Button/ButtonFileStyles.module.css'
 import { BsArrowDown } from "react-icons/bs"
 
