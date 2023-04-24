@@ -9,10 +9,10 @@ import DeleteButton from "../Button/DeleteButton";
 interface Props {
     attachment: AttachmentBuilder | Attachment;
     displayDeleteButton: boolean;
-    callback: () => void;
+    deleteCallback: () => void;
 }
 
-export default function AttachmentCard({ attachment, displayDeleteButton, callback }: Props) {
+export default function AttachmentCard({ attachment, displayDeleteButton, deleteCallback }: Props) {
 
     const fileName = attachment instanceof Attachment ? attachment.fileName : attachment.file?.name;
 
@@ -41,7 +41,7 @@ export default function AttachmentCard({ attachment, displayDeleteButton, callba
             {
                 displayDeleteButton && 
                 <div className={ButtonFileStyles.buttonDeleteFile}>
-                    <DeleteButton callBack={callback}/>
+                    <DeleteButton callBack={deleteCallback}/>
                 </div>
             }
         </div>

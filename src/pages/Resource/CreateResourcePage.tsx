@@ -73,10 +73,15 @@ export default function CreateResourceScreen({ client }: Props) {
                         <ButtonFile callBack={onClickAddFile}/>
                         {
                             newResource.attachments.map((attachment, index) => 
-                                <AttachmentCard key={index} attachment={attachment} displayDeleteButton callback={() => {
-                                    newResource.attachments.splice(index, 1);
-                                    setNewResource(new ResourceBuilder(newResource));
-                                }} />
+                                <AttachmentCard
+                                    key={index}
+                                    attachment={attachment}
+                                    displayDeleteButton
+                                    deleteCallback={() => {
+                                        newResource.attachments.splice(index, 1);
+                                        setNewResource(new ResourceBuilder(newResource));
+                                    }}
+                                />
                             )
                         }
                         <div className={EditResourceStyles.switchContainer}>
