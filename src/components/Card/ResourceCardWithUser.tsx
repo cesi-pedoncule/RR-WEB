@@ -28,13 +28,13 @@ export default function ResourceCardWithUser({ resourceData, styleContainer }: P
     return (
         <div className={styleContainer ? styleContainer : ResourceCardStyles.container}>
             <div className={ResourceCardStyles.lineButtonsAndUser}>
-                <div className={ResourceCardStyles.cardUser}>{username}</div>
+                <div className={ResourceCardStyles.cardTitle} onClick={onClickDetailResource}>{resourceData.title}</div>
                 <div className={ResourceCardStyles.userAndButtonsContainer}>
                     <LikeButton resource={resource} setResource={setResource} />
                     <CommentButton commentNumber={resourceData.comments.cache.size}/>
                 </div>
             </div>
-            <div className={ResourceCardStyles.cardTitle} onClick={onClickDetailResource}>{resourceData.title}</div>
+            <div className={ResourceCardStyles.cardUser}>{username}</div>
             <div className={ResourceCardStyles.categoriesContainer}>
                 {
                     resourceData.categories.cache.map((category, id) => 

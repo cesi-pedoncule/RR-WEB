@@ -1,7 +1,7 @@
 .container {
     display: grid;
     width: 500px;
-    height: 350px;
+    height: 250px;
     background-color: #eaf0f0;
     border-radius: 20px;
     margin-bottom: 30px;
@@ -15,17 +15,17 @@
 }
 .cardUser {
     color: #363e3e;
-    font-weight: bold;
-    font-size: 25px;
-    margin-left: 20px;
-    margin-top: 0px;
-}
-.cardTitle {
-    color: #363e3e;
     text-decoration-style: solid;
     font-size: 16px;
     margin-left: 20px;
     margin-right: 20px;  
+    margin-top: 0px;   
+}
+.cardTitle {
+    color: #363e3e;
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: 20px;
     margin-bottom: 0px;
     margin-top: 0px;
     cursor: pointer;
@@ -36,7 +36,7 @@
 .cardText {
     color: #9ca6a9;
     font-size: 15px;
-    height: 60px;
+    height: 50px;
     text-align: justify;
     margin-top: 3px;
     padding-bottom: 10px;
@@ -75,8 +75,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    bottom: 30px;
-    left: 20px;
+    margin-bottom: 10px;
 }
 .buttonsEditContainer {
     position: absolute;
