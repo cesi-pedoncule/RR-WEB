@@ -37,37 +37,24 @@ export default function CreateResourceScreen({ client }: Props) {
             <div className={CommonStyles.content}>
                 <div className={CommonStyles.itemsContainer}>
                     <div className={CreateResourceStyles.container}>
-
-                        <div>
-                            <textarea
-                                className={CreateResourceStyles.addNameResource}
-                                placeholder={"Titre de la ressource"}
-                                onChange={(text) => newResource.setTitle(text.target.value)}
-                            />
-                        </div>
-                        
-                        <div>
-                            <SelectCategories
-                                client={client}
-                                value={newResource.categories}
-                                onChange={(v) => {
-                                    newResource.setCategories(v);
-                                    setNewResource(new ResourceBuilder(newResource));
-                                }}
-                            />
-                        </div>
-
-                        <div>
-                            <InputTextDescription
-                                onChangeText={(text) => newResource.setDescription(text)}
-                                defaultValue={""}
-                            />
-                        </div>
-
-                        <div>
-                            <h5>Ajouter des PJ</h5>
-                            <ButtonFile callBack={onClickAddFile}/>
-                        </div>
+                        <input
+                            className={CreateResourceStyles.addNameResource}
+                            placeholder={"Titre de la ressource"}
+                            onChange={(text) => newResource.setTitle(text.target.value)}
+                        />
+                        <SelectCategories
+                            client={client}
+                            value={newResource.categories}
+                            onChange={(v) => {
+                                newResource.setCategories(v);
+                                setNewResource(new ResourceBuilder(newResource));
+                            }}
+                        />
+                        <InputTextDescription
+                            onChangeText={(text) => newResource.setDescription(text)}
+                            defaultValue={""}
+                        />
+                        <ButtonFile callBack={onClickAddFile}/>
                         {
                             newResource.attachments.map((attachment, index) => 
                                 <div key={index}>
