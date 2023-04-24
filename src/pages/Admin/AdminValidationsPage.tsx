@@ -40,6 +40,8 @@ export default function AdminValidationsPage ({ client }: Props) {
                             return (
                                 <ResourceCardWithoutUser key={id} resource={resource} setIsOpenModal={setIsOpenModal} moderation={true} />
                             )
+                        } else {
+                            return null;
                         }
                     })}
                 </div>

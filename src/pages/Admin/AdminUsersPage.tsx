@@ -20,7 +20,7 @@ export default function AdminUsersPage ({ client }: Props) {
         if(client.auth.me === null || !client.auth.me.isSuperAdmin) {
             navigate('/login');
         }
-    }, [client])
+    }, [client, navigate])
 
     return (
         <div className={CommonStyles.container}>
@@ -36,6 +36,8 @@ export default function AdminUsersPage ({ client }: Props) {
                             return (
                                 <UserCard key={id} user={user} />
                             )
+                        } else {
+                            return null;
                         }
                     })}
                 </div>

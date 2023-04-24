@@ -43,7 +43,7 @@ export default function AdminValidationPage ({ client }: Props) {
         if(id) {
             setResource(client.resources.cache.get(id));
         }
-    });
+    }, [client.auth.me, client.resources.cache, id, navigate]);
 
     if(!resource) {
         navigate('/404');

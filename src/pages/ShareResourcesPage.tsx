@@ -42,6 +42,8 @@ export default function ShareResourcePage ({ client }: Props) {
                                     return (
                                         <ResourceCardWithoutUser key={id} resource={resource} setIsOpenModal={setIsOpenModal} />
                                     )
+                                } else {
+                                    return null;
                                 }
                             })
                         }

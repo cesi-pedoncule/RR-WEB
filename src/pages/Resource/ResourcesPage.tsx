@@ -27,6 +27,8 @@ export default function ResourcesPage ({ client }: Props) {
                             return (
                                 <ResourceCardWithUser key={id} resource={resource} />
                             )
+                        } else {
+                            return null;
                         }
                     })}
                 </div>

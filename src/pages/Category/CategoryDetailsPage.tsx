@@ -21,7 +21,7 @@ export default function CategoryDetailsPage ({ client }: Props) {
         if(id) {
             setCategory(client.categories.cache.get(id));
         }
-    }, [id]);
+    }, [id, client.categories.cache]);
 
     if(!category) {
         return (
@@ -41,6 +41,8 @@ export default function CategoryDetailsPage ({ client }: Props) {
                                 return (
                                     <ResourceCardWithUser key={id} resource={resource} />
                                 )
+                            } else {
+                                return null;
                             }
                         })
                     }

@@ -27,6 +27,8 @@ export default function CategoriesPage ({ client }: Props) {
                             return (
                                 <CategoryCard key={id} category={category} />
                             )
+                        } else {
+                            return null;
                         }
                     })}
                 </div>
