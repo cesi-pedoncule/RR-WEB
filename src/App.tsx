@@ -22,6 +22,7 @@ import WithNavbar from './components/WithNavbar';
 import AdminCategoriesPage from './pages/Admin/Categories/AdminCategoriesPage';
 import AdminCategoryPage from './pages/Admin/Categories/AdminCategoryPage';
 import AdminEditUserPage from './pages/Admin/AdminEditUserPage';
+import AdminCategoryCreatePage from './pages/Admin/Categories/AdminCategoryCreatePage';
 
 const client = new Client();
 
@@ -106,6 +107,7 @@ export default function App() {
                 
                 {/* categories */}
                 <Route path="/admin/categories" element={<AdminCategoriesPage client={client} />} />
+                <Route path="/admin/categories/create" element={<AdminCategoryCreatePage client={client} />} />
                 <Route path="/admin/categories/:id" element={<AdminCategoryPage client={client} />} />
                 
                 <Route path="/*" element={<NotFoundPage />} />
