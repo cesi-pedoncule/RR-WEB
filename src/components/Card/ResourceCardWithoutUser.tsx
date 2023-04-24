@@ -48,8 +48,8 @@ export default function ResourceCardWithoutUser ({ resource, setIsOpenModal, mod
                 <p className={ResourceCardStyles.cardTitle} onClick={onClickDetailResource}>{resource.title}</p>
                 <div className={ResourceCardStyles.categoriesContainer}>
                     {
-                        resource.categories.cache.map((category) => 
-                            <CategoryButton category={category}/>
+                        resource.categories.cache.map((category, id) => 
+                            <CategoryButton key={id} category={category}/>
                         )
                     }
                 </div>
