@@ -84,3 +84,7 @@
 .sendButtonContainer {
     height: 100px;
 }
+.attachementsContainer {
+    display: grid;
+    width: 70%;
+}

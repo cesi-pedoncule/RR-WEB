@@ -116,33 +116,35 @@ export default function EditResourcePage ({ client }: Props) {
                         }    
                         </div>
                         <InputTextDescription defaultValue={description} onChangeText={(text) => setDescription(text)}/>
-                        <ButtonFile callBack={onClickAddFile}/>
-                        {
-                            attachmentsToShow.map((attachment, index) => 
-                                <MediaButton 
-                                    isDeleted={true} 
-                                    key={index} 
-                                    idAttachement={index} 
-                                    attachment={attachment} 
-                                    attachementsToDelete={attachmentsToDelete} 
-                                    setAttachementsToDelete={setAttachmentsToDelete} 
-                                    attachementsToShow={attachmentsToShow}
-                                    setAttachementsToShow={setAttachmentsToShow}
-                                />
-                            )
-                        }
-                        {
-                            attachmentsBuilder.map((attachment, index) => 
-                                <MediaButton 
-                                    isDeleted={true} 
-                                    key={index}
-                                    idAttachement={index} 
-                                    attachment={attachment.file!} 
-                                    attachmentsBuilder={attachmentsBuilder} 
-                                    setAttachementsBuilder={setAttachmentsBuilder} 
-                                />
-                            )
-                        }
+                        <div className={EditResourceStyles.attachementsContainer}>
+                            <ButtonFile callBack={onClickAddFile}/>
+                            {
+                                attachmentsToShow.map((attachment, index) => 
+                                    <MediaButton 
+                                        isDeleted={true} 
+                                        key={index} 
+                                        idAttachement={index} 
+                                        attachment={attachment} 
+                                        attachementsToDelete={attachmentsToDelete} 
+                                        setAttachementsToDelete={setAttachmentsToDelete} 
+                                        attachementsToShow={attachmentsToShow}
+                                        setAttachementsToShow={setAttachmentsToShow}
+                                    />
+                                )
+                            }
+                            {
+                                attachmentsBuilder.map((attachment, index) => 
+                                    <MediaButton 
+                                        isDeleted={true} 
+                                        key={index}
+                                        idAttachement={index} 
+                                        attachment={attachment.file!} 
+                                        attachmentsBuilder={attachmentsBuilder} 
+                                        setAttachementsBuilder={setAttachmentsBuilder} 
+                                    />
+                                )
+                            }
+                        </div>
                         <div className={EditResourceStyles.switchContainer}>
                             <Switch onChange={toggleSwitch} checked={isPublic} onColor='#03989E'/>
                             <p className={CommonStyles.switchText}> Privé / Publique </p>

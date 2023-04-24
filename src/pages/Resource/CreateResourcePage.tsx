@@ -70,20 +70,22 @@ export default function CreateResourceScreen({ client }: Props) {
                             onChangeText={(text) => newResource.setDescription(text)}
                             defaultValue={""}
                         />
-                        <ButtonFile callBack={onClickAddFile}/>
-                        {
-                            newResource.attachments.map((attachment, index) => 
-                                <AttachmentCard
-                                    key={index}
-                                    attachment={attachment}
-                                    displayDeleteButton
-                                    deleteCallback={() => {
-                                        newResource.attachments.splice(index, 1);
-                                        setNewResource(new ResourceBuilder(newResource));
-                                    }}
-                                />
-                            )
-                        }
+                        <div className={CreateResourceStyles.attachementsContainer}>
+                            <ButtonFile callBack={onClickAddFile}/>
+                            {
+                                newResource.attachments.map((attachment, index) => 
+                                    <AttachmentCard
+                                        key={index}
+                                        attachment={attachment}
+                                        displayDeleteButton
+                                        deleteCallback={() => {
+                                            newResource.attachments.splice(index, 1);
+                                            setNewResource(new ResourceBuilder(newResource));
+                                        }}
+                                    />
+                                )
+                            }
+                        </div>
                         <div className={EditResourceStyles.switchContainer}>
                             <Switch
                                 onChange={() => {

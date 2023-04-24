@@ -41,13 +41,6 @@ export default function ResourceDetailPage ({ client }: Props) {
                     <div className={ResourceDetailsPageStyles.resourceContainer}>
                         <ResourceCardWithUser resourceData={resource} styleContainer={ResourceDetailsPageStyles.cardContainer}/>
                     </div>
-                    <div className={ResourceDetailsPageStyles.btnFile}>
-                    {
-                        Array.from(resource.attachments.cache.values()).map((attachment, index) => (
-                            <MediaButton isDeleted={false} attachment={attachment} key={index} idAttachement={index}/>
-                        ))
-                    }
-                    </div>
                     <div className={ResourceDetailsPageStyles.commentsContainer}>
                         <div className={ResourceDetailsPageStyles.commentTitle}>Commentaires</div>
                         {
@@ -61,6 +54,14 @@ export default function ResourceDetailPage ({ client }: Props) {
                             }
                         </div>
                     </div>
+                </div>
+                <div className={ResourceDetailsPageStyles.attachementsContainer}>
+                    <div className={ResourceDetailsPageStyles.commentTitle}>Pièces jointes</div>
+                    {
+                        Array.from(resource.attachments.cache.values()).map((attachment, index) => (
+                            <MediaButton isDeleted={false} attachment={attachment} key={index} idAttachement={index}/>
+                        ))
+                    }
                 </div>
             </div>
         </div>

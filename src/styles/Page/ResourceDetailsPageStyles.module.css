@@ -50,11 +50,12 @@
     margin-bottom: 10px;
     text-decoration-line: underline;
 }
-.btnFile {
-    display: grid;
+.attachementsContainer {
     position: absolute;
-    align-items: center;
-    justify-content: center;
-    margin-top: 600px;
+    top: 750px;
+    display: grid;
+    width: 49%;
     padding-bottom: 100px;
+    margin-left: 10%;
+    margin-top: 3%;
 }

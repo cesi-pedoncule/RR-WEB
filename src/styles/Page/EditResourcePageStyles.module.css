@@ -81,3 +81,7 @@
     justify-content: left;
     margin-top: 20px;
 }
+.attachementsContainer {
+    display: grid;
+    width: 70%;
+}
