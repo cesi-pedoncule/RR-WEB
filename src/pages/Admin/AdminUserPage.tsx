@@ -44,14 +44,14 @@ export default function AdminUserPage ({ client }: Props) {
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
                 
-                <div className={CommonStyles.title} onClick={handleClickEditUser}>
-                    {user.name} {user.firstname}
+                <div className={CommonStyles.horizontalContainer} onClick={handleClickEditUser}>
+                    <h3 className={CommonStyles.title}>{user.name} {user.firstname}</h3>
                     <BsPencilSquare className={AdminUserPageStyles.editIcon} color='#363e3e' />
                 </div>
                 
                 <SearchBar value={search} onChangeSearch={(text) => setSearch(text)} />
-                <h3 className={CommonStyles.title}>Resources</h3>
-                <div className={CommonStyles.itemsContainer2}>
+                
+                <div className={CommonStyles.itemsContainer}>
                     {
                         user.resources.cache.map((resource, id) => {
                             if(resource.title.toLowerCase().includes(search.toLowerCase())) {

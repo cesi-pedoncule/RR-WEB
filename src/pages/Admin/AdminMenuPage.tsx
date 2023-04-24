@@ -20,7 +20,8 @@ export default function AdminUsersPage ({ client }: Props) {
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
                 <h1 className={CommonStyles.title}>Administration</h1>
-                <div className={CommonStyles.containerVertical}>
+                <div className={CommonStyles.itemsContainer}>
+                
                     {
                         client.auth.me?.isSuperAdmin && (
                             <Link to="/admin/users" className={CommonStyles.button}>Utilisateurs</Link>
@@ -36,6 +37,7 @@ export default function AdminUsersPage ({ client }: Props) {
                             <Link to="/admin/validations" className={CommonStyles.button}>Validation de ressources</Link>
                         )
                     }
+                
                 </div>
             </div>
         </div>
