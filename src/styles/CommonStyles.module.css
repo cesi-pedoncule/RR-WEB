@@ -3,11 +3,13 @@
     background-color: #03989E;
     align-items: center;
     justify-content: center;
+    min-height: 100vh;
 }
 .content {
     background-color: #f6fafb;
     display: grid;
     width: 100%;
+    min-height: 100vh;
     margin-top: 0px;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
