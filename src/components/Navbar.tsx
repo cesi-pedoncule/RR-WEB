@@ -41,7 +41,7 @@ export default function Navbar({ client }: Props) {
                 {
                     client.auth.me && client.auth.me.roles.includes(APIUserRole.Admin) && 
                         <Link className={navBar.link} to={"/admin"}>
-                            <img className={navBar.logo} src="../Profile.png" alt="Profil"/>
+                            <img className={navBar.logo} src="../Admin.png" alt="Profil"/>
                             <p>Admin</p>
                         </Link>
                 }
