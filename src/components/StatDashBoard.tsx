@@ -46,7 +46,7 @@ export default function StatDashBoard({ user } : Props) {
     return (
         <div className={StatDashBoardStyles.container}>
             {
-                <Bar data={chartData}/>
+                <Bar data={chartData} height={400} width={600} />
             }
         </div>
     )
