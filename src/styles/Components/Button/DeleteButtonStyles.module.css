@@ -4,6 +4,7 @@
     text-align: center;
     background-color: none;
     border-radius: 7px;
+    cursor: pointer;
 }
 .buttonContainer:hover {
     background-color: #eaf0f0;
