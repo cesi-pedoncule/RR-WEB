@@ -39,12 +39,13 @@ export default function AdminUserPage ({ client }: Props) {
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
                 
-                <h1>{user.name} {user.firstname}</h1>
+                <h1 className={CommonStyles.title}>{user.name} {user.firstname}</h1>
                 
                 <SearchBar value={search} onChangeSearch={(text) => setSearch(text)} />
                 
                 <h3>Resources</h3>
                 <div className={CommonStyles.itemsContainer}>
+                    <div>Pièces jointes :</div>
                     {
                         user.resources.cache.map((resource, id) => {
                             if(resource.title.toLowerCase().includes(search.toLowerCase())) {
