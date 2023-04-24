@@ -1,15 +1,10 @@
 import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
-import {
-    APIValidationStateCreate,
-    Client,
-    Resource,
-    ValidationStateBuilder
-} from "rr-apilib";
-
+import { APIValidationStateCreate, Client, Resource, ValidationStateBuilder } from "rr-apilib";
 import CommonStyles from "../../styles/CommonStyles.module.css";
-import ResourceDetailsPageStyles from "../../styles/Page/ResourceDetailsPageStyles.module.css";
+import AdminValidationPageStyles from "../../styles/Page/Admin/AdminValidationPageStyles.module.css";
 import ResourceCardWithUser from "../../components/Card/ResourceCardWithUser";
+import MediaButton from "../../components/Button/MediaButton";
 
 interface Props {
     client: Client;
@@ -55,17 +50,21 @@ export default function AdminValidationPage ({ client }: Props) {
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
-                <div className={ResourceDetailsPageStyles.centerContent}>
-                    <div className={ResourceDetailsPageStyles.resourceContainer}>
-                        <ResourceCardWithUser resource={resource} styleContainer={ResourceDetailsPageStyles.cardContainer}/>
+                <div className={AdminValidationPageStyles.centerContent}>
+                    <div className={AdminValidationPageStyles.resourceContainer}>
+                        <ResourceCardWithUser resource={resource} styleContainer={AdminValidationPageStyles.cardContainer}/>
                     </div>
-                    <div className={ResourceDetailsPageStyles.commentsContainer}>
-                        <div className={ResourceDetailsPageStyles.commentContainer}>
-                            <div className={ResourceDetailsPageStyles.commentTitle}>Pièces jointes :</div>
-                            {/* TODO: display files */}
-                            <div onClick={() => handleOnClickChangeState(APIValidationStateCreate.Validated)} className={ResourceDetailsPageStyles.validateButton}>Valider</div>
-                            <div onClick={() => handleOnClickChangeState(APIValidationStateCreate.Rejected)} className={ResourceDetailsPageStyles.validateButton}>Rejeter</div>
-                        </div>
+                    <div className={AdminValidationPageStyles.btnFile}>
+                        <div className={AdminValidationPageStyles.validationTitle}>Pièces de jointes :</div>
+                        {
+                            Array.from(resource.attachments.cache.values()).map((attachment, index) => (
+                                <MediaButton isDeleted={false} attachment={attachment} key={index} idAttachement={index}/>
+                            ))
+                        }
+                    </div>
+                    <div className={AdminValidationPageStyles.validationsContainer}>
+                        <div onClick={() => handleOnClickChangeState(APIValidationStateCreate.Validated)} className={CommonStyles.button}>Valider</div>
+                        <div onClick={() => handleOnClickChangeState(APIValidationStateCreate.Rejected)} className={CommonStyles.button}>Rejeter</div>
                     </div>
                 </div>
             </div>
