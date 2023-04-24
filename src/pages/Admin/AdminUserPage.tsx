@@ -58,8 +58,6 @@ export default function AdminUserPage ({ client }: Props) {
                                 return (
                                     <ResourceCardWithUser key={id} resource={resource} />
                                 )
-                            } else {
-                                return null;
                             }
                         })
                     }
