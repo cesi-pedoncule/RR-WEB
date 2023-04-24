@@ -39,7 +39,7 @@ export default function ResourceDetailPage ({ client }: Props) {
             <div className={CommonStyles.content}>
                 <div className={ResourceDetailsPageStyles.centerContent}>
                     <div className={ResourceDetailsPageStyles.resourceContainer}>
-                        <ResourceCardWithUser resource={resource} styleContainer={ResourceDetailsPageStyles.cardContainer}/>
+                        <ResourceCardWithUser resourceData={resource} styleContainer={ResourceDetailsPageStyles.cardContainer}/>
                     </div>
                     <div className={ResourceDetailsPageStyles.btnFile}>
                     {

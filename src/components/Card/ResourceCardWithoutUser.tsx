@@ -19,8 +19,8 @@ export default function ResourceCardWithoutUser ({ resourceData, setIsOpenModal,
     
     const navigate = useNavigate();
 
-    const [r, setResource] = useState(resourceData);
     const description = resourceData.description ?  resourceData.description : "Aucune description fournie" ;
+    const [ resource, setResource ] = useState(resourceData);
 
     const onClickDetailResource = () => {
         if (!moderation) {
@@ -57,7 +57,7 @@ export default function ResourceCardWithoutUser ({ resourceData, setIsOpenModal,
                 </div>
                 <p className={ResourceCardStyles.cardText}>{description}</p>
                 <div className={ResourceCardStyles.buttonsContainer}>
-                    <LikeButton resource={r} setResource={setResource} />
+                    <LikeButton resource={resource} setResource={setResource} />
                     <CommentButton commentNumber={resourceData.comments.cache.size} />
                     <EditButton callBack={onClickEditResource} />
                     <DeleteButton callBack={onClickDeleteResource} />

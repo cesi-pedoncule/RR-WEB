@@ -52,7 +52,7 @@ export default function AdminValidationPage ({ client }: Props) {
             <div className={CommonStyles.content}>
                 <div className={AdminValidationPageStyles.centerContent}>
                     <div className={AdminValidationPageStyles.resourceContainer}>
-                        <ResourceCardWithUser resource={resource} styleContainer={AdminValidationPageStyles.cardContainer}/>
+                        <ResourceCardWithUser resourceData={resource} styleContainer={AdminValidationPageStyles.cardContainer}/>
                     </div>
                     <div className={AdminValidationPageStyles.btnFile}>
                         <div className={AdminValidationPageStyles.validationTitle}>Pièces de jointes :</div>

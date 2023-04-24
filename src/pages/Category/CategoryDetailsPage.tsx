@@ -39,7 +39,7 @@ export default function CategoryDetailsPage ({ client }: Props) {
                         category.resources.cache.map((resource, id) => {
                             if(resource.title.toLowerCase().includes(search.toLowerCase())) {
                                 return (
-                                    <ResourceCardWithUser key={id} resource={resource} />
+                                    <ResourceCardWithUser key={id} resourceData={resource} />
                                 )
                             } else {
                                 return null;
