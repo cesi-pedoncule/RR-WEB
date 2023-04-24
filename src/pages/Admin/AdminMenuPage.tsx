@@ -19,7 +19,7 @@ export default function AdminUsersPage ({ client }: Props) {
         if(client.auth.me === null || !client.auth.me.isModerator) {
             navigate('/login');
         }
-    }, [client])
+    }, [client, navigate])
 
     return (
         <div className={CommonStyles.container}>
@@ -31,7 +31,18 @@ export default function AdminUsersPage ({ client }: Props) {
                 
                 <div className={CommonStyles.itemsContainer}>
                     {
-                        client.auth.me?.isSuperAdmin && (<Link to="/admin/users">Utilisateurs</Link>)
+                        client.auth.me?.isSuperAdmin && (
+                            <div>
+                                <Link to="/admin/users">Utilisateurs</Link>
+                            </div>
+                        )
+                    }
+                    {
+                        client.auth.me?.isModerator && (
+                            <div>
+                                <Link to="/admin/validations">Validation de ressources</Link>
+                            </div>
+                        )
                     }
                 </div>
             </div>

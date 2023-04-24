@@ -1,5 +1,5 @@
 import { Client } from "rr-apilib";
-import CommonStyles from "../../styles/CommonStyles.module.css";
+import CommonStyles from "../styles/CommonStyles.module.css";
 import { useParams } from "react-router-dom";
 
 interface Props {

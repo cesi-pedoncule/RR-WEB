@@ -23,7 +23,7 @@ export default function ResourceCardWithUser({ resource, styleContainer }: Props
     }
 
     return (
-        <div className={styleContainer ? styleContainer : ResourceCardStyles.container} onClick={onClickDetailResource}>
+        <div className={styleContainer ? styleContainer : ResourceCardStyles.container}>
             <div className={ResourceCardStyles.lineButtonsAndUser}>
                 <div className={ResourceCardStyles.cardUser}>{username}</div>
                 <div className={ResourceCardStyles.userAndButtonsContainer}>
@@ -31,7 +31,7 @@ export default function ResourceCardWithUser({ resource, styleContainer }: Props
                     <CommentButton commentNumber={resource.comments.cache.size}/>
                 </div>
             </div>
-            <div className={ResourceCardStyles.cardTitle}>{resource.title}</div>
+            <div className={ResourceCardStyles.cardTitle} onClick={onClickDetailResource}>{resource.title}</div>
             <div className={ResourceCardStyles.categoriesContainer}>
                 {
                     resource.categories.cache.map((category) => 
