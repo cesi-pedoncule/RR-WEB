@@ -1,6 +1,7 @@
 import Select from 'react-select';
 import { APIUserRole } from 'rr-apilib';
 import SelectRolesStyles from '../../styles/Components/Input/SelectRolesStyles.module.css';
+import { useEffect } from 'react';
 
 interface Props {
     value: APIUserRole[];
@@ -21,8 +22,11 @@ export default function SelectRoles({ value, onChange }: Props) {
             className={SelectRolesStyles.select}
             placeholder="Sélectionner des catégories"
             isMulti={true}
-            defaultValue={value.map(v => { return { label: v, value: v } })}
-            onChange={(v) => { onChange(v.map(c => c.value as APIUserRole )) }}
+            value={value.map(v => { return { label: v, value: v } })}
+            onChange={(v) => {
+                const result = v.map(c => roles.find(r => r === c.value as APIUserRole)!);
+                onChange(result);
+            }}
             options={roles.map(r => { return { label: r, value: r } })}
         />
     )

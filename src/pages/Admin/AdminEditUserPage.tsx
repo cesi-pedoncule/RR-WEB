@@ -14,8 +14,8 @@ export default function AdminEditUserPage({ client }: Props) {
     const navigate = useNavigate();
     const { id } = useParams();
 
-    const [ user, setUser ] = useState<User>();
-
+    const [ user ] = useState<User|undefined>(client.users.cache.get(''+id));
+    
     const [ name, setName ] = useState<string>('');
     const [ firstname, setFirstname ] = useState<string>('');
     const [ roles, setRoles ] = useState<APIUserRole[]>([]);
@@ -42,14 +42,13 @@ export default function AdminEditUserPage({ client }: Props) {
             navigate('/login');
         }
         
-        if(id) {
-            setUser(client.users.cache.get(id));
+        if(id && user && (name === user.name || name === '') && (firstname === user.firstname || firstname === '')) {
             setName(user ? user.name : '');
             setFirstname(user ? user.firstname : '');
             setRoles(user ? user.roles : []);
         }
 
-    }, [client.auth.me, client.users.cache, id, navigate, user]);
+    }, [client.auth.me, client.users.cache, id, navigate, name, firstname, user]);
 
     if(!user) {
         navigate('/404');
@@ -66,7 +65,7 @@ export default function AdminEditUserPage({ client }: Props) {
                     <div className={AdminEditUserPageStyles.container}>
                         <input className={AdminEditUserPageStyles.addName} type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nom" />
                         <input className={AdminEditUserPageStyles.addName} type="text" value={firstname} onChange={(e) => setFirstname(e.target.value)} placeholder="Prénom" />
-                        <SelectRoles value={user.roles} onChange={() => setRoles(roles)} />
+                        <SelectRoles value={roles} onChange={(v) => setRoles([...v])} />
                         <button onClick={handleClickEditUser} className={AdminEditUserPageStyles.submitButton}>Modifier</button>
                     </div>
                 </div>
