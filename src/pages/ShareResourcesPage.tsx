@@ -15,7 +15,7 @@ export default function ShareResourcePage ({ client }: Props) {
     const navigate = useNavigate();
 
     const [ search, setSearch ] = useState('');
-    const [isOpenModal, setIsOpenModal] = useState(false);
+    const [ isOpenModal, setIsOpenModal ] = useState(false);
 
     useEffect(() => {
         if(client.auth.me === null) {

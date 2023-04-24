@@ -11,16 +11,21 @@ import { useNavigate } from "react-router-dom";
 interface Props {
     resource: Resource;
     setIsOpenModal: any;
+    moderation?: boolean;
 }
 
-export default function ResourceCardWithoutUser ({ resource, setIsOpenModal }: Props) {
+export default function ResourceCardWithoutUser ({ resource, setIsOpenModal, moderation = false }: Props) {
     
     const navigate = useNavigate();
 
     const description = resource.description ?  resource.description : "Aucune description fournie" ;
 
     const onClickDetailResource = () => {
-        navigate(`/resources/${resource.id}`);
+        if (!moderation) {
+            navigate(`/resources/${resource.id}`);
+        } else {
+            navigate(`/admin/validations/${resource.id}`);
+        }
     }
 
     const onClickEditResource = () => {
