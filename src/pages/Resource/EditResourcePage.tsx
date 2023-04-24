@@ -1,13 +1,13 @@
 import { Client } from "rr-apilib";
-import CommonStyles from "../styles/CommonStyles.module.css";
+import CommonStyles from "../../styles/CommonStyles.module.css";
 import { useNavigate, useParams } from "react-router-dom";
-import React, { ChangeEvent, useEffect, useState } from 'react'
-import EditResourceStyles from '../styles/Page/EditResourcePageStyles.module.css'
+import { ChangeEvent, useEffect, useState } from 'react'
+import EditResourceStyles from '../../styles/Page/EditResourcePageStyles.module.css'
 import { Attachment, AttachmentBuilder, Category, Resource } from 'rr-apilib'
 import Switch from "react-switch";
-import InputTextDescription from "../components/Input/InputTextDescription";
-import ButtonFile from "../components/Button/ButtonFile";
-import MediaButton from "../components/Button/MediaButton";
+import InputTextDescription from "../../components/Input/InputTextDescription";
+import ButtonFile from "../../components/Button/ButtonFile";
+import MediaButton from "../../components/Button/MediaButton";
 
 interface Props {
     client: Client;

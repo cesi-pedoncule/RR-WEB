@@ -32,6 +32,8 @@ export default function ShareResourcePage ({ client }: Props) {
                     <h1 className={CommonStyles.title}>Mes ressources</h1>
                     
                     <SearchBar value={search} onChangeSearch={(text) => setSearch(text)} />
+
+                    <button onClick={() => navigate('/resources/create')}>Créer</button>
                     
                     <div className={CommonStyles.itemsContainer}>
                         {

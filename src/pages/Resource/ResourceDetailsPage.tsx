@@ -1,12 +1,11 @@
 import { Comment, Client, Resource } from "rr-apilib";
-import CommonStyles from "../styles/CommonStyles.module.css";
-import ResourceDetailsPageStyles from "../styles/Page/ResourceDetailsPageStyles.module.css";
+import CommonStyles from "../../styles/CommonStyles.module.css";
+import ResourceDetailsPageStyles from "../../styles/Page/ResourceDetailsPageStyles.module.css";
 import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
-import ResourceCardWithUser from "../components/Card/ResourceCardWithUser";
-import CommentCard from "../components/Card/CommentCard";
-import InputTextComment from "../components/Input/InputTextComment";
-import MediaButton from "../components/Button/MediaButton";
+import ResourceCardWithUser from "../../components/Card/ResourceCardWithUser";
+import CommentCard from "../../components/Card/CommentCard";
+import InputTextComment from "../../components/Input/InputTextComment";
 
 interface Props {
     client: Client;
@@ -40,13 +39,6 @@ export default function ResourceDetailPage ({ client }: Props) {
                 <div className={ResourceDetailsPageStyles.centerContent}>
                     <div className={ResourceDetailsPageStyles.resourceContainer}>
                         <ResourceCardWithUser resource={resource} styleContainer={ResourceDetailsPageStyles.cardContainer}/>
-                    </div>
-                    <div className={ResourceDetailsPageStyles.btnFile}>
-                    {
-                        Array.from(resource.attachments.cache.values()).map((attachment, index) => (
-                            <MediaButton isDeleted={false} attachment={attachment} key={index} idAttachement={index}/>
-                        ))
-                    }
                     </div>
                     <div className={ResourceDetailsPageStyles.commentsContainer}>
                         <div className={ResourceDetailsPageStyles.commentTitle}>Commentaires</div>
