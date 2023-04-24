@@ -1,6 +1,6 @@
 .container {
     background-color: #eaf0f0;
-    width: 90%;
+    width: 100%;
     display : flex;
     flex-direction : row;
     margin-top: 30px;
@@ -8,6 +8,12 @@
     justify-content: space-between;
     border-radius: 15px;
     padding: 15px;
+    box-shadow: 0px 5px 10px -5px #363e3e;
+    cursor: pointer;
+}
+.container:hover {
+    background-color: #cfd4d4;
+    transition: 0.2s;
 }
 .buttonFileContainer {
     background-color: #eaf0f0;
@@ -27,5 +33,6 @@
     background-color: none;
 }
 .text {
+    outline: none;
     width: 85%;
 }
