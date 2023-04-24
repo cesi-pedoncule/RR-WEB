@@ -29,7 +29,6 @@ export default function MediaButton({ attachment, isDeleted, attachmentsBuilder,
                 );
             }
         } else {
-            console.log("cheh download file without in form");
             alert("Impossible de télécharger car le fichier n'est pas encore publié");
         }
     }

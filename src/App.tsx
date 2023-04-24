@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { Client } from 'rr-apilib';
 import CategoriesPage from './pages/Category/CategoriesPage';
 import LoginPage from './pages/LoginPage';
@@ -22,10 +22,25 @@ import { TailSpin } from 'react-loader-spinner';
 const client = new Client();
 
 export default function App() {
+    const navigate = useNavigate();
     const [ isLoad, setIsLoad ] = useState<boolean>(false);
 
     const loadClient = async () => {
         await client.fetch();
+
+        const refresh_token = localStorage.getItem('refresh_token');
+
+        if (refresh_token !== null) {
+            client.auth.refresh_token = refresh_token;
+
+            try {
+                await client.auth.refresh();
+            } catch (error) {
+                localStorage.removeItem('refresh_token');
+                navigate('/');                
+            }
+        }
+
         setIsLoad(true);
     }
 

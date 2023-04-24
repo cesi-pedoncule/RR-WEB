@@ -43,9 +43,8 @@ export default function AdminUserPage ({ client }: Props) {
                 
                 <SearchBar value={search} onChangeSearch={(text) => setSearch(text)} />
                 
-                <h3>Resources</h3>
+                <h3 className={CommonStyles.title}>Resources</h3>
                 <div className={CommonStyles.itemsContainer}>
-                    <div>Pièces jointes :</div>
                     {
                         user.resources.cache.map((resource, id) => {
                             if(resource.title.toLowerCase().includes(search.toLowerCase())) {
