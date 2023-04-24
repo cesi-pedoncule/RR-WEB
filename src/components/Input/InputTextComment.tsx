@@ -10,13 +10,11 @@ interface Props {
 
 export default function InputTextComment({resource, setComments}:Props) {
     const [ inputText, setInputText ] = useState('');
-    const [ isLoading, setIsLoading ] = useState<boolean>(false);
 
     const onClickAddComment = async () => {
-        setIsLoading(true);
 
         try {
-            if(inputText != ''){
+            if(inputText !== ''){
                 const builder = new CommentBuilder()
                     .setComment(inputText)
                     .setRessource(resource);
@@ -33,7 +31,6 @@ export default function InputTextComment({resource, setComments}:Props) {
         }
 
         setInputText('');
-        setIsLoading(false);
     }
 
     const onChangeCommentEvent = (event: any) => {

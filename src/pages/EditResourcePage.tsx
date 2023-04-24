@@ -24,9 +24,7 @@ export default function EditResourcePage ({ client }: Props) {
     const [ title, setTitle ] = useState<string>(resource ? resource.title : "");
     const [ description, setDescription ] = useState(resource ? resource.description : "");
     const [ categories, setCategories ] = useState<Category[]>(Array.from(resource ? resource.categories.cache.values() : []));
-    const [ showSelectCategories, setShowSelectCategories ] = useState<boolean>(false);
     const [ isPublic, setIsPublic ] = useState(resource ? resource.isPublic : false);
-    const [ isLoading, setIsLoading ] = useState<boolean>(false);
     const [ file, setFile ] = useState<File>();
     // Les attachmentsBuilder sont les attachments qu'on rajoute, et qu'on peut supprimer comme pour dans CreateResourceScreen => des nouvelles attachments
     // Elles sont affichées sur l'écran
@@ -35,7 +33,7 @@ export default function EditResourcePage ({ client }: Props) {
     // elle permet de supprimer les attachments, déjà présente avant l'édition, seulement si on valide la modification de la ressource 
     // Elles ne sont pas affichées
     const [ attachmentsToDelete, setAttachmentsToDelete ] = useState<Attachment[]>([]);
-    // Les attachmentsToShow sont les attachments qui était déjà présente avantl'édition, qu'on montre à l'écran, 
+    // Les attachmentsToShow sont les attachments qui était déjà présente avant l'édition, qu'on montre à l'écran, 
     // et qu'on diminue quand on supprime une attachment => C'est juste un state de visualisation, elle n'est pas prise en compte au moment de valider la modif
     const [ attachmentsToShow, setAttachmentsToShow ] = useState<Attachment[]>(Array.from(resource ? resource.attachments.cache.values() : []));
 
@@ -45,9 +43,7 @@ export default function EditResourcePage ({ client }: Props) {
             setTitle(resource ? resource.title : "");
             setDescription(resource ? resource.description : "");
             setCategories(Array.from(resource ? resource.categories.cache.values() : []));
-            setShowSelectCategories(false);
             setIsPublic(resource ? resource.isPublic : false);
-            setIsLoading(false);
             setAttachmentsBuilder([]);
             setAttachmentsToDelete([]);
             setAttachmentsToShow(Array.from(resource ? resource.attachments.cache.values() : []));
@@ -68,7 +64,6 @@ export default function EditResourcePage ({ client }: Props) {
     const toggleSwitch = () => setIsPublic(previousState => !previousState);
 
     const onClickSend = async () => {
-        setIsLoading(true);
 
         try {
             resource.title = title;
@@ -89,12 +84,6 @@ export default function EditResourcePage ({ client }: Props) {
         } catch(error) {
             console.log("Problème lors de l'édition");
         }
-
-        setIsLoading(false);
-    }
-
-    const onClickAddCategory = () => {
-        setShowSelectCategories(true);
     }
 
     const onClickAddFile = (e: ChangeEvent<HTMLInputElement>) => {
@@ -104,7 +93,7 @@ export default function EditResourcePage ({ client }: Props) {
                 const attachment = new AttachmentBuilder().setFile(file).setRessource(resource);
                 attachmentsBuilder.push(attachment);
                 setAttachmentsBuilder([...attachmentsBuilder ]);
-            } else if (resource && attachmentsBuilder.length + resource.attachments.cache.size == 6) {
+            } else if (resource && attachmentsBuilder.length + resource.attachments.cache.size === 6) {
                 console.log("Vous avez atteint le seuil maximum de fichier importé");
             }
         }
@@ -118,7 +107,7 @@ export default function EditResourcePage ({ client }: Props) {
                         <input className={EditResourceStyles.addNameResource} placeholder={"Titre de la ressource"} value={title} onChange={onChangeTitleEvent}></input>
                         <div className={EditResourceStyles.categorieContainer}>
                         {
-
+                            // TODO: Add categories
                         }    
                         </div>
                         <InputTextDescription defaultValue={description} onChangeText={(text) => setDescription(text)}/>

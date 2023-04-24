@@ -54,7 +54,7 @@ export default function LoginPage ({ client }: Props) {
             const token = localStorage.getItem('token');
             const refresh_token = localStorage.getItem('refresh_token');
 
-            if (token != null && refresh_token != null) {
+            if (token !== null && refresh_token !== null) {
 
                 // Set token and refresh token
                 client.auth.token = token;
