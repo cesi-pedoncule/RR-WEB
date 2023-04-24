@@ -1,17 +1,13 @@
 .container {
     display: grid;
     width: 500px;
-    height: 250px;
+    height: auto;
     background-color: #eaf0f0;
     border-radius: 20px;
     margin-bottom: 30px;
     justify-content: space-between;
     box-shadow: 0px 5px 10px -5px #363e3e;
     overflow: hidden;
-}
-.container:hover {
-    background-color: #cfd4d4;
-    transition: 0.2s;
 }
 .cardUser {
     color: #363e3e;
@@ -99,7 +95,7 @@
 .categoriesContainer {
     display: flex;
     flex-direction: row;
-    overflow: scroll;
+    overflow: auto;
     margin-left: 20px;
     margin-right: 20px;  
 }
