@@ -23,7 +23,6 @@ export default function ResourceCardWithUser({ resourceData, styleContainer }: P
     const onClickDetailResource = () => {
         navigate(`/resources/${resourceData.id}`);
     }
-    console.log('1')
 
     return (
         <div className={styleContainer ? styleContainer : ResourceCardStyles.container}>

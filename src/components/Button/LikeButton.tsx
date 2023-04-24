@@ -13,9 +13,7 @@ export default function LikeButton ({ resource, setResource }: Props) {
     const onPress = async () => {
         if (resource.client.auth.me) { 
             const newResource = resource.isLiked ? await resource.unlike() : await resource.like();
-            console.log(newResource)
 			newResource && setResource(newResource);
-			alert("Vous avez aimé une ressource")
         } else {
             alert("Vous devez être connecté pour aimer une ressource");
         }
