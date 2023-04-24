@@ -1,5 +1,5 @@
 import { Client } from 'rr-apilib';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { TailSpin } from 'react-loader-spinner';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
@@ -24,11 +24,12 @@ import AdminCategoryPage from './pages/Admin/Categories/AdminCategoryPage';
 import AdminEditUserPage from './pages/Admin/AdminEditUserPage';
 import AdminCategoryCreatePage from './pages/Admin/Categories/AdminCategoryCreatePage';
 
-const client = new Client();
-
 export default function App() {
+    
     const navigate = useNavigate();
+    
     const [ isLoad, setIsLoad ] = useState<boolean>(false);
+    const client = useMemo(() => new Client(), []);
 
     const loadClient = async () => {
         await client.fetch();
@@ -49,7 +50,9 @@ export default function App() {
         setIsLoad(true);
     }
 
-    loadClient();
+    useEffect(() => {
+        loadClient()
+    }, []);
 
     if (!isLoad) {
         return (
