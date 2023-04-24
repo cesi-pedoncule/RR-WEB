@@ -20,10 +20,7 @@ export default function CreateResourceScreen({ client }: Props) {
     const [ newResource, setNewResource ] = useState<ResourceBuilder>(new ResourceBuilder());
 
     const onClickSend = async () => {
-        try {
-            
-            // newResource.setIsPublic(true);
-            
+        try { 
             if(user) {
                 await user.resources.create(newResource);
             }

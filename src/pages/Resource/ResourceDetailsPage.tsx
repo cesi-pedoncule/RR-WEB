@@ -24,7 +24,7 @@ export default function ResourceDetailPage ({ client }: Props) {
             setResource(client.resources.cache.get(id));
             setComments(Array.from(resource ? resource.comments.sort().values() : []))
         }
-    })
+    }, [id, client.resources.cache, resource])
 
     if(!resource) {
         navigate('/404');
