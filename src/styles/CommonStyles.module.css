@@ -76,16 +76,6 @@
     margin-bottom: 20px;
     margin-top: 20px;
 }
-.returnBtnInFlatList {
-    align-items: center;
-    justify-content: center;
-    background-color: #f6fafb;
-    width: 40px;
-    height: 40px;
-    padding: 5px;
-    border-radius: 7px;
-    transition: 0.2;
-}
 .buttonsEditionResource {
     align-items: center;
     justify-content: center;
@@ -96,4 +86,30 @@
     transition: 0.2;
     margin-top: 15px;
     margin-bottom: 15px;
+}
+.button {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    transition: 0.2s;
+    cursor: pointer;
+    border-radius: 15px;
+    border: none;
+    background-color: #03989E;
+    outline: none;
+    text-decoration: none;
+    color: #f7fbfc;
+    margin-top: 30px;
+}
+.button:hover {
+    transform: translateY(-5px);
+    box-shadow : 0px 10px 50px -10px #CCCCCC;
+}
+.containerVertical {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
 }

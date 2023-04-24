@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Client } from "rr-apilib";
-
 import CommonStyles from "../../styles/CommonStyles.module.css";
-import SearchBar from "../../components/Input/SearchBar";
 import { Link, useNavigate } from "react-router-dom";
 
 interface Props {
@@ -10,10 +8,7 @@ interface Props {
 }
 
 export default function AdminUsersPage ({ client }: Props) {
-
     const navigate = useNavigate();
-
-    const [ search, setSearch ] = useState('');
 
     useEffect(() => {
         if(client.auth.me === null || !client.auth.me.isModerator) {
@@ -24,24 +19,16 @@ export default function AdminUsersPage ({ client }: Props) {
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
-                
                 <h1 className={CommonStyles.title}>Administration</h1>
-                
-                <SearchBar value={search} onChangeSearch={(text) => setSearch(text)} />
-                
-                <div className={CommonStyles.itemsContainer}>
+                <div className={CommonStyles.containerVertical}>
                     {
                         client.auth.me?.isSuperAdmin && (
-                            <div>
-                                <Link to="/admin/users">Utilisateurs</Link>
-                            </div>
+                            <Link to="/admin/users" className={CommonStyles.button}>Utilisateurs</Link>
                         )
                     }
                     {
                         client.auth.me?.isModerator && (
-                            <div>
-                                <Link to="/admin/validations">Validation de ressources</Link>
-                            </div>
+                            <Link to="/admin/validations" className={CommonStyles.button}>Validation de ressources</Link>
                         )
                     }
                 </div>
