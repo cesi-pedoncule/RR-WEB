@@ -18,6 +18,8 @@ import NotFoundPage from './pages/NotFoundPage';
 import WithNavbar from './components/WithNavbar';
 import { useState } from 'react';
 import { TailSpin } from 'react-loader-spinner';
+import AdminCategoriesPage from './pages/Admin/Categories/AdminCategoriesPage';
+import AdminCategoryPage from './pages/Admin/Categories/AdminCategoryPage';
 
 const client = new Client();
 
@@ -98,6 +100,10 @@ export default function App() {
                 <Route path="/admin/users/:id" element={<AdminUserPage client={client} />} />
                 <Route path="/admin/validations/" element={<AdminValidationsPage client={client} />} />
                 <Route path="/admin/validations/:id" element={<AdminValidationPage client={client} />} />
+                
+                {/* categories */}
+                <Route path="/admin/categories" element={<AdminCategoriesPage client={client} />} />
+                <Route path="/admin/categories/:id" element={<AdminCategoryPage client={client} />} />
                 
                 <Route path="/*" element={<NotFoundPage />} />
             </Routes>
