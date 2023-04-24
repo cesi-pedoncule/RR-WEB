@@ -9,6 +9,7 @@
     flex-direction: column;
 }
 .addNameResource {
+    box-shadow: 0px 5px 10px -5px #363e3e;
     color: #363e3e;
     background-color: #eaf0f0;
     border: 1px solid #eaf0f0;
@@ -19,21 +20,23 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
-.addNameResource:hover {
-    border: 1px solid #363e3e;
-}
-.addNameResource:focus {
-    border: 1px solid #363e3e;
-}
 .sendButton {
-    width: 140px;
-    height: 45px;
-    justify-content: center;
-    background-color: #03989E;
-    color: #f7fbfc;
+    box-shadow: 0px 5px 10px -5px #363e3e;
     margin-top: 20px;
+    margin-left: 15px;
+    padding: 20px;
+    transition: 0.2s;
+    cursor: pointer;
     border-radius: 15px;
-    transition: 0.2;
+    border: none;
+    background-color: #03989E;
+    outline: none;
+    text-decoration: none;
+    color: #f7fbfc;
+}
+.sendButton:hover {
+    transform: translateY(-5px);
+    box-shadow : 0px 10px 50px -10px #CCCCCC;
 }
 .categorieList {
     margin-right: 10px;

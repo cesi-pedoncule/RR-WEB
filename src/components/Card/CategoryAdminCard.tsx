@@ -16,7 +16,7 @@ export default function CategoryAdminCard({ category }: Props) {
     }
     
     return (
-        <div className={CategoryCardStyles.cardAdminBackground} onClick={handleOnPress}>
+        <div className={CategoryCardStyles.cardBackground} onClick={handleOnPress}>
             <h2 className={CategoryCardStyles.cardAdminTitle}>{category.name}</h2>  
             <p className={CategoryCardStyles.cardAdminText}>{`${category.resources.cache.size.toString()} Ressource(s)`}</p>
         </div>

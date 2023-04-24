@@ -33,6 +33,7 @@
     align-items: center;
 }
 .title {
+    width: 100%;
     font-size: 40px;
     font-weight: 800px;
     color: #363e3e;
@@ -101,6 +102,7 @@
     margin-bottom: 15px;
 }
 .button {
+    box-shadow: 0px 5px 10px -5px #363e3e;
     text-align: center;
     justify-content: center;
     align-items: center;

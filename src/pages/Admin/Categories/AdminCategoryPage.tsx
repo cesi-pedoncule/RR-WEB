@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react'
 import { Category, CategoryBuilder, Client } from "rr-apilib";
 import { useNavigate, useParams } from 'react-router-dom';
 import Switch from "react-switch";
-
 import CommonStyles from "../../../styles/CommonStyles.module.css";
 import CategoryCardStyles from "../../../styles/Components/Card/CategoryCardStyles.module.css";
 import EditButton from '../../../components/Button/EditButton';
 import DeleteButton from '../../../components/Button/DeleteButton';
+import AdminCategoryPageStyles from "../../../styles/Page/Admin/Category/AdminCategoryPageStyles.module.css";
 
 interface Props {
     client: Client;
@@ -40,9 +40,9 @@ export default function AdminCategoryPage({ client }: Props) {
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
 
-                <div className={CategoryCardStyles.container}>
+                <div className={AdminCategoryPageStyles.container}>
                     <input
-                        className={CategoryCardStyles.nameInput}
+                        className={AdminCategoryPageStyles.setNameCategory}
                         type="text"
                         value={data.name}
                         onChange={(v) => {
@@ -51,7 +51,7 @@ export default function AdminCategoryPage({ client }: Props) {
                         }}
                     />
 
-                    <div className={CategoryCardStyles.switchInput}>
+                    <div className={AdminCategoryPageStyles.switchContainer}>
                         <Switch
                             onChange={() => {
                                 data.setIsVisible(!data.isVisible);
@@ -62,20 +62,22 @@ export default function AdminCategoryPage({ client }: Props) {
                         <p>{`Visible / Invisible (Cette catégorie contient ${category.resources.cache.size} ressources)`}</p>
                     </div>
 
-                    <div className={CategoryCardStyles.cardAdminButtonContainer}>
-                        <EditButton 
-                            callBack={async () => {
+                    <div className={AdminCategoryPageStyles.validationsContainer}>
+                        <button
+                            onClick={async () => {
                                 category.name = data.name;
                                 category.isVisible = data.isVisible;
                                 await client.categories.edit(category);
                             }}
-                        />
-                        <DeleteButton
-                            callBack={async () => {
+                            className={CommonStyles.button}
+                        >Modifier</button>
+                        <button
+                            onClick={async () => {
                                 await client.categories.delete(category);
                                 navigate('/admin/categories');
                             }}
-                        />
+                            className={CommonStyles.button}
+                        >Supprimer</button>
                     </div>
                 </div>
             </div>

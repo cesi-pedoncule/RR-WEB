@@ -1,7 +1,7 @@
 .container {
     display: grid;
     width: 500px;
-    height: auto;
+    height: 250px;
     background-color: #eaf0f0;
     border-radius: 20px;
     margin-bottom: 30px;
