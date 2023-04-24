@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Client } from "rr-apilib";
 import { useNavigate } from "react-router";
 import CommonStyles from "../styles/CommonStyles.module.css";
+import ShareResourceStyles from "../styles/Page/ShareResourcePageStyles.module.css";
 import SearchBar from "../components/Input/SearchBar";
 import ResourceCardWithoutUser from "../components/Card/ResourceCardWithoutUser";
 import ErrorModal from "../components/Modal/ErrorModal";
@@ -33,8 +34,10 @@ export default function ShareResourcePage ({ client }: Props) {
                     
                     <SearchBar value={search} onChangeSearch={(text) => setSearch(text)} />
 
-                    <button onClick={() => navigate('/resources/create')}>Créer</button>
-                    
+                    <div className={ShareResourceStyles.buttonContainer}>
+                        <button className={ShareResourceStyles.button} onClick={() => navigate('/resources/create')}>Créer une nouvelle ressource</button>
+                    </div>
+
                     <div className={CommonStyles.itemsContainer}>
                         {
                             client.auth.me.resources.cache.map((resource, id) => {
