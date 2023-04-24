@@ -2,9 +2,9 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Category, Client } from "rr-apilib";
 
-import CommonStyles from "../styles/CommonStyles.module.css";
-import SearchBar from "../components/Input/SearchBar";
-import ResourceCardWithUser from "../components/Card/ResourceCardWithUser";
+import CommonStyles from "../../styles/CommonStyles.module.css";
+import SearchBar from "../../components/Input/SearchBar";
+import ResourceCardWithUser from "../../components/Card/ResourceCardWithUser";
 
 interface Props {
     client: Client;
@@ -21,7 +21,7 @@ export default function CategoryDetailsPage ({ client }: Props) {
         if(id) {
             setCategory(client.categories.cache.get(id));
         }
-    }, [id]);
+    }, [id, client.categories.cache]);
 
     if(!category) {
         return (
@@ -41,6 +41,8 @@ export default function CategoryDetailsPage ({ client }: Props) {
                                 return (
                                     <ResourceCardWithUser key={id} resource={resource} />
                                 )
+                            } else {
+                                return null;
                             }
                         })
                     }

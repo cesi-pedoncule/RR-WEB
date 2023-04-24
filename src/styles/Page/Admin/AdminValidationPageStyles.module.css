@@ -4,14 +4,6 @@
     height: 100%;
     margin-top: 3%;
 }
-.resourceAttachmentContainer {
-    width: 276px;
-    height: 55px;
-    background-color: #eaf0f0;
-    border-bottom: 2px;
-    border-color: grey;
-    border-radius: 15px;
-}
 .cardContainer {
     width: 98%;
     height: 98%;
@@ -30,31 +22,30 @@
     margin-bottom: 20px;
     box-shadow: 0px 5px 10px -5px #363e3e;
 }
-.lineLikeAndUser {
-    margin-top: 10px;
-    align-items: center;
-    justify-content: space-between;
-    display:flex;
-    flex-direction: row;
-}
-.commentsContainer {
+.btnFile{
     justify-content: center;
     width: 25%;
     margin-top: 0;
     margin-left: 5%;
 }
-.commentTitle {
+.validationTitle {
     color: #363e3e;
     font-weight: bold;
     font-size: 25px;
     margin-bottom: 10px;
     text-decoration-line: underline;
+    width: 100%;
 }
-.btnFile {
-    display: grid;
+.validationsContainer {
+    display: flex;
+    flex-direction: row;
     position: absolute;
-    align-items: center;
-    justify-content: center;
-    margin-top: 600px;
-    padding-bottom: 100px;
+    margin-top: 600px; 
+    width: 50%;
+}
+.validationsContainer2 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-bottom: 100px;  
 }

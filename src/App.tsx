@@ -1,28 +1,46 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { Client } from 'rr-apilib';
-import CategoriesPage from './pages/CategoriesPage';
+import CategoriesPage from './pages/Category/CategoriesPage';
 import LoginPage from './pages/LoginPage';
-import ResourcesPage from './pages/ResourcesPage';
+import ResourcesPage from './pages/Resource/ResourcesPage';
 import ShareResourcesPage from './pages/ShareResourcesPage';
-import ResourceDetailPage from './pages/ResourceDetailsPage';
-import CreateResourcePage from './pages/CreateResourcePage';
-import EditResourcePage from './pages/EditResourcePage';
-import CategoryDetailPage from './pages/CategoryDetailsPage';
+import ResourceDetailPage from './pages/Resource/ResourceDetailsPage';
+import CreateResourcePage from './pages/Resource/CreateResourcePage';
+import EditResourcePage from './pages/Resource/EditResourcePage';
+import CategoryDetailPage from './pages/Category/CategoryDetailsPage';
 import AdminUsersPage from './pages/Admin/AdminUsersPage';
+import AdminMenuPage from './pages/Admin/AdminMenuPage';
+import AdminUserPage from './pages/Admin/AdminUserPage';
+import AdminValidationsPage from './pages/Admin/AdminValidationsPage';
+import AdminValidationPage from './pages/Admin/AdminValidationPage';
 import ProfilePage from './pages/ProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 import WithNavbar from './components/WithNavbar';
 import { useState } from 'react';
 import { TailSpin } from 'react-loader-spinner';
-import AdminUserPage from './pages/Admin/AdminUserPage';
 
 const client = new Client();
 
 export default function App() {
+    const navigate = useNavigate();
     const [ isLoad, setIsLoad ] = useState<boolean>(false);
 
     const loadClient = async () => {
         await client.fetch();
+
+        const refresh_token = localStorage.getItem('refresh_token');
+
+        if (refresh_token !== null) {
+            client.auth.refresh_token = refresh_token;
+
+            try {
+                await client.auth.refresh();
+            } catch (error) {
+                localStorage.removeItem('refresh_token');
+                navigate('/');                
+            }
+        }
+
         setIsLoad(true);
     }
 
@@ -75,8 +93,11 @@ export default function App() {
                 <Route path="/categories/:id" element={<CategoryDetailPage client={client} />} />
 
                 {/* Admin */}
+                <Route path="/admin" element={<AdminMenuPage client={client} />} />
                 <Route path="/admin/users" element={<AdminUsersPage client={client} />} />
                 <Route path="/admin/users/:id" element={<AdminUserPage client={client} />} />
+                <Route path="/admin/validations/" element={<AdminValidationsPage client={client} />} />
+                <Route path="/admin/validations/:id" element={<AdminValidationPage client={client} />} />
                 
                 <Route path="/*" element={<NotFoundPage />} />
             </Routes>

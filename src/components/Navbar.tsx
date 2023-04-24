@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { BsBoxArrowInRight } from "react-icons/bs"
 import navBar from "../styles/Components/NavBarStyles.module.css";
-import { Client } from "rr-apilib";
+import { APIUserRole, Client } from "rr-apilib";
 
 interface Props {
     client: Client;
@@ -38,6 +38,13 @@ export default function Navbar({ client }: Props) {
                     <img className={navBar.logo} src="../Profile.png" alt="Profil"/>
                     <p>Profil</p>
                 </Link>
+                {
+                    client.auth.me && client.auth.me.roles.includes(APIUserRole.Admin) && 
+                        <Link className={navBar.link} to={"/admin"}>
+                            <img className={navBar.logo} src="../Profile.png" alt="Profil"/>
+                            <p>Admin</p>
+                        </Link>
+                }
             </div>
             {
                 client.auth.me !== null &&

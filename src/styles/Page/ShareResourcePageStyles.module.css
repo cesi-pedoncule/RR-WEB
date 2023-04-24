@@ -20,10 +20,23 @@
     height: 50px;
     width: 150px;
 }
-.buttonsContainer {
-    position : absolute;
+.button {
+    text-align: center;
     justify-content: center;
     align-items: center;
-    bottom: 100px;
-    width: 100%;
+    padding: 20px;
+    width: 20%;
+    transition: 0.2s;
+    cursor: pointer;
+    border-radius: 15px;
+    border: none;
+    background-color: #03989E;
+    outline: none;
+    text-decoration: none;
+    color: #f7fbfc;
+    margin-top: 30px;
+}
+.button:hover {
+    transform: translateY(-5px);
+    box-shadow : 0px 10px 50px -10px #CCCCCC;
 }

@@ -54,7 +54,7 @@ export default function LoginPage ({ client }: Props) {
             const token = localStorage.getItem('token');
             const refresh_token = localStorage.getItem('refresh_token');
 
-            if (token != null && refresh_token != null) {
+            if (token !== null && refresh_token !== null) {
 
                 // Set token and refresh token
                 client.auth.token = token;
@@ -102,7 +102,7 @@ export default function LoginPage ({ client }: Props) {
                                     <input className={LoginStyles.input} type="password" id="mdp" name="mdp" />
                                 </div>
                                 <div className={LoginStyles.control}>
-                                    <input className={LoginStyles.button} type="submit" id="login" name="login" />
+                                    <input className={CommonStyles.button} type="submit" id="login" name="login" />
                                 </div>
                             </form>
                         </div>
@@ -132,7 +132,7 @@ export default function LoginPage ({ client }: Props) {
                                     <input className={LoginStyles.input} type="password" id="mdp-confirm-register" name="mdp-confirm-register" required/>
                                 </div>
                                 <div className={LoginStyles.control}>
-                                    <input className={LoginStyles.button} type="submit" id="login-register" name="login-register" required/>
+                                    <input className={CommonStyles.button} type="submit" id="login-register" name="login-register" required/>
                                 </div>
                             </form>
                             

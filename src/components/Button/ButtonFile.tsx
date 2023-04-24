@@ -1,16 +1,15 @@
-import React from 'react'
+import { ChangeEvent } from 'react';
 import ButtonFileStyles from '../../styles/Components/Button/ButtonFileStyles.module.css'
 import { BsArrowDown } from "react-icons/bs"
 
 interface Props {
-    text: string;
-    callBack: () => void;
+    callBack: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function ButtonFile({ text, callBack } : Props) {
+export default function ButtonFile({ callBack } : Props) {
     return (
-        <div className={ButtonFileStyles.buttonFileContainer} onClick={callBack}>
-            <p className={ButtonFileStyles.text}>{text}</p>
+        <div className={ButtonFileStyles.buttonFileContainer}>
+            <input type="file" multiple className={ButtonFileStyles.text} onChange={callBack}/>
             <BsArrowDown />
         </div>
     )
