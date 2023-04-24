@@ -90,9 +90,10 @@ export default function CreateResourceScreen({ client }: Props) {
                                     newResource.setIsPublic(!newResource.isPublic);
                                     setNewResource(new ResourceBuilder(newResource));
                                 }}
+                                onColor='#03989E'
                                 checked={newResource.isPublic}
                             />
-                            <p> Privé / Publique </p>
+                            <p className={CommonStyles.switchText}> Privé / Publique </p>
                         </div>
                         <div className={CreateResourceStyles.sendButtonContainer}>
                             <button

@@ -27,8 +27,8 @@ export default function ProfilePage ({ client }: Props) {
             {
                 me && 
                 <div className={CommonStyles.content}>
+                    <h1 className={CommonStyles.title}>{`${me.firstname} ${me.name}`}</h1>
                     <div className={ProfileStyles.container}>
-                        <h3 className={ProfileStyles.profileTitle}>{`${me.firstname} ${me.name}`}</h3>
                         <div className={ProfileStyles.profileContainer}>
                             <p className={ProfileStyles.profileSubTitle}>{me.resources.cache.size} enregistrement(s)</p>
                             <p className={ProfileStyles.profileTitle}>Statistiques</p>

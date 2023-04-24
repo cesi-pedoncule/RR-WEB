@@ -144,8 +144,8 @@ export default function EditResourcePage ({ client }: Props) {
                             )
                         }
                         <div className={EditResourceStyles.switchContainer}>
-                            <Switch onChange={toggleSwitch} checked={isPublic}/>
-                            <p> Privé / Publique </p>
+                            <Switch onChange={toggleSwitch} checked={isPublic} onColor='#03989E'/>
+                            <p className={CommonStyles.switchText}> Privé / Publique </p>
                         </div>
                         <button onClick={onClickSend} className={EditResourceStyles.sendButton}>Modifier</button>
                     </div>

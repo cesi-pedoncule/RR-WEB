@@ -107,6 +107,8 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
     width: 100%;
     transition: 0.2s;
     cursor: pointer;
@@ -121,7 +123,7 @@
 }
 .button:hover {
     transform: translateY(-5px);
-    box-shadow : 0px 10px 50px -10px #CCCCCC;
+    box-shadow: 0px 5px 10px -5px #363e3e;
 }
 .buttonContainer {
     margin-top: 20px;
@@ -169,4 +171,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+.switchText {
+    color: #363e3e;
+    margin-left: 10px;
 }

@@ -57,9 +57,10 @@ export default function AdminCategoryPage({ client }: Props) {
                                 data.setIsVisible(!data.isVisible);
                                 setData(new CategoryBuilder(data));
                             }}
+                            onColor='#03989E'
                             checked={data.isVisible}
                         />
-                        <p>{`Visible / Invisible (Cette catégorie contient ${category.resources.cache.size} ressources)`}</p>
+                        <p className={CommonStyles.switchText}>{`Visible / Invisible (Cette catégorie contient ${category.resources.cache.size} ressources)`}</p>
                     </div>
 
                     <div className={AdminCategoryPageStyles.validationsContainer}>

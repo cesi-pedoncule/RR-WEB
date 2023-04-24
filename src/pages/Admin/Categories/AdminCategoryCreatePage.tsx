@@ -35,9 +35,10 @@ export default function AdminCategoryCreatePage({ client }: Props) {
                                 data.setIsVisible(!data.isVisible);
                                 setData(new CategoryBuilder(data));
                             }}
+                            onColor='#03989E'
                             checked={data.isVisible}
                         />
-                        <p>{`Visible / Invisible`}</p>
+                        <p className={CommonStyles.switchText}>Visible / Invisible</p>
                     </div>
                     <div className={AdminCategoryCreatePageStyles.sendButtonContainer}>
                         <button
@@ -46,7 +47,9 @@ export default function AdminCategoryCreatePage({ client }: Props) {
                                 navigate(`/admin/categories/${cat.id}`);
                             }}
                             className={AdminCategoryCreatePageStyles.sendButton}
-                        >Enregistrer</button>
+                        >
+                            Enregistrer
+                        </button>
                     </div>
                 </div>
             </div>

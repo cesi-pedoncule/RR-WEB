@@ -44,11 +44,9 @@ export default function AdminUserPage ({ client }: Props) {
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
                 
-                <div className={CommonStyles.horizontalContainer} onClick={handleClickEditUser}>
-                    <h3 className={CommonStyles.title}>{user.name} {user.firstname}</h3>
-                    <div className={AdminUserPageStyles.editIcon}>
-                        <BsPencilSquare color='#363e3e' />
-                    </div>
+                <div className={AdminUserPageStyles.horizontalContainer} onClick={handleClickEditUser}>
+                    <h3 className={AdminUserPageStyles.title}>{user.name} {user.firstname}</h3>
+                    <BsPencilSquare  className={AdminUserPageStyles.editIcon} color='#363e3e' size={34} />
                 </div>
                 
                 <SearchBar value={search} onChangeSearch={(text) => setSearch(text)} />

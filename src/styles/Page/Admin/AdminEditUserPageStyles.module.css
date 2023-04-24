@@ -9,6 +9,7 @@
     flex-direction: column;
 }
 .addName {
+    box-shadow: 0px 5px 10px -5px #363e3e;
     color: #363e3e;
     background-color: #eaf0f0;
     border: 1px solid #eaf0f0;
@@ -20,20 +21,32 @@
     padding-bottom: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
+    outline-style: none;
+    border: 2px solid #eaf0f0;
 }
 .addName:hover {
-    border: 1px solid #363e3e;
+    border: 2px solid #03989E;
 }
 .addName:focus {
-    border: 1px solid #363e3e;
+    border: 2px solid #03989E;
 }
 .submitButton {
-    width: 140px;
-    height: 45px;
-    justify-content: center;
-    background-color: #03989E;
-    color: #f7fbfc;
+    box-shadow: 0px 5px 10px -5px #363e3e;
     margin-top: 20px;
+    margin-left: 15px;
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    transition: 0.2s;
+    cursor: pointer;
     border-radius: 15px;
-    transition: 0.2;
+    border: none;
+    background-color: #03989E;
+    outline: none;
+    text-decoration: none;
+    color: #f7fbfc;
+}
+.submitButton:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 10px -5px #363e3e;
 }

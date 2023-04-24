@@ -12,5 +12,12 @@
     resize: none;
     overflow: auto;
     border: none;
-    border: 1px solid #eaf0f0;
+    border: 2px solid #eaf0f0;
+    outline-style: none;
+}
+.container:hover {
+    border: 2px solid #03989E;
+}
+.container:focus {
+    border: 2px solid #03989E;
 }
