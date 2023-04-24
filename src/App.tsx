@@ -1,5 +1,8 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
 import { Client } from 'rr-apilib';
+import { useState } from 'react';
+import { TailSpin } from 'react-loader-spinner';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+
 import CategoriesPage from './pages/Category/CategoriesPage';
 import LoginPage from './pages/LoginPage';
 import ResourcesPage from './pages/Resource/ResourcesPage';
@@ -16,8 +19,8 @@ import AdminValidationPage from './pages/Admin/AdminValidationPage';
 import ProfilePage from './pages/ProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 import WithNavbar from './components/WithNavbar';
-import { useState } from 'react';
-import { TailSpin } from 'react-loader-spinner';
+import AdminCategoriesPage from './pages/Admin/Categories/AdminCategoriesPage';
+import AdminCategoryPage from './pages/Admin/Categories/AdminCategoryPage';
 import AdminEditUserPage from './pages/Admin/AdminEditUserPage';
 
 const client = new Client();
@@ -100,6 +103,10 @@ export default function App() {
                 <Route path="/admin/users/:id/edit" element={<AdminEditUserPage client={client} />} />
                 <Route path="/admin/validations/" element={<AdminValidationsPage client={client} />} />
                 <Route path="/admin/validations/:id" element={<AdminValidationPage client={client} />} />
+                
+                {/* categories */}
+                <Route path="/admin/categories" element={<AdminCategoriesPage client={client} />} />
+                <Route path="/admin/categories/:id" element={<AdminCategoryPage client={client} />} />
                 
                 <Route path="/*" element={<NotFoundPage />} />
             </Routes>
