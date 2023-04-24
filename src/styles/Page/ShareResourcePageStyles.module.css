@@ -21,6 +21,7 @@
     width: 150px;
 }
 .button {
+    box-shadow: 0px 5px 10px -5px #363e3e;
     text-align: center;
     justify-content: center;
     align-items: center;

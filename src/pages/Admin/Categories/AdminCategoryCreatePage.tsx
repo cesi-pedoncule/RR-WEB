@@ -1,11 +1,9 @@
 import { useState } from 'react'
 import { CategoryBuilder, Client } from "rr-apilib";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Switch from "react-switch";
-
 import CommonStyles from "../../../styles/CommonStyles.module.css";
-import CategoryCardStyles from "../../../styles/Components/Card/CategoryCardStyles.module.css";
-import EditButton from '../../../components/Button/EditButton';
+import AdminCategoryCreatePageStyles from "../../../styles/Page/Admin/Category/AdminCategoryCreatePageStyles.module.css";
 
 interface Props {
     client: Client;
@@ -19,19 +17,19 @@ export default function AdminCategoryCreatePage({ client }: Props) {
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
-
-                <div className={CategoryCardStyles.container}>
+                <div className={AdminCategoryCreatePageStyles.container}>
                     <input
-                        className={CategoryCardStyles.nameInput}
+                        className={AdminCategoryCreatePageStyles.addNameCategory}
                         type="text"
                         value={data.name}
+                        placeholder='Titre de la catégorie'
                         onChange={(v) => {
                             data.setName(v.target.value);
                             setData(new CategoryBuilder(data));
                         }}
                     />
 
-                    <div className={CategoryCardStyles.switchInput}>
+                    <div className={AdminCategoryCreatePageStyles.switchContainer}>
                         <Switch
                             onChange={() => {
                                 data.setIsVisible(!data.isVisible);
@@ -41,14 +39,14 @@ export default function AdminCategoryCreatePage({ client }: Props) {
                         />
                         <p>{`Visible / Invisible`}</p>
                     </div>
-
-                    <div className={CategoryCardStyles.cardAdminButtonContainer}>
-                        <EditButton 
-                            callBack={async () => {
+                    <div className={AdminCategoryCreatePageStyles.sendButtonContainer}>
+                        <button
+                            onClick={async () => {
                                 const cat = await client.categories.create(data);
                                 navigate(`/admin/categories/${cat.id}`);
                             }}
-                        />
+                            className={AdminCategoryCreatePageStyles.sendButton}
+                        >Enregistrer</button>
                     </div>
                 </div>
             </div>
