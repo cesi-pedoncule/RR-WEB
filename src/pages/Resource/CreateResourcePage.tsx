@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Switch from "react-switch";
-import { Client, ResourceBuilder } from 'rr-apilib';
+import { AttachmentBuilder, Client, ResourceBuilder } from 'rr-apilib';
 
 import CommonStyles from '../../styles/CommonStyles.module.css';
 import CreateResourceStyles from '../../styles/Page/CreateResourcePageStyles.module.css';
@@ -8,6 +8,8 @@ import EditResourceStyles from '../../styles/Page/EditResourcePageStyles.module.
 import InputTextDescription from '../../components/Input/InputTextDescription';
 import ButtonFile from '../../components/Button/ButtonFile';
 import SelectCategories from '../../components/Input/SelectCategories';
+import AttachmentCard from '../../components/Card/AttachmentCard';
+import { useNavigate } from 'react-router';
 
 interface Props {
     client: Client;
@@ -15,6 +17,7 @@ interface Props {
 
 export default function CreateResourceScreen({ client }: Props) {
     
+    const navigate = useNavigate();
     const user = client.auth.me;
 
     const [ newResource, setNewResource ] = useState<ResourceBuilder>(new ResourceBuilder());
@@ -22,7 +25,8 @@ export default function CreateResourceScreen({ client }: Props) {
     const onClickSend = async () => {
         try { 
             if(user) {
-                await user.resources.create(newResource);
+                const res = await user.resources.create(newResource);
+                navigate(`/resources/${res.id}/edit`);
             }
 
         } catch(error) {
@@ -30,7 +34,19 @@ export default function CreateResourceScreen({ client }: Props) {
         }
     }
 
-    const onClickAddFile = () => {}
+    const onClickAddFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if(e.target.files) {
+            const attachs: AttachmentBuilder[] = [];
+            for(const f of Array.from(e.target.files)) {
+                const attach = new AttachmentBuilder();
+                attach.setFile(f);
+                attachs.push(attach);
+            }
+
+            newResource.setAttachments(attachs);
+            setNewResource(new ResourceBuilder(newResource));
+        }
+    }
 
     return (
         <div className={CommonStyles.container}>
@@ -57,18 +73,10 @@ export default function CreateResourceScreen({ client }: Props) {
                         <ButtonFile callBack={onClickAddFile}/>
                         {
                             newResource.attachments.map((attachment, index) => 
-                                <div key={index}>
-                                    <h6>{attachment.file?.name}</h6>
-                                    <button
-                                        onClick={() => {
-                                            const attachs = newResource.attachments;
-                                            const index = attachs.findIndex(a => a.file === attachment.file);
-                                            attachs.splice(index, 1);
-                                            newResource.setAttachments(attachs);
-                                            setNewResource(new ResourceBuilder(newResource));
-                                        }}
-                                    >Delete</button>
-                                </div>
+                                <AttachmentCard key={index} attachment={attachment} displayDeleteButton callback={() => {
+                                    newResource.attachments.splice(index, 1);
+                                    setNewResource(new ResourceBuilder(newResource));
+                                }} />
                             )
                         }
                         <div className={EditResourceStyles.switchContainer}>

@@ -9,7 +9,7 @@ interface Props {
 export default function ButtonFile({ callBack } : Props) {
     return (
         <div className={ButtonFileStyles.buttonFileContainer}>
-            <input type="file" className={ButtonFileStyles.text} onChange={callBack}/>
+            <input type="file" multiple className={ButtonFileStyles.text} onChange={callBack}/>
             <BsArrowDown />
         </div>
     )
