@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import CommonStyles from "../styles/CommonStyles.module.css";
 import ProfileStyles from "../styles/Page/ProfilePageStyles.module.css";
 import { useEffect } from "react";
+import StatDashBoard from "../components/StatDashBoard";
 
 interface Props {
     client: Client;
@@ -31,6 +32,7 @@ export default function ProfilePage ({ client }: Props) {
                         <div className={ProfileStyles.profileContainer}>
                             <p className={ProfileStyles.profileSubTitle}>{me.resources.cache.size} enregistrement(s)</p>
                             <p className={ProfileStyles.profileTitle}>Statistiques</p>
+                            <StatDashBoard user={me}/>
                         </div>
                     </div>
                 </div>
