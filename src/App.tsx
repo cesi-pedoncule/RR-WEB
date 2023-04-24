@@ -18,6 +18,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import WithNavbar from './components/WithNavbar';
 import { useState } from 'react';
 import { TailSpin } from 'react-loader-spinner';
+import AdminEditUserPage from './pages/Admin/AdminEditUserPage';
 
 const client = new Client();
 
@@ -96,6 +97,7 @@ export default function App() {
                 <Route path="/admin" element={<AdminMenuPage client={client} />} />
                 <Route path="/admin/users" element={<AdminUsersPage client={client} />} />
                 <Route path="/admin/users/:id" element={<AdminUserPage client={client} />} />
+                <Route path="/admin/users/:id/edit" element={<AdminEditUserPage client={client} />} />
                 <Route path="/admin/validations/" element={<AdminValidationsPage client={client} />} />
                 <Route path="/admin/validations/:id" element={<AdminValidationPage client={client} />} />
                 
