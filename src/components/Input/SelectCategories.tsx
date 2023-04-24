@@ -34,6 +34,21 @@ export default function SelectCategories({ client, value, onChange }: Props) {
             options={opt}
             className={SelectCategoriesStyles.select}
             placeholder="Sélectionner des catégories"
+            theme={(theme) => ({
+                ...theme,
+                borderRadius: 20,
+                colors: {
+                ...theme.colors,
+                  text: '#363e3e',
+                  primary25: '#03989E',
+                  primary: '#03989E',
+                  neutral0: '#eaf0f0',
+                  neutral10: '#cad5d5',
+                  neutral30: '#03989E',
+                  neutral40: '#363e3e',
+                  neutral80: '#363e3e',
+                },
+            })}
         />
     )
 }
