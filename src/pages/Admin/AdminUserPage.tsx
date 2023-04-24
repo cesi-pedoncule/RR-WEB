@@ -19,6 +19,10 @@ export default function AdminUserPage ({ client }: Props) {
     const [ search, setSearch ] = useState('');
 
     useEffect(() => {
+        if(client.auth.me === null || !client.auth.me.isSuperAdmin) {
+            navigate('/login');
+        }
+        
         if(id) {
             setUser(client.users.cache.get(id));
         }
