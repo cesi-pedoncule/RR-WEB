@@ -29,44 +29,7 @@ export default function StatDashBoard({ user } : Props) {
     }
 
     Array.from(user.resources.cache.values()).map((resource) => {
-        switch (resource.createdAt.getMonth()) {
-            case 1:
-                data[0]++;
-                break;
-            case 2:
-                data[1]++;
-                break;
-            case 3:
-                data[2]++;
-                break;
-            case 4:
-                data[3]++;
-                break;
-            case 5:
-                data[4]++;
-                break;
-            case 6:
-                data[5]++;
-                break;
-            case 7:
-                data[6]++;
-                break;
-            case 8:
-                data[7]++;
-                break;
-            case 9:
-                data[8]++;
-                break;
-            case 10:
-                data[9]++;
-                break;
-            case 11:
-                data[10]++;
-                break;
-            case 12:
-                data[11]++;
-                break;           
-        }
+        data[resource.createdAt.getMonth()-1]++;
     });
     
     const chartData = {
