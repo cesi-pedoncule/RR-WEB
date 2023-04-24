@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { APIUserRole, Client, User } from "rr-apilib";
+import { Client, User } from "rr-apilib";
 
 import CommonStyles from "../../styles/CommonStyles.module.css";
 import SearchBar from "../../components/Input/SearchBar";
@@ -19,7 +19,7 @@ export default function AdminUserPage ({ client }: Props) {
     const [ search, setSearch ] = useState('');
 
     useEffect(() => {
-        if(client.auth.me === null || !client.auth.me.roles.includes(APIUserRole.Admin)) {
+        if(client.auth.me === null || !client.auth.me.isSuperAdmin) {
             navigate('/login');
         }
         
