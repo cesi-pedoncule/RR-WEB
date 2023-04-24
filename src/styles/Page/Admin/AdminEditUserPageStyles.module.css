@@ -1,0 +1,39 @@
+.container {
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.addName {
+    color: #363e3e;
+    background-color: #eaf0f0;
+    border: 1px solid #eaf0f0;
+    text-align: center;
+    height: 40px;
+    width: 90%;
+    border-radius : 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.addName:hover {
+    border: 1px solid #363e3e;
+}
+.addName:focus {
+    border: 1px solid #363e3e;
+}
+.submitButton {
+    width: 140px;
+    height: 45px;
+    justify-content: center;
+    background-color: #03989E;
+    color: #f7fbfc;
+    margin-top: 20px;
+    border-radius: 15px;
+    transition: 0.2;
+}

@@ -2,8 +2,10 @@ import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { Client, User } from "rr-apilib";
 import CommonStyles from "../../styles/CommonStyles.module.css";
+import AdminUserPageStyles from "../../styles/Page/Admin/AdminUserPageStyles.module.css";
 import SearchBar from "../../components/Input/SearchBar";
 import ResourceCardWithUser from "../../components/Card/ResourceCardWithUser";
+import { BsPencilSquare } from "react-icons/bs";
 
 interface Props {
     client: Client;
@@ -16,6 +18,10 @@ export default function AdminUserPage ({ client }: Props) {
 
     const [ user, setUser ] = useState<User>();
     const [ search, setSearch ] = useState('');
+
+    const handleClickEditUser = () => {
+        navigate('/admin/users/' + id + '/edit');
+    }
 
     useEffect(() => {
         if(client.auth.me === null || !client.auth.me.isSuperAdmin) {
@@ -38,12 +44,12 @@ export default function AdminUserPage ({ client }: Props) {
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
                 
-                <h1 className={CommonStyles.title}>{user.name} {user.firstname}</h1>
+                <div className={CommonStyles.title} onClick={handleClickEditUser}>
+                    {user.name} {user.firstname}
+                    <BsPencilSquare className={AdminUserPageStyles.editIcon} color='#363e3e' />
+                </div>
                 
                 <SearchBar value={search} onChangeSearch={(text) => setSearch(text)} />
-                <div className={CommonStyles.buttonContainer}>
-                    <button className={CommonStyles.buttonEdit} onClick={() => navigate('/resources/create')}>Modifier l'utilisateur</button>
-                </div>
                 <h3 className={CommonStyles.title}>Resources</h3>
                 <div className={CommonStyles.itemsContainer2}>
                     {
