@@ -1,11 +1,11 @@
 import { Comment, Client, Resource } from "rr-apilib";
-import CommonStyles from "../styles/CommonStyles.module.css";
-import ResourceDetailsPageStyles from "../styles/Page/ResourceDetailsPageStyles.module.css";
+import CommonStyles from "../../styles/CommonStyles.module.css";
+import ResourceDetailsPageStyles from "../../styles/Page/ResourceDetailsPageStyles.module.css";
 import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
-import ResourceCardWithUser from "../components/Card/ResourceCardWithUser";
-import CommentCard from "../components/Card/CommentCard";
-import InputTextComment from "../components/Input/InputTextComment";
+import ResourceCardWithUser from "../../components/Card/ResourceCardWithUser";
+import CommentCard from "../../components/Card/CommentCard";
+import InputTextComment from "../../components/Input/InputTextComment";
 
 interface Props {
     client: Client;

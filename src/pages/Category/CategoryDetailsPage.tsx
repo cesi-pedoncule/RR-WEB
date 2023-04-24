@@ -2,9 +2,9 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Category, Client } from "rr-apilib";
 
-import CommonStyles from "../styles/CommonStyles.module.css";
-import SearchBar from "../components/Input/SearchBar";
-import ResourceCardWithUser from "../components/Card/ResourceCardWithUser";
+import CommonStyles from "../../styles/CommonStyles.module.css";
+import SearchBar from "../../components/Input/SearchBar";
+import ResourceCardWithUser from "../../components/Card/ResourceCardWithUser";
 
 interface Props {
     client: Client;

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Client } from "rr-apilib";
 
-import CommonStyles from "../styles/CommonStyles.module.css";
-import CategoryCard from "../components/Card/CategoryCard";
-import SearchBar from "../components/Input/SearchBar";
+import CommonStyles from "../../styles/CommonStyles.module.css";
+import CategoryCard from "../../components/Card/CategoryCard";
+import SearchBar from "../../components/Input/SearchBar";
 
 interface Props {
     client: Client;
