@@ -1,5 +1,4 @@
-import { Attachment, AttachmentBuilder } from "rr-apilib";
-import { AttachmentDataFile } from "rr-apilib/lib/builders/AttachmentBuilder";
+import { Attachment, AttachmentBuilder, AttachmentDataFile } from "rr-apilib";
 import ButtonFileStyles from '../../styles/Components/Button/ButtonFileStyles.module.css';
 import CommonStyles from "../../styles/CommonStyles.module.css";
 import { BsArrowDown } from "react-icons/bs";
