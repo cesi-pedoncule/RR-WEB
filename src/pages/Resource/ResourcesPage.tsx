@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { APIValidationState, Client } from "rr-apilib";
 
 import CommonStyles from "../../styles/CommonStyles.module.css";
@@ -12,7 +12,7 @@ interface Props {
 export default function ResourcesPage ({ client }: Props) {
 
     const [ search, setSearch ] = useState('');
-    
+
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
@@ -25,7 +25,7 @@ export default function ResourcesPage ({ client }: Props) {
                     {client.resources.cache.map((resource, id) => {
                         if(resource.title.toLowerCase().includes(search.toLowerCase()) && resource.validations.getLastValidationState()?.state === APIValidationState.Validated) {
                             return (
-                                <ResourceCardWithUser key={id} resource={resource} />
+                                <ResourceCardWithUser key={id} resourceData={resource} />
                             )
                         } else {
                             return null;

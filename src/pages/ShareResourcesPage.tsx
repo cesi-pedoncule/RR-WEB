@@ -43,7 +43,7 @@ export default function ShareResourcePage ({ client }: Props) {
                             client.auth.me.resources.cache.map((resource, id) => {
                                 if(resource.title.toLowerCase().includes(search.toLowerCase())) {
                                     return (
-                                        <ResourceCardWithoutUser key={id} resource={resource} setIsOpenModal={setIsOpenModal} />
+                                        <ResourceCardWithoutUser key={id} resourceData={resource} setIsOpenModal={setIsOpenModal} />
                                     )
                                 } else {
                                     return null;

@@ -38,7 +38,7 @@ export default function AdminValidationsPage ({ client }: Props) {
                             resource.title.toLowerCase().includes(search.toLowerCase())) 
                         {
                             return (
-                                <ResourceCardWithoutUser key={id} resource={resource} setIsOpenModal={setIsOpenModal} moderation={true} />
+                                <ResourceCardWithoutUser key={id} resourceData={resource} setIsOpenModal={setIsOpenModal} moderation={true} />
                             )
                         } else {
                             return null;
