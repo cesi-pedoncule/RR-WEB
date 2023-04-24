@@ -74,7 +74,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    width: 100%;
     bottom: 30px;
     left: 20px;
 }
@@ -85,12 +84,17 @@
     align-items: center;
     justify-content: space-between;
     width: 165px;
+    height: 100%;
     bottom: 23px;
     right: 0px;
 }
 .withoutUserContainer {
     height: 100%;
     margin-top: 20px;
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
 }
 .categoriesContainer {
     display: flex;
