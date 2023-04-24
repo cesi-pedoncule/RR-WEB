@@ -17,6 +17,7 @@
     "react-loader-spinner": "^5.3.4",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
+    "react-switch": "^7.0.0",
     "rr-apilib": "^0.8.2-alpha",
     "typescript": "^4.9.4",
     "web-vitals": "^2.1.4"
