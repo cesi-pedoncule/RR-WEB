@@ -8,6 +8,7 @@ import Switch from "react-switch";
 import InputTextDescription from "../../components/Input/InputTextDescription";
 import ButtonFile from "../../components/Button/ButtonFile";
 import MediaButton from "../../components/Button/MediaButton";
+import SelectCategories from "../../components/Input/SelectCategories";
 
 interface Props {
     client: Client;
@@ -107,7 +108,11 @@ export default function EditResourcePage ({ client }: Props) {
                         <input className={EditResourceStyles.addNameResource} placeholder={"Titre de la ressource"} value={title} onChange={onChangeTitleEvent}></input>
                         <div className={EditResourceStyles.categorieContainer}>
                         {
-                            // TODO: Add categories
+                            <SelectCategories
+                                client={client}
+                                value={categories}
+                                onChange={(v) => setCategories([ ...v ])}
+                            />
                         }    
                         </div>
                         <InputTextDescription defaultValue={description} onChangeText={(text) => setDescription(text)}/>
