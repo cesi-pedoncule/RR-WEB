@@ -27,6 +27,11 @@ export default function AdminUsersPage ({ client }: Props) {
                         )
                     }
                     {
+                        client.auth.me?.isAdmin && (
+                            <Link to="/admin/categories" className={CommonStyles.button}>Catégories</Link>
+                        )
+                    }
+                    {
                         client.auth.me?.isModerator && (
                             <Link to="/admin/validations" className={CommonStyles.button}>Validation de ressources</Link>
                         )
