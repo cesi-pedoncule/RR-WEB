@@ -1,5 +1,6 @@
 import Select from 'react-select';
 import { Category, Client } from 'rr-apilib';
+import SelectCategoriesStyles from '../../styles/Components/Input/SelectCategoriesStyles.module.css';
 
 interface Props {
     value: Category[];
@@ -18,6 +19,7 @@ export default function SelectCategories({ client, value, onChange }: Props) {
 
     return (
         <Select
+            className={SelectCategoriesStyles.select}
             placeholder="Sélectionner des catégories"
             isMulti={true}
             defaultValue={value.map(v => {
