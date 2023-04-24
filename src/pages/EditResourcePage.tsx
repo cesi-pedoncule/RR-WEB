@@ -40,8 +40,17 @@ export default function EditResourcePage ({ client }: Props) {
     useEffect(() => {
         if(id) {
             setResource(client.resources.cache.get(id));
+            setTitle(resource ? resource.title : "");
+            setDescription(resource ? resource.description : "");
+            setCategories(Array.from(resource ? resource.categories.cache.values() : []));
+            setShowSelectCategories(false);
+            setIsPublic(resource ? resource.isPublic : false);
+            setIsLoading(false);
+            setAttachmentsBuilder([]);
+            setAttachmentsToDelete([]);
+            setAttachmentsToShow(Array.from(resource ? resource.attachments.cache.values() : []));
         }
-    })
+    }, [id, client.resources.cache, resource])
 
     if(!resource) {
         navigate('/404');
@@ -57,7 +66,29 @@ export default function EditResourcePage ({ client }: Props) {
     const toggleSwitch = () => setIsPublic(previousState => !previousState);
 
     const onClickSend = async () => {
-        
+        setIsLoading(true);
+
+        try {
+            resource.title = title;
+            resource.description = description;
+            
+            await resource.categories.set(categories);
+            await client.resources.edit(resource);
+
+            attachmentsBuilder.map(async (attachment) => 
+                await resource.attachments.create(attachment)
+            );
+
+            attachmentsToDelete.map(async (attachmentToDelete) =>
+                await resource.attachments.delete(attachmentToDelete)
+            );
+            navigate(-1);
+
+        } catch(error) {
+            console.log("Problème lors de l'édition");
+        }
+
+        setIsLoading(false);
     }
 
     const onClickAddCategory = () => {
@@ -71,7 +102,6 @@ export default function EditResourcePage ({ client }: Props) {
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>
-                <div></div> 
                 <div className={CommonStyles.itemsContainer}>
                     <div className={EditResourceStyles.container}>
                         <input className={EditResourceStyles.addNameResource} placeholder={"Titre de la ressource"} value={title} onChange={onChangeTitleEvent}></input>
@@ -80,7 +110,7 @@ export default function EditResourcePage ({ client }: Props) {
 
                         }    
                         </div>
-                        <InputTextDescription defaultValue={""} onChangeText={(text) => setDescription(text)}/>
+                        <InputTextDescription defaultValue={description} onChangeText={(text) => setDescription(text)}/>
                         <ButtonFile text={'Ajouter un fichier'} callBack={onClickAddFile}/>
                         {
                             
