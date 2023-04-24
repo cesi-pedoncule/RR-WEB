@@ -1,12 +1,13 @@
 import { Client } from "rr-apilib";
 import CommonStyles from "../styles/CommonStyles.module.css";
 import { useNavigate, useParams } from "react-router-dom";
-import React, { useEffect, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import EditResourceStyles from '../styles/Page/EditResourcePageStyles.module.css'
 import { Attachment, AttachmentBuilder, Category, Resource } from 'rr-apilib'
 import Switch from "react-switch";
 import InputTextDescription from "../components/Input/InputTextDescription";
 import ButtonFile from "../components/Button/ButtonFile";
+import MediaButton from "../components/Button/MediaButton";
 
 interface Props {
     client: Client;
@@ -26,6 +27,7 @@ export default function EditResourcePage ({ client }: Props) {
     const [ showSelectCategories, setShowSelectCategories ] = useState<boolean>(false);
     const [ isPublic, setIsPublic ] = useState(resource ? resource.isPublic : false);
     const [ isLoading, setIsLoading ] = useState<boolean>(false);
+    const [ file, setFile ] = useState<File>();
     // Les attachmentsBuilder sont les attachments qu'on rajoute, et qu'on peut supprimer comme pour dans CreateResourceScreen => des nouvelles attachments
     // Elles sont affichées sur l'écran
     const [ attachmentsBuilder, setAttachmentsBuilder ] = useState<AttachmentBuilder[]>([]);
@@ -95,8 +97,17 @@ export default function EditResourcePage ({ client }: Props) {
         setShowSelectCategories(true);
     }
 
-    const onClickAddFile = () => {
-        
+    const onClickAddFile = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            setFile(e.target.files[0]);
+            if((attachmentsBuilder.length + resource.attachments.cache.size) < 6 && file != null){
+                const attachment = new AttachmentBuilder().setFile(file).setRessource(resource);
+                attachmentsBuilder.push(attachment);
+                setAttachmentsBuilder([...attachmentsBuilder ]);
+            } else if (resource && attachmentsBuilder.length + resource.attachments.cache.size == 6) {
+                console.log("Vous avez atteint le seuil maximum de fichier importé");
+            }
+        }
     }
 
     return (
@@ -111,12 +122,32 @@ export default function EditResourcePage ({ client }: Props) {
                         }    
                         </div>
                         <InputTextDescription defaultValue={description} onChangeText={(text) => setDescription(text)}/>
-                        <ButtonFile text={'Ajouter un fichier'} callBack={onClickAddFile}/>
+                        <ButtonFile callBack={onClickAddFile}/>
                         {
-                            
+                            attachmentsToShow.map((attachment, index) => 
+                                <MediaButton 
+                                    isDeleted={true} 
+                                    key={index} 
+                                    idAttachement={index} 
+                                    attachment={attachment} 
+                                    attachementsToDelete={attachmentsToDelete} 
+                                    setAttachementsToDelete={setAttachmentsToDelete} 
+                                    attachementsToShow={attachmentsToShow}
+                                    setAttachementsToShow={setAttachmentsToShow}
+                                />
+                            )
                         }
                         {
-                            
+                            attachmentsBuilder.map((attachment, index) => 
+                                <MediaButton 
+                                    isDeleted={true} 
+                                    key={index}
+                                    idAttachement={index} 
+                                    attachment={attachment.file!} 
+                                    attachmentsBuilder={attachmentsBuilder} 
+                                    setAttachementsBuilder={setAttachmentsBuilder} 
+                                />
+                            )
                         }
                         <div className={EditResourceStyles.switchContainer}>
                             <Switch onChange={toggleSwitch} checked={isPublic}/>
