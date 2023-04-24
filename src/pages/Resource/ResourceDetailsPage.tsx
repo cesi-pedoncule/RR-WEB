@@ -55,8 +55,8 @@ export default function ResourceDetailPage ({ client }: Props) {
                         }
                         <div>
                             {
-                                comments.map((comment) => 
-                                    <CommentCard comment={comment} setComments={setComments} resource={resource}/>
+                                comments.map((comment, i) => 
+                                    <CommentCard key={i} comment={comment} setComments={setComments} resource={resource}/>
                                 )
                             }
                         </div>

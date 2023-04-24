@@ -34,8 +34,8 @@ export default function ResourceCardWithUser({ resource, styleContainer }: Props
             <div className={ResourceCardStyles.cardTitle} onClick={onClickDetailResource}>{resource.title}</div>
             <div className={ResourceCardStyles.categoriesContainer}>
                 {
-                    resource.categories.cache.map((category) => 
-                        <CategoryButton category={category}/>
+                    resource.categories.cache.map((category, id) => 
+                        <CategoryButton key={id} category={category}/>
                     )
                 }
             </div>
