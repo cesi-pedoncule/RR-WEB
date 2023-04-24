@@ -61,24 +61,3 @@
 .input:hover {
     border-bottom: 2px solid #03989E;
 }
-.button {
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-    margin-bottom: 5px;
-    padding: 5px;
-    width: 20%;
-    height: 50px;
-    transition: 0.2s;
-    cursor: pointer;
-    outline: none;
-    border-radius: 15px;
-    border: none;
-    background-color: #03989E;
-    color: #f6fafb;
-}
-.button:hover {
-    transform: translateY(-5px);
-    box-shadow : 0px 10px 50px -10px #CCCCCC;
-}
