@@ -1,6 +1,11 @@
 import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { APIValidationStateCreate, Client, Resource, ValidationStateBuilder } from "rr-apilib";
+import {
+    APIValidationStateCreate,
+    Client,
+    Resource,
+    ValidationStateBuilder
+} from "rr-apilib";
 
 import CommonStyles from "../../styles/CommonStyles.module.css";
 import ResourceDetailsPageStyles from "../../styles/Page/ResourceDetailsPageStyles.module.css";

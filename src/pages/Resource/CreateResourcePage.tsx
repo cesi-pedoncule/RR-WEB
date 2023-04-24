@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import Switch from "react-switch";
 import { Client, ResourceBuilder } from 'rr-apilib';
 
 import CommonStyles from '../../styles/CommonStyles.module.css';
 import CreateResourceStyles from '../../styles/Page/CreateResourcePageStyles.module.css';
+import EditResourceStyles from '../../styles/Page/EditResourcePageStyles.module.css';
 import InputTextDescription from '../../components/Input/InputTextDescription';
 import ButtonFile from '../../components/Button/ButtonFile';
 import SelectCategories from '../../components/Input/SelectCategories';
@@ -20,7 +22,7 @@ export default function CreateResourceScreen({ client }: Props) {
     const onClickSend = async () => {
         try {
             
-            newResource.setIsPublic(true);
+            // newResource.setIsPublic(true);
             
             if(user) {
                 await user.resources.create(newResource);
@@ -65,7 +67,10 @@ export default function CreateResourceScreen({ client }: Props) {
                             />
                         </div>
 
-                        <ButtonFile text={'Ajouter un fichier'} callBack={onClickAddFile}/>
+                        <div>
+                            <h5>Ajouter des PJ</h5>
+                            <ButtonFile callBack={onClickAddFile}/>
+                        </div>
                         {
                             newResource.attachments.map((attachment, index) => 
                                 <div key={index}>
@@ -82,8 +87,15 @@ export default function CreateResourceScreen({ client }: Props) {
                                 </div>
                             )
                         }
-                        <div className={CreateResourceStyles.switchContainer}>
-                            <div>Penser à mettre le switch isPublic</div>
+                        <div className={EditResourceStyles.switchContainer}>
+                            <Switch
+                                onChange={() => {
+                                    newResource.setIsPublic(!newResource.isPublic);
+                                    setNewResource(new ResourceBuilder(newResource));
+                                }}
+                                checked={newResource.isPublic}
+                            />
+                            <p> Privé / Publique </p>
                         </div>
                         <div className={CreateResourceStyles.sendButtonContainer}>
                             <button
