@@ -13,7 +13,7 @@ export default function CategoryButton({category} : Props) {
         if (category.resources.cache.size === 0) {
             alert("Cette catégorie ne contient aucune ressource.")
         } else {
-            navigate('/category-detail', { state: { id: category.id } })
+            navigate(`/categories/${category.id}`);
         }
     }
 

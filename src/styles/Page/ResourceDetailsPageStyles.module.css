@@ -51,8 +51,10 @@
     text-decoration-line: underline;
 }
 .btnFile {
-    margin-bottom: 30px;
-    justify-content: center;
+    display: grid;
+    position: absolute;
     align-items: center;
-    width: 100%;
+    justify-content: center;
+    margin-top: 600px;
+    padding-bottom: 100px;
 }

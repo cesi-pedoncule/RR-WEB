@@ -10,4 +10,12 @@
     padding: 15px;
     resize: none;
     overflow: auto;
+    border: none;
+    border: 1px solid #eaf0f0;
+}
+.container:hover {
+    border: 1px solid #363e3e;
+}
+.container:focus {
+    border: 1px solid #363e3e;
 }
