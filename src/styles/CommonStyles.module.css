@@ -15,6 +15,16 @@
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
 }
+.contentWithoutNavBar {
+    background-color: #f6fafb;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    margin-top: 140px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+}
 .btnHomeBackground {
     position : absolute;
     left : 20px;
@@ -45,6 +55,10 @@
     justify-content: center;
     align-items: center;
     margin-top: 20%;
+}
+.spinner {
+    justify-content: center;
+    align-items: center;
 }
 .itemsContainer {
     margin-top: 20px;
@@ -118,7 +132,6 @@
     outline: none;
     text-decoration: none;
     color: #f7fbfc;
-    margin-right: 30px;
     margin-top: 30px;
 }
 .button:hover {
