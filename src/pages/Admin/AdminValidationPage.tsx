@@ -54,14 +54,20 @@ export default function AdminValidationPage ({ client }: Props) {
                     <div className={AdminValidationPageStyles.resourceContainer}>
                         <ResourceCardWithUser resourceData={resource} styleContainer={AdminValidationPageStyles.cardContainer}/>
                     </div>
-                    <div className={AdminValidationPageStyles.btnFile}>
-                        <div className={AdminValidationPageStyles.validationTitle}>Pièces de jointes :</div>
-                        {
-                            Array.from(resource.attachments.cache.values()).map((attachment, index) => (
-                                <MediaButton isDeleted={false} attachment={attachment} key={index} idAttachement={index}/>
-                            ))
-                        }
-                    </div>
+                    {
+                        resource.attachments.cache.size > 0 && (
+                            <div className={AdminValidationPageStyles.btnFile}>
+                                <div className={AdminValidationPageStyles.validationTitle}>Pièces de jointes :</div>
+                                <div>
+                                    {
+                                        Array.from(resource.attachments.cache.values()).map((attachment, index) => (
+                                            <MediaButton isDeleted={false} attachment={attachment} key={index} idAttachement={index}/>
+                                        ))
+                                    }
+                                </div>
+                            </div>
+                        )
+                    }
                     <div className={AdminValidationPageStyles.validationsContainer}>
                         <div onClick={() => handleOnClickChangeState(APIValidationStateCreate.Validated)} className={AdminValidationPageStyles.button}>Valider</div>
                         <div onClick={() => handleOnClickChangeState(APIValidationStateCreate.Rejected)} className={AdminValidationPageStyles.button}>Rejeter</div>
