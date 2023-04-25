@@ -2,7 +2,7 @@
     box-shadow: 0px 5px 10px -5px #363e3e;
     margin-top: 20px;
     margin-left: 15px;
-    width: 300px;
+    width: 40%;
     padding: 20px;
     transition: 0.2s;
     cursor: pointer;
@@ -15,9 +15,7 @@
 }
 .sendButton:hover {
     transform: translateY(-5px);
-    box-shadow : 0px 10px 50px -10px #CCCCCC;
-}
-.sendButtonContainer {
+    box-shadow: 0px 5px 10px -5px #363e3e;
 }
 .container {
     align-items: center;

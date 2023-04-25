@@ -17,12 +17,13 @@ export default function AdminValidationsPage ({ client }: Props) {
 
     const [ search, setSearch ] = useState('');
     const [ isOpenModal, setIsOpenModal ] = useState(false);
+    const [ number, setNumber ] = useState(0);
 
     useEffect(() => {
         if(client.auth.me === null || !client.auth.me.isModerator) {
             navigate('/login');
         }
-    }, [client, navigate])
+    })
 
     return (
         <div className={CommonStyles.container}>
@@ -38,7 +39,7 @@ export default function AdminValidationsPage ({ client }: Props) {
                             resource.title.toLowerCase().includes(search.toLowerCase())) 
                         {
                             return (
-                                <ResourceCardWithoutUser key={id} resourceData={resource} setIsOpenModal={setIsOpenModal} moderation={true} />
+                                <ResourceCardWithoutUser key={id} resourceData={resource} setIsOpenModal={setIsOpenModal} moderation={true} number={number} setNumber={setNumber} />
                             )
                         } else {
                             return null;

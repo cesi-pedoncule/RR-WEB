@@ -17,6 +17,7 @@ export default function ShareResourcePage ({ client }: Props) {
 
     const [ search, setSearch ] = useState('');
     const [ isOpenModal, setIsOpenModal ] = useState(false);
+    const [ number, setNumber ] = useState<number>(0);
 
     useEffect(() => {
         if(client.auth.me === null) {
@@ -43,7 +44,7 @@ export default function ShareResourcePage ({ client }: Props) {
                             client.auth.me.resources.cache.map((resource, id) => {
                                 if(resource.title.toLowerCase().includes(search.toLowerCase())) {
                                     return (
-                                        <ResourceCardWithoutUser key={id} resourceData={resource} setIsOpenModal={setIsOpenModal} />
+                                        <ResourceCardWithoutUser key={id} resourceData={resource} setIsOpenModal={setIsOpenModal} number={number} setNumber={setNumber}/>
                                     )
                                 } else {
                                     return null;

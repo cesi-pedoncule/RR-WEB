@@ -7,15 +7,17 @@ import EditButton from "../Button/EditButton";
 import DeleteButton from "../Button/DeleteButton";
 import StateButton from "../Button/StateButton";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface Props {
     resourceData: Resource;
     setIsOpenModal: any;
     moderation?: boolean;
+    setNumber?: React.Dispatch<React.SetStateAction<number>>;
+    number?: number;
 }
 
-export default function ResourceCardWithoutUser ({ resourceData, setIsOpenModal, moderation = false }: Props) {
+export default function ResourceCardWithoutUser ({ resourceData, setIsOpenModal, moderation = false, setNumber, number = 0 }: Props) {
     
     const navigate = useNavigate();
 
@@ -38,6 +40,7 @@ export default function ResourceCardWithoutUser ({ resourceData, setIsOpenModal,
         try {
             if(resourceData.client.auth.me != null){
                 await resourceData.client.auth.me.resources.delete(resourceData); 
+                setNumber && setNumber(number + 1);
             }
         } catch(error) {
             setIsOpenModal(true);

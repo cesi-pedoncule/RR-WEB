@@ -11,7 +11,7 @@ interface Props {
 
 export default function SelectCategories({ client, value, onChange }: Props) {
 
-    const opt = client.categories.cache.map(cat => {
+    const opt = client.categories.cache.filter((category) => category.isVisible).map(cat => {
         return {
             value: cat.id,
             label: cat.name

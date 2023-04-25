@@ -24,9 +24,12 @@ export default function CreateResourceScreen({ client }: Props) {
 
     const onClickSend = async () => {
         try { 
-            if(user) {
+            if(user && newResource.title) {
                 const res = await user.resources.create(newResource);
                 navigate(`/resources/${res.id}/edit`);
+            } 
+            else{
+                alert('Titre de la ressource invalide')
             }
 
         } catch(error) {

@@ -38,7 +38,7 @@ export default function AdminCategoryCreatePage({ client }: Props) {
                             onColor='#03989E'
                             checked={data.isVisible}
                         />
-                        <p className={CommonStyles.switchText}>Visible / Invisible</p>
+                        <p className={CommonStyles.switchText}>Invisible / Visible</p>
                     </div>
                     <div className={AdminCategoryCreatePageStyles.sendButtonContainer}>
                         <button

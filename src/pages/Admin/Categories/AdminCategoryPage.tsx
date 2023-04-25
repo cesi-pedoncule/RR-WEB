@@ -60,7 +60,7 @@ export default function AdminCategoryPage({ client }: Props) {
                             onColor='#03989E'
                             checked={data.isVisible}
                         />
-                        <p className={CommonStyles.switchText}>{`Visible / Invisible (Cette catégorie contient ${category.resources.cache.size} ressources)`}</p>
+                        <p className={CommonStyles.switchText}>{`invisible / Visible (Cette catégorie contient ${category.resources.cache.size} ressources)`}</p>
                     </div>
 
                     <div className={AdminCategoryPageStyles.validationsContainer}>
@@ -70,14 +70,14 @@ export default function AdminCategoryPage({ client }: Props) {
                                 category.isVisible = data.isVisible;
                                 await client.categories.edit(category);
                             }}
-                            className={CommonStyles.button}
+                            className={AdminCategoryPageStyles.sendButton}
                         >Modifier</button>
                         <button
                             onClick={async () => {
                                 await client.categories.delete(category);
                                 navigate('/admin/categories');
                             }}
-                            className={CommonStyles.button}
+                            className={AdminCategoryPageStyles.sendButton}
                         >Supprimer</button>
                     </div>
                 </div>

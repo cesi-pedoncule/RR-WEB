@@ -23,7 +23,7 @@ export default function CategoriesPage ({ client }: Props) {
                 
                 <div className={CommonStyles.itemsContainer}>
                     {client.categories.cache.map((category, id) => {
-                        if(category.name.toLowerCase().includes(search.toLowerCase())) {
+                        if(category.name.toLowerCase().includes(search.toLowerCase()) && category.isVisible) {
                             return (
                                 <CategoryCard key={id} category={category} />
                             )
