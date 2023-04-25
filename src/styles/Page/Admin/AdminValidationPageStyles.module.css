@@ -43,3 +43,27 @@
     margin-top: 600px; 
     width: 50%;
 }
+.button {
+    box-shadow: 0px 5px 10px -5px #363e3e;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 100%;
+    transition: 0.2s;
+    cursor: pointer;
+    border-radius: 15px;
+    border: none;
+    background-color: #03989E;
+    outline: none;
+    text-decoration: none;
+    color: #f7fbfc;
+    margin-top: 30px;
+    margin-right: 30px;
+}
+.button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 10px -5px #363e3e;
+}

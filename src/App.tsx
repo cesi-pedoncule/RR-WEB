@@ -2,7 +2,6 @@ import { Client } from 'rr-apilib';
 import { useEffect, useMemo, useState } from 'react';
 import { TailSpin } from 'react-loader-spinner';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-
 import CategoriesPage from './pages/Category/CategoriesPage';
 import LoginPage from './pages/LoginPage';
 import ResourcesPage from './pages/Resource/ResourcesPage';
@@ -23,6 +22,7 @@ import AdminCategoriesPage from './pages/Admin/Categories/AdminCategoriesPage';
 import AdminCategoryPage from './pages/Admin/Categories/AdminCategoryPage';
 import AdminEditUserPage from './pages/Admin/AdminEditUserPage';
 import AdminCategoryCreatePage from './pages/Admin/Categories/AdminCategoryCreatePage';
+import CommonStyles from "./styles/CommonStyles.module.css";
 
 export default function App() {
     
@@ -56,23 +56,21 @@ export default function App() {
 
     if (!isLoad) {
         return (
-            <div
-                style={{
-                    position: 'absolute',
-                    top: "50%",
-                    left: "50%"
-                }}
-            >
-                <TailSpin
-                    height="80"
-                    width="80"
-                    color="#03989E"
-                    ariaLabel="tail-spin-loading"
-                    radius="1"
-                    wrapperStyle={{}}
-                    wrapperClass=""
-                    visible={true}
-                />
+            <div className={CommonStyles.container}>
+                <div className={CommonStyles.contentWithoutNavBar}>
+                    <div className={CommonStyles.loader}>
+                        <TailSpin
+                            height="80"
+                            width="80"
+                            color="#03989E"
+                            ariaLabel="tail-spin-loading"
+                            radius="1"
+                            wrapperStyle={{}}
+                            wrapperClass=""
+                            visible={true}
+                        />
+                    </div>  
+                </div>
             </div>
         )
     }

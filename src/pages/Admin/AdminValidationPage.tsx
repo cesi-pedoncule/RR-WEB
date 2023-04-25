@@ -63,8 +63,8 @@ export default function AdminValidationPage ({ client }: Props) {
                         }
                     </div>
                     <div className={AdminValidationPageStyles.validationsContainer}>
-                        <div onClick={() => handleOnClickChangeState(APIValidationStateCreate.Validated)} className={CommonStyles.button}>Valider</div>
-                        <div onClick={() => handleOnClickChangeState(APIValidationStateCreate.Rejected)} className={CommonStyles.button}>Rejeter</div>
+                        <div onClick={() => handleOnClickChangeState(APIValidationStateCreate.Validated)} className={AdminValidationPageStyles.button}>Valider</div>
+                        <div onClick={() => handleOnClickChangeState(APIValidationStateCreate.Rejected)} className={AdminValidationPageStyles.button}>Rejeter</div>
                     </div>
                 </div>
             </div>
