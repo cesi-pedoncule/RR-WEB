@@ -4,6 +4,7 @@ import LoginStyles from "../styles/Page/LoginPageStyles.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TailSpin } from "react-loader-spinner";
+import ErrorModal from "../components/Modal/ErrorModal";
 
 interface Props {
     client: Client;
@@ -13,17 +14,19 @@ export default function LoginPage ({ client }: Props) {
     const navigate = useNavigate();
 
     const [ newUser ] = useState<UserBuilder>(new UserBuilder());
+    const [ isOpenModal, setIsOpenModal] = useState<boolean>(false);
+    const [ messageModal, setMessageModal] = useState<string>('');
     //login
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [ isLoading, setIsLoading ] = useState<boolean>(false);
     const [ email, setEmail ] = useState<string>('');
     const [ password, setPassword ] = useState<string>('');
     //Register
     const [ passwordConfirm, setPasswordConfirm ] = useState<string>("");
-    const [ isValidName, setIsValidName] = useState<boolean>(true)
-    const [ isValidFirstname, setIsValidFirstname] = useState<boolean>(true)
-    const [ isValidEmail, setIsValidEmail] = useState<boolean>(true)
-    const [ isValidPassword, setIsValidPassword] = useState<boolean>(true)
-    const [ isValidPasswordConfirm, setIsValidPasswordConfirm] = useState<boolean>(true)
+    const [ isNotValidName, setIsNotValidName] = useState<boolean>(false)
+    const [ isNotValidFirstname, setIsNotValidFirstname] = useState<boolean>(false)
+    const [ isNotValidEmail, setIsNotValidEmail] = useState<boolean>(false)
+    const [ isNotValidPassword, setIsNotValidPassword] = useState<boolean>(false)
+    const [ isNotValidPasswordConfirm, setIsNotValidPasswordConfirm] = useState<boolean>(false)
     
     //login
     const onclickLoginButton = async () => {
@@ -44,13 +47,15 @@ export default function LoginPage ({ client }: Props) {
 
     const onClickRegisterButton = async () => {
         if(!validateEmail(newUser.email) || !validatePassword(newUser.password) || newUser.password !== passwordConfirm || newUser.firstname.length === 0 || newUser.name.length === 0){
-            alert("Données saisies invalides");
+            setMessageModal('Données saisies invalide');
+            setIsOpenModal(true);
         } else {
             try {
                 setIsLoading(true);
                 await client.users.create(newUser);
                 await client.login(newUser.email, newUser.password);
                 setIsLoading(false);
+                setIsOpenModal(false);
                 navigate("/resources");
             } catch (error) {
                 alert("Problème lors de l'inscription");
@@ -69,33 +74,33 @@ export default function LoginPage ({ client }: Props) {
     };
 
     const onBlurEmail = () => {
-        !validateEmail(newUser.email) && 
-        alert('Email invalide');
-        setIsValidEmail(validateEmail(newUser.email) )
+        setIsNotValidEmail(!validateEmail(newUser.email));
+        setIsOpenModal(!validateEmail(newUser.email));
+        setMessageModal('Email invalide');
     }
 
     const onBlurPassword = () => {
-        !validatePassword(newUser.password) &&
-        alert('Mot de passe invalide');
-        setIsValidPassword(validatePassword(newUser.password))
+        setIsNotValidPassword(!validatePassword(newUser.password));
+        setIsOpenModal(!validatePassword(newUser.password));
+        setMessageModal('Mot de passe invalide');
     }
 
     const onBlurPasswordConfirm = () => {
-        newUser.password !== passwordConfirm &&
-        alert('Mot de passe différent');
-        setIsValidPasswordConfirm(newUser.password === passwordConfirm)
+        setIsNotValidPasswordConfirm(newUser.password !== passwordConfirm);
+        setIsOpenModal(newUser.password !== passwordConfirm);
+        setMessageModal('Mot de passe différent');
     }
 
     const onBlurFirstName = () => {
-        newUser.firstname.length === 0 &&
-        alert('Prénom invalide');
-        setIsValidFirstname(newUser.firstname.length !== 0);
+        setIsNotValidFirstname(newUser.firstname.length === 0);
+        setIsOpenModal(newUser.firstname.length === 0);
+        setMessageModal('Prénom invalide');
     }
 
     const onBlurName = () => {
-        newUser.name.length === 0 &&
-        alert('Nom invalide');
-        setIsValidName(newUser.name.length !== 0)
+        setIsNotValidName(newUser.name.length === 0);
+        setIsOpenModal(newUser.name.length === 0);
+        setMessageModal('Nom invalide');
     }
 
     useEffect(() => {
@@ -136,7 +141,7 @@ export default function LoginPage ({ client }: Props) {
     return (
         <div className={CommonStyles.container}>
             <div className={CommonStyles.content}>  
-                
+                {isOpenModal && <ErrorModal setIsOpenModal={setIsOpenModal} message={messageModal} />}
                 {
                     isLoading ? 
                     <div className={CommonStyles.loader}>
@@ -166,23 +171,23 @@ export default function LoginPage ({ client }: Props) {
                             <form className={LoginStyles.container} onSubmit={onClickRegisterButton}>
                                 <div className={LoginStyles.control}>
                                     <label className={LoginStyles.label} htmlFor="lastName-register">Nom</label>
-                                    <input className={isValidName ? LoginStyles.input : LoginStyles.inputPasContent} type="text" id="lastName-register" name="lastName-register" onChange={(text) => newUser.setName(text.target.value)} onBlur={onBlurName}  required/>
+                                    <input className={isNotValidName ? LoginStyles.inputPasContent : LoginStyles.input} type="text" id="lastName-register" name="lastName-register" onChange={(text) => newUser.setName(text.target.value)} onBlur={onBlurName}  required/>
                                 </div>
                                 <div className={LoginStyles.control}>
                                     <label className={LoginStyles.label} htmlFor="firstName-register">Prénom</label>
-                                    <input className={isValidFirstname ? LoginStyles.input : LoginStyles.inputPasContent} type="text" id="firstName-register" name="firstName-register" onChange={(text) => newUser.setFirstname(text.target.value)} onBlur={onBlurFirstName} required/>
+                                    <input className={isNotValidFirstname ? LoginStyles.inputPasContent : LoginStyles.input} type="text" id="firstName-register" name="firstName-register" onChange={(text) => newUser.setFirstname(text.target.value)} onBlur={onBlurFirstName} required/>
                                 </div>
                                 <div className={LoginStyles.control}>
                                     <label className={LoginStyles.label} htmlFor="email-register">Email</label>
-                                    <input className={isValidEmail ? LoginStyles.input : LoginStyles.inputPasContent} type="email" id="email-register" name="email-register" onChange={(text) => newUser.setEmail(text.target.value)} onBlur={onBlurEmail} required/>
+                                    <input className={isNotValidEmail ? LoginStyles.inputPasContent : LoginStyles.input} type="email" id="email-register" name="email-register" onChange={(text) => newUser.setEmail(text.target.value)} onBlur={onBlurEmail} required/>
                                 </div>
                                 <div className={LoginStyles.control}>
                                     <label className={LoginStyles.label} htmlFor="mdp-register">Mot de passe</label>
-                                    <input className={isValidPassword ? LoginStyles.input : LoginStyles.inputPasContent} type="password" id="mdp-register" name="mdp-register" onChange={(text) => newUser.setPassword(text.target.value)} onBlur={onBlurPassword} required/>
+                                    <input className={isNotValidPassword ? LoginStyles.inputPasContent : LoginStyles.input} type="password" id="mdp-register" name="mdp-register" onChange={(text) => newUser.setPassword(text.target.value)} onBlur={onBlurPassword} required/>
                                 </div>
                                 <div className={LoginStyles.control}>
                                     <label className={LoginStyles.label} htmlFor="mdp-confirm-register">Confirmer mot de passe</label>
-                                    <input className={isValidPasswordConfirm ? LoginStyles.input : LoginStyles.inputPasContent} type="password" id="mdp-confirm-register" name="mdp-confirm-register" onChange={(text) => setPasswordConfirm(text.target.value)} onBlur={onBlurPasswordConfirm} required/>
+                                    <input className={isNotValidPasswordConfirm ? LoginStyles.inputPasContent : LoginStyles.input} type="password" id="mdp-confirm-register" name="mdp-confirm-register" onChange={(text) => setPasswordConfirm(text.target.value)} onBlur={onBlurPasswordConfirm} required/>
                                 </div>
                                 <p className={LoginStyles.rulesText}>
                                     Minimum 1 majuscule <br/>
@@ -192,13 +197,10 @@ export default function LoginPage ({ client }: Props) {
                                 <div className={LoginStyles.control}>
                                     <input className={LoginStyles.button} type="submit" id="login-register" name="login-register" onClick={onClickRegisterButton} required/>
                                 </div>
-                            </form>
-                            
+                            </form>            
                         </div>
-
                     </div>
                 }
-
             </div>
         </div>
     )
