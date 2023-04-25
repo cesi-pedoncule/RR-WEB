@@ -1,0 +1,17 @@
+.title {
+    font-size: 40px;
+    font-weight: 800px;
+    color: #363e3e;
+    text-align: center;
+    max-height: 60px;
+}
+.editIcon {
+    cursor: pointer;
+    margin-left: 20px;
+}
+.horizontalContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

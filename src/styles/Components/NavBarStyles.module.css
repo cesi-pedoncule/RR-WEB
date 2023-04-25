@@ -46,7 +46,6 @@
 .root .linkContainer .link:hover{
     color: #03989E;
     transform: translateY(-3px);
-    box-shadow : 0 15px 7px -7px #CCCCCC;
 }
 
 .root .linkContainer .link .logo {
@@ -57,4 +56,8 @@
 .root .linkContainer .link p {
     margin-top: 0px;
     margin-bottom: 0px;
+}
+.link {
+    text-decoration: none;
+    color: #363e3e;
 }

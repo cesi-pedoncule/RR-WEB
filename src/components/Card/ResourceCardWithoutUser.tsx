@@ -7,30 +7,40 @@ import EditButton from "../Button/EditButton";
 import DeleteButton from "../Button/DeleteButton";
 import StateButton from "../Button/StateButton";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 interface Props {
-    resource: Resource;
+    resourceData: Resource;
     setIsOpenModal: any;
+    moderation?: boolean;
+    setNumber?: React.Dispatch<React.SetStateAction<number>>;
+    number?: number;
 }
 
-export default function ResourceCardWithoutUser ({ resource, setIsOpenModal }: Props) {
+export default function ResourceCardWithoutUser ({ resourceData, setIsOpenModal, moderation = false, setNumber, number = 0 }: Props) {
     
     const navigate = useNavigate();
 
-    const description = resource.description ?  resource.description : "Aucune description fournie" ;
+    const description = resourceData.description ?  resourceData.description : "Aucune description fournie" ;
+    const [ resource, setResource ] = useState(resourceData);
 
     const onClickDetailResource = () => {
-        navigate(`/resources/${resource.id}`);
+        if (!moderation) {
+            navigate(`/resources/${resourceData.id}`);
+        } else {
+            navigate(`/admin/validations/${resourceData.id}`);
+        }
     }
 
     const onClickEditResource = () => {
-        navigate(`/resources/${resource.id}/edit`);
+        navigate(`/resources/${resourceData.id}/edit`);
     }
 
     const onClickDeleteResource = async () => {
         try {
-            if(resource.client.auth.me != null){
-                await resource.client.auth.me.resources.delete(resource); 
+            if(resourceData.client.auth.me != null){
+                await resourceData.client.auth.me.resources.delete(resourceData); 
+                setNumber && setNumber(number + 1);
             }
         } catch(error) {
             setIsOpenModal(true);
@@ -40,21 +50,21 @@ export default function ResourceCardWithoutUser ({ resource, setIsOpenModal }: P
     return (
         <div className={ResourceCardStyles.container}>
             <div className={ResourceCardStyles.withoutUserContainer}>
-                <p className={ResourceCardStyles.cardTitle} onClick={onClickDetailResource}>{resource.title}</p>
+                <p className={ResourceCardStyles.cardTitle} onClick={onClickDetailResource}>{resourceData.title}</p>
                 <div className={ResourceCardStyles.categoriesContainer}>
                     {
-                        resource.categories.cache.map((category) => 
-                            <CategoryButton category={category}/>
+                        resourceData.categories.cache.map((category, id) => 
+                            <CategoryButton key={id} category={category}/>
                         )
                     }
                 </div>
                 <p className={ResourceCardStyles.cardText}>{description}</p>
                 <div className={ResourceCardStyles.buttonsContainer}>
-                    <LikeButton resource={resource} />
-                    <CommentButton commentNumber={resource.comments.cache.size} />
+                    <LikeButton resource={resource} setResource={setResource} />
+                    <CommentButton commentNumber={resourceData.comments.cache.size} />
                     <EditButton callBack={onClickEditResource} />
                     <DeleteButton callBack={onClickDeleteResource} />
-                    <StateButton resource={resource} />
+                    <StateButton resource={resourceData} />
                 </div>
             </div>
         </div>

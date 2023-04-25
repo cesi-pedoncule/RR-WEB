@@ -5,8 +5,8 @@
     margin-bottom: 20px;
     align-self: flex-end;
     padding-right: 20px;
-    width: 300px;
-    /* height: 300px; */
+    width: 250px;
+    height: 150px; 
     display: flex;
     cursor: pointer;
     flex-direction: column;
@@ -27,10 +27,68 @@
     line-clamp: 1;
 }
 .cardText {
-    width:100%;
+    /* width:100%; */
     color: #9ca6a9;
     font-size: 13px;
     text-align: justify;
     margin-left: 20px;
     margin-right: 20px;
+}
+
+
+/* ADMIN */
+
+.cardAdminBackground {
+    background-color: #eaf0f0;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding-right: 20px;
+    width: 250px;
+    height: 150px; 
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    box-shadow: 0px 5px 10px -5px #363e3e;
+    margin-right: 15px;
+}
+.cardAdminBackground:hover {
+    background-color: #cfd4d4;
+    transition: 0.2s;
+}
+.cardAdminTitle {
+    color: #363e3e;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 20px;
+}
+.cardAdminText {
+    color: #9ca6a9;
+    font-size: 13px;
+    text-align: justify;
+    margin-left: 20px;
+}
+
+.cardAdminButtonContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.nameInput {
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    width: 500px;
+}
+
+.switchInput {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }

@@ -13,30 +13,24 @@ export default function CommentCard({comment, setComments, resource}:Props) {
     const user = resource.client.auth.me;
     
     const [ isDeleted, setIsDeleted]  = useState<boolean>(false);
-    const [ isLoading, setIsLoading ] = useState<boolean>(false);
 
     const onClickDeleteComment = async () => {
-        setIsLoading(true);
-
         const res = await resource.comments.delete(comment);
         const newComments:Comment[] = Array.from(res.comments.cache.values());
         setComments(newComments);
-
-        setIsLoading(false);
     };
 
     useEffect(() => {
         setIsDeleted(comment.user?.id === user?.id);
-    })
+    }, [setIsDeleted])
 
     const getDateCreation = () => {
         let localDateString:string;
         const hourDateString:string = comment.createdAt.getHours()<10 ? "0"+comment.createdAt.getHours() : comment.createdAt.getHours().toString();
         const minuteDateString:string = comment.createdAt.getMinutes()<10 ? "0"+comment.createdAt.getMinutes() : comment.createdAt.getMinutes().toString();
-        if(comment.createdAt.toLocaleDateString("fr-FR") == new Date().toLocaleDateString("fr-FR")){
+        if(comment.createdAt.toLocaleDateString("fr-FR") === new Date().toLocaleDateString("fr-FR")){
             localDateString = "Aujourd'hui";
-        }
-        else {
+        } else {
             localDateString = comment.createdAt.toLocaleDateString("fr-FR");
         }
         

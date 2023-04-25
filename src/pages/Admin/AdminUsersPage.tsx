@@ -17,12 +17,10 @@ export default function AdminUsersPage ({ client }: Props) {
     const [ search, setSearch ] = useState('');
 
     useEffect(() => {
-        // TODO : Check if the user is granted role admin
-        // TODO : Fix this user login check
-        // if(client.auth.me === null) {
-        //     navigate('/login');
-        // }
-    })
+        if(client.auth.me === null || !client.auth.me.isSuperAdmin) {
+            navigate('/login');
+        }
+    }, [client, navigate])
 
     return (
         <div className={CommonStyles.container}>
@@ -38,6 +36,8 @@ export default function AdminUsersPage ({ client }: Props) {
                             return (
                                 <UserCard key={id} user={user} />
                             )
+                        } else {
+                            return null;
                         }
                     })}
                 </div>

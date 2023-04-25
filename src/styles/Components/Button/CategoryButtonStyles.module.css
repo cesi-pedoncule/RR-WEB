@@ -10,6 +10,7 @@
     padding-top: 2px; 
     border-radius : 15px;
     text-align : 'center';
+    cursor: pointer;
 }
 .btnText:hover {
     background-color: #aab3b3;

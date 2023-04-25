@@ -1,5 +1,6 @@
 import { Resource } from "rr-apilib";
 import { useNavigate } from "react-router";
+import { useState } from "react";
 
 import ResourceCardStyles from "../../styles/Components/Card/ResourceCardStyles.module.css";
 import CategoryButton from "../Button/CategoryButton";
@@ -7,45 +8,42 @@ import CommentButton from "../Button/CommentButton";
 import LikeButton from "../Button/LikeButton";
 
 interface Props {
-    resource: Resource;
+    resourceData: Resource;
     styleContainer?: any;
 }
 
-export default function ResourceCardWithUser({ resource, styleContainer }: Props) {
+export default function ResourceCardWithUser({ resourceData, styleContainer }: Props) {
 
     const navigate = useNavigate();
 
-    const username = resource.creator ? `${resource.creator.name} ${resource.creator.firstname}` : "Utilisateur inconnu";
-    const description = resource.description ?  resource.description : "Aucune description fournie" ;
+    const [ resource, setResource ] = useState(resourceData);
+    const username = resourceData.creator ? `${resourceData.creator.name} ${resourceData.creator.firstname}` : "Utilisateur inconnu";
+    const description = resourceData.description ?  resourceData.description : "Aucune description fournie" ;
 
     const onClickDetailResource = () => {
-        navigate(`/resources/${resource.id}`);
+        navigate(`/resources/${resourceData.id}`);
     }
 
     return (
-        <div className={styleContainer ? styleContainer : ResourceCardStyles.container} onClick={onClickDetailResource}>
+        <div className={styleContainer ? styleContainer : ResourceCardStyles.container}>
             <div className={ResourceCardStyles.lineButtonsAndUser}>
-                <div className={ResourceCardStyles.cardUser}>{username}</div>
+                <div className={ResourceCardStyles.cardTitle} onClick={onClickDetailResource}>{resourceData.title}</div>
                 <div className={ResourceCardStyles.userAndButtonsContainer}>
-                    <LikeButton resource={resource}/>
-                    <CommentButton commentNumber={resource.comments.cache.size}/>
+                    <LikeButton resource={resource} setResource={setResource} />
+                    <CommentButton commentNumber={resourceData.comments.cache.size}/>
                 </div>
             </div>
-            <div className={ResourceCardStyles.cardTitle}>{resource.title}</div>
+            <div className={ResourceCardStyles.cardUser}>{username}</div>
             <div className={ResourceCardStyles.categoriesContainer}>
                 {
-                    resource.categories.cache.map((category) => 
-                        <CategoryButton category={category}/>
+                    resourceData.categories.cache.map((category, id) => 
+                        <CategoryButton key={id} category={category}/>
                     )
                 }
             </div>
             {
-                styleContainer ? 
-                <div className={ResourceCardStyles.cardTextAuto}>{description}</div>
-                :
-                <div className={ResourceCardStyles.cardText}>{description}</div>
+                <div className={styleContainer ? ResourceCardStyles.cardTextAuto : ResourceCardStyles.cardText}>{description}</div>
             }
-            
         </div>
     )
 }

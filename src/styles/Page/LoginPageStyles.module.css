@@ -15,7 +15,9 @@
     margin-bottom: 20px;
     background-color: #eaf0f0;
     padding: 30px;
-    margin: 30px;
+    margin-top: 40px;
+    margin-left: 60px;
+    margin-right: 60px;
     border-radius: 15px;
     width: 100%;
     box-shadow: 0px 5px 10px -5px #363e3e;
@@ -53,7 +55,7 @@
     box-shadow: 0px 5px 10px -5px #363e3e;
     border: none;
     outline: none;
-    border-bottom: 2px solid #EEEEEE;
+    border-bottom: 2px solid #eaf0f0;
     transition: 0.2s;
     height: 40px;
     border-radius: 15px;
@@ -61,24 +63,44 @@
 .input:hover {
     border-bottom: 2px solid #03989E;
 }
+.inputPasContent {
+    padding-left: 20px;
+    padding-right: 20x;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0px 5px 10px -5px #363e3e;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #cc3b3b;
+    transition: 0.2s;
+    height: 40px;
+    border-radius: 15px;
+}
+.rulesText {
+    width: 80%;
+    text-align: left;
+    color: #9ca6a9;
+    font-size: 12px;
+}
 .button {
+    box-shadow: 0px 5px 10px -5px #363e3e;
     text-align: center;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
-    margin-bottom: 5px;
-    padding: 5px;
-    width: 20%;
-    height: 50px;
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 100%;
     transition: 0.2s;
     cursor: pointer;
-    outline: none;
     border-radius: 15px;
     border: none;
     background-color: #03989E;
-    color: #f6fafb;
+    outline: none;
+    text-decoration: none;
+    color: #f7fbfc;
 }
 .button:hover {
     transform: translateY(-5px);
-    box-shadow : 0px 10px 50px -10px #CCCCCC;
+    box-shadow: 0px 5px 10px -5px #363e3e;
 }

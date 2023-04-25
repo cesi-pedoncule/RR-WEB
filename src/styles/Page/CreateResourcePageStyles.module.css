@@ -5,10 +5,15 @@
     padding-left: 10px;
     padding-right: 10px;
     margin-top: 5px;
+    display: flex;
+    flex-direction: column;
 }
 .addNameResource {
-    color: black;
-    background-color: whitesmoke;
+    box-shadow: 0px 5px 10px -5px #363e3e;
+    color: #363e3e;
+    background-color: #eaf0f0;
+    border: 2px solid #eaf0f0;
+    outline-style: none;
     text-align: center;
     height: 40px;
     width: 90%;
@@ -16,14 +21,31 @@
     padding-bottom: 10px;
     border-radius: 10px;
 }
+.addNameResource:hover {
+    border: 2px solid #03989E;
+}
+.addNameResource:focus {
+    border: 2px solid #03989E;
+}
 .sendButton {
-    width: 140px;
-    height: 45px;
-    justify-content: center;
-    background-color: grey;
+    box-shadow: 0px 5px 10px -5px #363e3e;
     margin-top: 20px;
+    margin-left: 15px;
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    transition: 0.2s;
+    cursor: pointer;
     border-radius: 15px;
-    transition: 0.2;
+    border: none;
+    background-color: #03989E;
+    outline: none;
+    text-decoration: none;
+    color: #f7fbfc;
+}
+.sendButton:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 10px -5px #363e3e;
 }
 .categorieList {
     margin-Right: 10px;
@@ -61,4 +83,8 @@
 }
 .sendButtonContainer {
     height: 100px;
+}
+.attachementsContainer {
+    display: grid;
+    width: 70%;
 }
