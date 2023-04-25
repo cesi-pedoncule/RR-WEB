@@ -55,14 +55,21 @@ export default function ResourceDetailPage ({ client }: Props) {
                         </div>
                     </div>
                 </div>
-                <div className={ResourceDetailsPageStyles.attachementsContainer}>
-                    <div className={ResourceDetailsPageStyles.commentTitle}>Pièces jointes</div>
-                    {
-                        Array.from(resource.attachments.cache.values()).map((attachment, index) => (
-                            <MediaButton isDeleted={false} attachment={attachment} key={index} idAttachement={index}/>
-                        ))
-                    }
-                </div>
+
+                {
+                    resource.attachments.cache.size > 0 && (
+                        <div className={ResourceDetailsPageStyles.attachementsContainer}>
+                            <div className={ResourceDetailsPageStyles.commentTitle}>Pièces jointes</div>
+                            <div>
+                                {
+                                    Array.from(resource.attachments.cache.values()).map((attachment, index) => (
+                                        <MediaButton isDeleted={false} attachment={attachment} key={index} idAttachement={index}/>
+                                    ))
+                                }
+                            </div>
+                        </div>
+                    )
+                }
             </div>
         </div>
     )
