@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { APIUserRole, Client, User } from "rr-apilib";
+import { APIUserRoleType, Client, User } from "rr-apilib";
 import CommonStyles from "../../styles/CommonStyles.module.css";
 import AdminEditUserPageStyles from "../../styles/Page/Admin/AdminEditUserPageStyles.module.css";
 import SelectRoles from "../../components/Input/SelectRoles";
@@ -18,7 +18,7 @@ export default function AdminEditUserPage({ client }: Props) {
     
     const [ name, setName ] = useState<string>('');
     const [ firstname, setFirstname ] = useState<string>('');
-    const [ roles, setRoles ] = useState<APIUserRole[]>([]);
+    const [ roles, setRoles ] = useState<APIUserRoleType[]>([]);
 
     const handleClickEditUser = async () => {
         if (user) {

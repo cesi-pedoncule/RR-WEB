@@ -1,10 +1,9 @@
 import Select from 'react-select';
-import { APIUserRole } from 'rr-apilib';
+import { APIUserRole, APIUserRoleType } from 'rr-apilib';
 import SelectRolesStyles from '../../styles/Components/Input/SelectRolesStyles.module.css';
-import { useEffect } from 'react';
 
 interface Props {
-    value: APIUserRole[];
+    value: APIUserRoleType[];
     onChange: (value: APIUserRole[]) => void
 }
 

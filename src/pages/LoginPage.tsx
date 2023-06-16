@@ -129,8 +129,6 @@ export default function LoginPage ({ client }: Props) {
                 } catch (error) {
                     localStorage.removeItem('token');
                     localStorage.removeItem('refresh_token');
-
-                    client.refresh();
                 }
             } 
 
