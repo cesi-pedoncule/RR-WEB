@@ -9,7 +9,7 @@ interface Props {
     client: Client;
 }
 
-export default function SendResetPassword({ client }: Props) {
+export default function SendResetPasswordPage({ client }: Props) {
 
     const navigate = useNavigate();
 

@@ -9,7 +9,7 @@ interface Props {
     client: Client;
 }
 
-export default function ResetPassword({ client }: Props) {
+export default function ResetPasswordPage({ client }: Props) {
 
     const navigate = useNavigate();
     const {token} = useParams();
