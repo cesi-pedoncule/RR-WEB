@@ -23,6 +23,7 @@ import AdminCategoryPage from './pages/Admin/Categories/AdminCategoryPage';
 import AdminEditUserPage from './pages/Admin/AdminEditUserPage';
 import AdminCategoryCreatePage from './pages/Admin/Categories/AdminCategoryCreatePage';
 import CommonStyles from "./styles/CommonStyles.module.css";
+import SendResetPassword from './pages/SendResetPassword';
 
 export default function App() {
     
@@ -85,6 +86,7 @@ export default function App() {
                 <Route path='/' element={<ResourcesPage client={client} />} />
 
                 <Route path="/login" element={<LoginPage client={client} />} />
+                <Route path="/reset_password" element={<SendResetPassword client={client} />} />
                 <Route path="/share" element={<ShareResourcesPage client={client} />} />
                 <Route path="/profile" element={<ProfilePage client={client} />}/>
                 
