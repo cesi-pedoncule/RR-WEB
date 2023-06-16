@@ -64,7 +64,7 @@ export default function LoginPage ({ client }: Props) {
     }
 
     const onClickForgotPassword = () => {
-        navigate("/reset_password")
+        navigate("/send-reset-password")
     };
 
     //Register

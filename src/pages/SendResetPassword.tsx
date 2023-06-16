@@ -2,8 +2,7 @@ import { Client } from "rr-apilib";
 import ErrorModal from "../components/Modal/ErrorModal";
 import CommonStyles from "../styles/CommonStyles.module.css";
 import { useState } from "react";
-import { TailSpin } from "react-loader-spinner";
-import SendPassWordStyles from "../styles/Page/SendPassWordStyles.module.css";
+import SendResetPasswordStyles from "../styles/Page/SendResetPasswordStyles.module.css";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
@@ -52,15 +51,15 @@ export default function SendResetPassword({ client }: Props) {
             <div className={CommonStyles.content}>  
                 {isOpenModal && <ErrorModal setIsOpenModal={setIsOpenModal} message={messageModal} />}
                 {
-                    <div className={SendPassWordStyles.formContainer}>
-                        <div className={SendPassWordStyles.form}>
-                            <header className={SendPassWordStyles.header}>Rénitialisation du mot de passe</header>
-                            <form className={SendPassWordStyles.container}>
-                                <div className={SendPassWordStyles.control}>
-                                    <label className={SendPassWordStyles.label} htmlFor="email">Email</label>
-                                    <input className={isNotValidEmail ? SendPassWordStyles.inputPasContent : SendPassWordStyles.input} type="email" id="email" name="email" onChange={(text) => setEmail(text.target.value)} onBlur={onBlurEmail}/>
+                    <div className={SendResetPasswordStyles.formContainer}>
+                        <div className={SendResetPasswordStyles.form}>
+                            <header className={SendResetPasswordStyles.header}>Rénitialisation du mot de passe</header>
+                            <form className={SendResetPasswordStyles.container}>
+                                <div className={SendResetPasswordStyles.control}>
+                                    <label className={SendResetPasswordStyles.label} htmlFor="email">Email</label>
+                                    <input className={isNotValidEmail ? SendResetPasswordStyles.inputPasContent : SendResetPasswordStyles.input} type="email" id="email" name="email" onChange={(text) => setEmail(text.target.value)} onBlur={onBlurEmail}/>
                                 </div>
-                                <div className={SendPassWordStyles.control}>
+                                <div className={SendResetPasswordStyles.control}>
                                     <input className={CommonStyles.button} type="button" value="Envoyer ma demande" id="sendMail" name="sendMail" onClick={onclickSendMail} />
                                 </div>
                             </form>
