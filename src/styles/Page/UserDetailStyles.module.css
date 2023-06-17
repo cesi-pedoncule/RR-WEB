@@ -59,13 +59,10 @@
     color: #363e3e;
     text-align: left;
     margin-bottom: 20px;
-}
-.followersContainer {
     margin-top: 40px;
-    height: 100%;
 }
 .wrapperContainer {
-    column-count: 2;
+    display: flex;
 }
 .lineTitleLikeContainer {
     display: flex;

@@ -16,16 +16,20 @@ interface Props {
 export default function UserDetailPage ({ client }: Props) {
     
     const navigate = useNavigate();
+
     const {id} = useParams();
     const user = id && client.users.cache.get(id);
+    const secondColumnFollowersStart = user ? Math.floor(user?.followers.cache.size / 2) : 0;
+    const secondColumnFollowsStart = user ? Math.floor(user?.follows.size / 2) : 0;
     
     const [ isOpenModal, setIsOpenModal] = useState<boolean>(false);
     const [ messageModal, setMessageModal] = useState<string>('');
     const [ isFollow, setIsFollow ] = useState<boolean>(false);
 
+
     const onClikFollowUser = async () => {
         try {
-            user && client.me &&  await user.followers.add(client.me);
+            user && await user.follow();
             setIsFollow(true);
         } catch (error) {
             setMessageModal("Une erreur s'est produite");
@@ -35,7 +39,6 @@ export default function UserDetailPage ({ client }: Props) {
 
     const onClikUnFollowUser = async () => {
         try {
-            user && client?.me &&  await user.followers.remove(client?.me);
             user && await user.unfollow();
             setIsFollow(false);
         } catch (error) {
@@ -45,7 +48,7 @@ export default function UserDetailPage ({ client }: Props) {
     };
 
     useEffect(() => {
-         if(user && client.me && user.followers.cache.get(client.me?.id)){
+         if(user && user.myFollow){
             setIsFollow(true);
          } else {
             setIsFollow(false);
@@ -75,28 +78,46 @@ export default function UserDetailPage ({ client }: Props) {
                             <p className={UserDetailStyles.profileTitle}>Statistiques</p>
                             <StatDashBoard user={user}/>
                             {
-                                user.follows.size !== 0 && 
-                                <div className={UserDetailStyles.followersContainer}>
+                                user.follows.size !== 0 &&
+                                <div>
                                     <div className={UserDetailStyles.title}>Personnes suivi ({user.follows.size})</div>
                                     <div className={UserDetailStyles.wrapperContainer}>
-                                        {
-                                            Array.from(user.follows.values()).map((user, id) => 
-                                                <UserFollowCard key={id} user={user.user}/>
-                                            )
-                                        }
+                                        <div>
+                                            {
+                                                Array.from(user.follows.values()).slice(0, secondColumnFollowsStart).map((user, id) => 
+                                                    <UserFollowCard key={id} user={user.user}/>
+                                                )
+                                            }
+                                        </div>
+                                        <div>
+                                            {
+                                                Array.from(user.follows.values()).slice(secondColumnFollowsStart).map((user, id) => 
+                                                    <UserFollowCard key={id} user={user.user}/>
+                                                )
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             }
-                            {
-                                user.followers.cache.size !== 0 && 
-                                <div className={UserDetailStyles.followersContainer}>
-                                    <div className={UserDetailStyles.title}>Personnes qui nous suive ({user.followers.cache.size})</div>
+                            {   
+                                user.followers.cache.size !== 0 &&
+                                <div>
+                                    <div className={UserDetailStyles.title}>Personnes qui le/la suive ({user.followers.cache.size})</div>
                                     <div className={UserDetailStyles.wrapperContainer}>
-                                        {
-                                            Array.from(user.followers.cache.values()).map((user, id) => 
-                                                <UserFollowCard key={id} user={user.user}/>
-                                            )
-                                        }
+                                        <div>
+                                            {
+                                                Array.from(user.followers.cache.values()).slice(0, secondColumnFollowersStart).map((user, id) => 
+                                                    <UserFollowCard key={id} user={user.user}/>
+                                                )
+                                            }
+                                        </div>
+                                        <div>
+                                            {
+                                                Array.from(user.followers.cache.values()).slice(secondColumnFollowersStart).map((user, id) => 
+                                                    <UserFollowCard key={id} user={user.user}/>
+                                                )
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             }

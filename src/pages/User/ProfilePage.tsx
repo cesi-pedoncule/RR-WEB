@@ -14,8 +14,9 @@ interface Props {
 export default function ProfilePage ({ client }: Props) {
     
     const navigate = useNavigate();
-
     const me = client.auth.me;
+    const secondColumnFollowersStart = me ? Math.floor(me?.followers.cache.size / 2) : 0;
+    const secondColumnFollowsStart = me ? Math.floor(me?.follows.size / 2) : 0;
 
     useEffect(() => {
         if(me === null) {
@@ -35,28 +36,46 @@ export default function ProfilePage ({ client }: Props) {
                             <p className={ProfileStyles.profileTitle}>Statistiques</p>
                             <StatDashBoard user={me}/>
                             {
-                                me.follows.size !== 0 && 
-                                <div className={ProfileStyles.followersContainer}>
+                                me.follows.size !== 0 &&
+                                <div>
                                     <div className={ProfileStyles.title}>Personnes suivi ({me.follows.size})</div>
                                     <div className={ProfileStyles.wrapperContainer}>
-                                        {
-                                            Array.from(me.follows.values()).map((user, id) => 
-                                                <UserFollowCard key={id} user={user.user}/>
-                                            )
-                                        }
+                                        <div>
+                                            {
+                                                Array.from(me.follows.values()).slice(0, secondColumnFollowsStart).map((user, id) => 
+                                                    <UserFollowCard key={id} user={user.user}/>
+                                                )
+                                            }
+                                        </div>
+                                        <div>
+                                            {
+                                                Array.from(me.follows.values()).slice(secondColumnFollowsStart).map((user, id) => 
+                                                    <UserFollowCard key={id} user={user.user}/>
+                                                )
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             }
                             {
-                                me.followers.cache.size !== 0 && 
-                                <div className={ProfileStyles.followersContainer}>
+                                me.followers.cache.size !== 0 &&
+                                <div>   
                                     <div className={ProfileStyles.title}>Personnes qui nous suive ({me.followers.cache.size})</div>
                                     <div className={ProfileStyles.wrapperContainer}>
-                                        {
-                                            Array.from(me.followers.cache.values()).map((user, id) => 
-                                                <UserFollowCard key={id} user={user.user}/>
-                                            )
-                                        }
+                                        <div>
+                                            {
+                                                Array.from(me.followers.cache.values()).slice(0, secondColumnFollowersStart).map((user, id) => 
+                                                    <UserFollowCard key={id} user={user.user}/>
+                                                )
+                                            }
+                                        </div>
+                                        <div>
+                                            {
+                                                Array.from(me.followers.cache.values()).slice(secondColumnFollowersStart).map((user, id) => 
+                                                    <UserFollowCard key={id} user={user.user}/>
+                                                )
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             }

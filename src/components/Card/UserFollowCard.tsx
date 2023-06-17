@@ -11,9 +11,7 @@ export default function UserFollowCard({ user }:Props) {
     const navigate = useNavigate();
 
     const handleOnPress = () => {
-        user && user.id === user.client.me?.id ?
-        navigate("/profile")
-        :
+        user && user.id !== user.client.me?.id &&
         navigate(`/user/${user?.id}`);
     }
     
