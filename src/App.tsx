@@ -26,6 +26,7 @@ import CommonStyles from "./styles/CommonStyles.module.css";
 import SendResetPasswordPage from './pages/SendResetPassword';
 import ResetPasswordPage from './pages/ResetPassword';
 import UserDetailPage from './pages/User/UserDetailPage';
+import UsersPage from './pages/User/UsersPage';
 
 export default function App() {
     
@@ -93,6 +94,7 @@ export default function App() {
 
                 {/* User */}
                 <Route path="/profile" element={<ProfilePage client={client} />}/>
+                <Route path="/users" element={<UsersPage client={client} />}/>
                 <Route path="/user/:id" element={<UserDetailPage client={client} />}/>
                 
                 {/* Resources */}
