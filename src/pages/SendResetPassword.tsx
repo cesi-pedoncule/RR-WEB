@@ -26,7 +26,6 @@ export default function SendResetPasswordPage({ client }: Props) {
             } catch (error) {
                 setMessageModal("Une erreur s'est produite");
                 setIsOpenModal(true);
-                console.log(error)
             }
         } else {
             setMessageModal("Veuiller entrer un mail valide");

@@ -34,22 +34,38 @@ export default function ProfilePage ({ client }: Props) {
                             <p className={ProfileStyles.profileSubTitle}>{me.resources.cache.size} enregistrement(s)</p>
                             <p className={ProfileStyles.profileTitle}>Statistiques</p>
                             <StatDashBoard user={me}/>
-                            <div className={ProfileStyles.followersContainer}>
-                                {me.followers.cache.size !== 0 && <div className={ProfileStyles.title}>Personnes follow ({me.followers.cache.size})</div>}
-                                <div className={ProfileStyles.wrapperContainer}>
-                                    {
-                                        Array.from(me.followers.cache.values()).map((user) => 
-                                            <UserFollowCard user={user.user}/>
-                                        )
-                                    }
+                            {
+                                me.follows.size !== 0 && 
+                                <div className={ProfileStyles.followersContainer}>
+                                    <div className={ProfileStyles.title}>Personnes suivi ({me.follows.size})</div>
+                                    <div className={ProfileStyles.wrapperContainer}>
+                                        {
+                                            Array.from(me.follows.values()).map((user, id) => 
+                                                <UserFollowCard key={id} user={user.user}/>
+                                            )
+                                        }
+                                    </div>
                                 </div>
-                            </div>
+                            }
+                            {
+                                me.followers.cache.size !== 0 && 
+                                <div className={ProfileStyles.followersContainer}>
+                                    <div className={ProfileStyles.title}>Personnes qui nous suive ({me.followers.cache.size})</div>
+                                    <div className={ProfileStyles.wrapperContainer}>
+                                        {
+                                            Array.from(me.followers.cache.values()).map((user, id) => 
+                                                <UserFollowCard key={id} user={user.user}/>
+                                            )
+                                        }
+                                    </div>
+                                </div>
+                            }
                         </div>
                         <div className={ProfileStyles.resourcesContainer}>
                             {me.likedResources.size !== 0 && <div className={ProfileStyles.title}>Ressource(s) aimée(s) ({me.likedResources.size})</div>}
                             {
-                                me.likedResources.map((resource) => 
-                                    <ResourceCardWithUser resourceData={resource}/>
+                                me.likedResources.map((resource, id) => 
+                                    <ResourceCardWithUser key={id} resourceData={resource}/>
                                 )
                             }
                         </div>

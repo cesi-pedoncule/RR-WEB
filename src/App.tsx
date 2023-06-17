@@ -5,7 +5,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import CategoriesPage from './pages/Category/CategoriesPage';
 import LoginPage from './pages/LoginPage';
 import ResourcesPage from './pages/Resource/ResourcesPage';
-import ShareResourcesPage from './pages/ShareResourcesPage';
+import ShareResourcesPage from './pages/Resource/ShareResourcesPage';
 import ResourceDetailPage from './pages/Resource/ResourceDetailsPage';
 import CreateResourcePage from './pages/Resource/CreateResourcePage';
 import EditResourcePage from './pages/Resource/EditResourcePage';
