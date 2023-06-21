@@ -1,11 +1,11 @@
 import { Client } from "rr-apilib";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import CommonStyles from "../../styles/CommonStyles.module.css";
 import UserDetailStyles from "../../styles/Page/UserDetailStyles.module.css";
 import StatDashBoard from "../../components/StatDashBoard";
 import ResourceCardWithUser from "../../components/Card/ResourceCardWithUser";
 import UserFollowCard from "../../components/Card/UserFollowCard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai"
 import ErrorModal from "../../components/Modal/ErrorModal";
 
@@ -14,8 +14,6 @@ interface Props {
 }
 
 export default function UserDetailPage ({ client }: Props) {
-    
-    const navigate = useNavigate();
 
     const {id} = useParams();
     const user = id && client.users.cache.get(id);
@@ -24,36 +22,43 @@ export default function UserDetailPage ({ client }: Props) {
     
     const [ isOpenModal, setIsOpenModal] = useState<boolean>(false);
     const [ messageModal, setMessageModal] = useState<string>('');
-    const [ isFollow, setIsFollow ] = useState<boolean>(false);
+    const [ isFollow, setIsFollow ] = useState(user && user.myFollow);
 
 
     const onClikFollowUser = async () => {
-        try {
-            user && await user.follow();
-            setIsFollow(true);
-        } catch (error) {
-            setMessageModal("Une erreur s'est produite");
+        if(client.me) {
+            try {
+                if(user) {
+                    await user.follow();
+                    setIsFollow(user.myFollow);
+                }
+            } catch (error) {
+                setMessageModal("Une erreur s'est produite");
+                setIsOpenModal(true);
+            }
+        } else {
+            setMessageModal("Vous n'êtes pas connecté");
             setIsOpenModal(true);
         }
+
     };
 
     const onClikUnFollowUser = async () => {
-        try {
-            user && await user.unfollow();
-            setIsFollow(false);
-        } catch (error) {
-            setMessageModal("Une erreur s'est produite");
+        if(client.me) {
+            try {
+                if(user) {
+                    await user.unfollow();
+                    setIsFollow(user.myFollow);
+                }
+            } catch (error) {
+                setMessageModal("Une erreur s'est produite");
+                setIsOpenModal(true);
+            }
+        } else {
+            setMessageModal("Vous n'êtes pas connecté");
             setIsOpenModal(true);
         }
     };
-
-    useEffect(() => {
-         if(user && user.myFollow){
-            setIsFollow(true);
-         } else {
-            setIsFollow(false);
-         }
-    }, [client.me, navigate, user]);
 
     return (
         <div className={CommonStyles.container}>
