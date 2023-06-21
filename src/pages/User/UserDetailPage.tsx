@@ -1,11 +1,11 @@
-import { Client } from "rr-apilib";
+import { Client, User } from "rr-apilib";
 import { useParams } from "react-router-dom";
 import CommonStyles from "../../styles/CommonStyles.module.css";
 import UserDetailStyles from "../../styles/Page/UserDetailStyles.module.css";
 import StatDashBoard from "../../components/StatDashBoard";
 import ResourceCardWithUser from "../../components/Card/ResourceCardWithUser";
 import UserFollowCard from "../../components/Card/UserFollowCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai"
 import ErrorModal from "../../components/Modal/ErrorModal";
 
@@ -17,13 +17,24 @@ export default function UserDetailPage ({ client }: Props) {
 
     const {id} = useParams();
     const user = id && client.users.cache.get(id);
-    const secondColumnFollowersStart = user ? Math.floor(user?.followers.cache.size / 2) : 0;
-    const secondColumnFollowsStart = user ? Math.floor(user?.follows.size / 2) : 0;
     
     const [ isOpenModal, setIsOpenModal] = useState<boolean>(false);
     const [ messageModal, setMessageModal] = useState<string>('');
     const [ isFollow, setIsFollow ] = useState(user && user.myFollow);
+    const [ followersUser, setFollowersUser ] = useState<User[] | null>([]);
 
+    const secondColumnFollowersStart = followersUser ? Math.floor(followersUser.length / 2) : 0;
+    const secondColumnFollowsStart = user ? Math.floor(user?.follows.size / 2) : 0;
+
+    useEffect(() => {
+        if(user) {
+            const refreshFollowers: User[] = [];
+            user.followers.cache.map((userFollower) =>
+                userFollower.follower && refreshFollowers.push(userFollower.follower)
+            )
+            setFollowersUser([...refreshFollowers]);
+        }
+    }, [user]);
 
     const onClikFollowUser = async () => {
         if(client.me) {
@@ -105,21 +116,21 @@ export default function UserDetailPage ({ client }: Props) {
                                 </div>
                             }
                             {   
-                                user.followers.cache.size !== 0 &&
+                                followersUser && followersUser?.length !== 0 &&
                                 <div>
-                                    <div className={UserDetailStyles.title}>Personnes qui le/la suive ({user.followers.cache.size})</div>
+                                    <div className={UserDetailStyles.title}>Personnes qui le/la suive ({followersUser.length})</div>
                                     <div className={UserDetailStyles.wrapperContainer}>
                                         <div>
                                             {
-                                                Array.from(user.followers.cache.values()).slice(0, secondColumnFollowersStart).map((user, id) => 
-                                                    <UserFollowCard key={id} user={user.user}/>
+                                                followersUser.slice(0, secondColumnFollowersStart).map((user, id) => 
+                                                    <UserFollowCard key={id} user={user}/>
                                                 )
                                             }
                                         </div>
                                         <div>
                                             {
-                                                Array.from(user.followers.cache.values()).slice(secondColumnFollowersStart).map((user, id) => 
-                                                    <UserFollowCard key={id} user={user.user}/>
+                                                followersUser.slice(secondColumnFollowersStart).map((user, id) => 
+                                                    <UserFollowCard key={id} user={user}/>
                                                 )
                                             }
                                         </div>

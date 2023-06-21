@@ -1,8 +1,8 @@
-import { Client } from "rr-apilib";
+import { Client, User } from "rr-apilib";
 import { useNavigate } from "react-router-dom";
 import CommonStyles from "../../styles/CommonStyles.module.css";
 import ProfileStyles from "../../styles/Page/ProfilePageStyles.module.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import StatDashBoard from "../../components/StatDashBoard";
 import ResourceCardWithUser from "../../components/Card/ResourceCardWithUser";
 import UserFollowCard from "../../components/Card/UserFollowCard";
@@ -17,12 +17,21 @@ export default function ProfilePage ({ client }: Props) {
     const me = client.auth.me;
     const secondColumnFollowersStart = me ? Math.floor(me?.followers.cache.size / 2) : 0;
     const secondColumnFollowsStart = me ? Math.floor(me?.follows.size / 2) : 0;
+    
+    const [ followersUser, setFollowersUser ] = useState<User[] | null>([]);
 
     useEffect(() => {
         if(me === null) {
             navigate('/login');
         }
-    })
+        if(me) {
+            const refreshFollowers: User[] = [];
+            me.followers.cache.map((userFollower) =>
+                userFollower.follower && refreshFollowers.push(userFollower.follower)
+            )
+            setFollowersUser([...refreshFollowers]);
+        }
+    }, [me, navigate]);
     
     return (
         <div className={CommonStyles.container}>
@@ -58,21 +67,21 @@ export default function ProfilePage ({ client }: Props) {
                                 </div>
                             }
                             {
-                                me.followers.cache.size !== 0 &&
+                                followersUser && followersUser.length !== 0 &&
                                 <div>   
-                                    <div className={ProfileStyles.title}>Personnes qui nous suive ({me.followers.cache.size})</div>
+                                    <div className={ProfileStyles.title}>Personnes qui nous suive ({followersUser.length})</div>
                                     <div className={ProfileStyles.wrapperContainer}>
                                         <div>
                                             {
-                                                Array.from(me.followers.cache.values()).slice(0, secondColumnFollowersStart).map((user, id) => 
-                                                    <UserFollowCard key={id} user={user.user}/>
+                                                followersUser.slice(0, secondColumnFollowersStart).map((user, id) => 
+                                                    <UserFollowCard key={id} user={user}/>
                                                 )
                                             }
                                         </div>
                                         <div>
                                             {
-                                                Array.from(me.followers.cache.values()).slice(secondColumnFollowersStart).map((user, id) => 
-                                                    <UserFollowCard key={id} user={user.user}/>
+                                                followersUser.slice(secondColumnFollowersStart).map((user, id) => 
+                                                    <UserFollowCard key={id} user={user}/>
                                                 )
                                             }
                                         </div>
