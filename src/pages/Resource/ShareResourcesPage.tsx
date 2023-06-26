@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Client } from "rr-apilib";
 import { useNavigate } from "react-router";
-import CommonStyles from "../styles/CommonStyles.module.css";
-import ShareResourceStyles from "../styles/Page/ShareResourcePageStyles.module.css";
-import SearchBar from "../components/Input/SearchBar";
-import ResourceCardWithoutUser from "../components/Card/ResourceCardWithoutUser";
-import ErrorModal from "../components/Modal/ErrorModal";
+import CommonStyles from "../../styles/CommonStyles.module.css";
+import ShareResourceStyles from "../../styles/Page/ShareResourcePageStyles.module.css";
+import SearchBar from "../../components/Input/SearchBar";
+import ResourceCardWithoutUser from "../../components/Card/ResourceCardWithoutUser";
+import ErrorModal from "../../components/Modal/ErrorModal";
 
 interface Props {
     client: Client;

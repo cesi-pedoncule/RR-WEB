@@ -5,7 +5,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import CategoriesPage from './pages/Category/CategoriesPage';
 import LoginPage from './pages/LoginPage';
 import ResourcesPage from './pages/Resource/ResourcesPage';
-import ShareResourcesPage from './pages/ShareResourcesPage';
+import ShareResourcesPage from './pages/Resource/ShareResourcesPage';
 import ResourceDetailPage from './pages/Resource/ResourceDetailsPage';
 import CreateResourcePage from './pages/Resource/CreateResourcePage';
 import EditResourcePage from './pages/Resource/EditResourcePage';
@@ -15,7 +15,7 @@ import AdminMenuPage from './pages/Admin/AdminMenuPage';
 import AdminUserPage from './pages/Admin/AdminUserPage';
 import AdminValidationsPage from './pages/Admin/AdminValidationsPage';
 import AdminValidationPage from './pages/Admin/AdminValidationPage';
-import ProfilePage from './pages/ProfilePage';
+import ProfilePage from './pages/User/ProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 import WithNavbar from './components/WithNavbar';
 import AdminCategoriesPage from './pages/Admin/Categories/AdminCategoriesPage';
@@ -23,6 +23,10 @@ import AdminCategoryPage from './pages/Admin/Categories/AdminCategoryPage';
 import AdminEditUserPage from './pages/Admin/AdminEditUserPage';
 import AdminCategoryCreatePage from './pages/Admin/Categories/AdminCategoryCreatePage';
 import CommonStyles from "./styles/CommonStyles.module.css";
+import SendResetPasswordPage from './pages/SendResetPassword';
+import ResetPasswordPage from './pages/ResetPassword';
+import UserDetailPage from './pages/User/UserDetailPage';
+import UsersPage from './pages/User/UsersPage';
 
 export default function App() {
     
@@ -85,14 +89,20 @@ export default function App() {
                 <Route path='/' element={<ResourcesPage client={client} />} />
 
                 <Route path="/login" element={<LoginPage client={client} />} />
-                <Route path="/share" element={<ShareResourcesPage client={client} />} />
+                <Route path="/send-reset-password" element={<SendResetPasswordPage client={client} />} />
+                <Route path="/forgot-password/:token" element={<ResetPasswordPage client={client} />} />
+
+                {/* User */}
                 <Route path="/profile" element={<ProfilePage client={client} />}/>
+                <Route path="/users" element={<UsersPage client={client} />}/>
+                <Route path="/user/:id" element={<UserDetailPage client={client} />}/>
                 
                 {/* Resources */}
                 <Route path='/resources' element={<ResourcesPage client={client} />} />
                 <Route path="/resources/create" element={<CreateResourcePage client={client} />} />
                 <Route path="/resources/:id" element={<ResourceDetailPage client={client} />} />
                 <Route path="/resources/:id/edit" element={<EditResourcePage client={client} />} />
+                <Route path="/share" element={<ShareResourcesPage client={client} />} />
 
                 {/* Categorie */}
                 <Route path="/categories" element={<CategoriesPage client={client} />} />

@@ -64,3 +64,15 @@
 .wrapperContainer {
     display: flex;
 }
+.lineTitleLikeContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.likeButtonContainer {
+    display: flex;
+    margin: 0px 20px 0px 25px;
+    cursor: pointer;
+}

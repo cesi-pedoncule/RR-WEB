@@ -63,6 +63,10 @@ export default function LoginPage ({ client }: Props) {
         }
     }
 
+    const onClickForgotPassword = () => {
+        navigate("/send-reset-password")
+    };
+
     //Register
     const validateEmail = (email:string) => {
         const regex = /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -129,8 +133,6 @@ export default function LoginPage ({ client }: Props) {
                 } catch (error) {
                     localStorage.removeItem('token');
                     localStorage.removeItem('refresh_token');
-
-                    client.refresh();
                 }
             } 
 
@@ -159,6 +161,7 @@ export default function LoginPage ({ client }: Props) {
                                     <label className={LoginStyles.label}htmlFor="mdp">Mot de passe</label>
                                     <input className={LoginStyles.input} type="password" id="mdp" name="mdp" onChange={(text) => setPassword(text.target.value)}/>
                                 </div>
+                                <input className={LoginStyles.link} type="button" value="Mot de passe oublié" id="login-register" name="forgotPassWord" onClick={onClickForgotPassword} required/>
                                 <div className={LoginStyles.control}>
                                     <input className={CommonStyles.button} type="submit" id="login" name="login" />
                                 </div>
